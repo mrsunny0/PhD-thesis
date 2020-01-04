@@ -1,0 +1,486 @@
+%***************************************************************************%
+%                                 CHAPTER 2                                 %
+%***************************************************************************%
+\documentclass[../main/main]{subfiles}
+\begin{document}
+\chapter{Using yeast to sustainably remediate and extract heavy metals from wastewaters}
+\label{chapter2}
+\renewcommand{\figurename}{Figure}
+
+%---------------------------------------------------------------------------%
+% Section
+%---------------------------------------------------------------------------%
+\section*{Abstract}
+Our demand for electronic goods and fossil fuels have challenged our ecosystem with contaminating amounts of heavy metals causing numerous water sources to become polluted. To counter heavy metal waste, industry relies on a family of physicochemical processes with hydroxide and sulfide chemical precipitation being one of the most commonly used. However, the disadvantages of chemical precipitation are vast, some of which are the generation of secondary waste, handling of volatile chemicals, and the need for dedicated infrastructures. To circumvent these limitations, biological processes have been sought after to naturally manage waste. Herein, this work shows that yeast can act as a biological alternative to traditional chemical precipitation by controlling naturally occurring production of hydrogen sulfide (\HS{}). Sulfur production was harnessed by controlling the yeast sulfate assimilation pathway, where strategic knockouts and controlled culture conditions generate \HS{} from 0 to over 1000 ppm. These sulfur producing yeast were able to remove mercury, lead, and copper from real-world samples taken from the Athabasca Oil Sands. More so, surface display of biomineralization peptides allowed for controlled size distribution and crystallinity of metal sulfide nanoparticles which can nucleate on the cell surface. Altogether, this yeast-based platform not only removes heavy metals but also offers a platform for metal re-extraction through precipitated metal sulfide nanoparticles.
+
+%---------------------------------------------------------------------------%
+% Section
+%---------------------------------------------------------------------------%
+\section{Introduction}
+Growing consumption of electronic goods and raw materials have pushed mining and manufacturing practices to unprecedented levels that the United Nations Environment Programme (UNEP) declared a global waste challenge in 2015 in order to monitor waste risk and waste crimes\cite{rucevska2015}. Because of the growing demand for electronic goods and raw materials such as metals and fuels, 41.8 million metric tonnes (46.1 million tons) of electronic waste (e-waste) was produced globally in 2014, and this amount has risen by 20--25\% in 2018~\cite{rucevska2015,balde2017}.
+For the United States, there are more than 13,000 reported active mining sites with an additional 500,000 that are abandoned yet still polluting 16,000 miles of streams~\cite{centerfordiseasecontrolandprevention2018,degraff2007addressing}.
+Metal contaminates are typically copper, lead, cadmium, mercury and sometimes zinc~\cite{rucevska2015,rucevska2015}.
+Despite these obvious waste sources, industry still continues to unsustainably mine for raw materials, especially given the growing demand and consumption of batteries and electronic devices~\cite{kang2013}. China alone produces and consumes one of the largest quantities of batteries in the world, and in 2013 generated 570 kilotons of battery waste with less than 2\% being collected and recycled~\cite{song2017}. The repercussions of battery waste, especially with lithium-ion batteries, is leaching of toxic amounts of copper and lead~\cite{kang2013}.
+% , with other metals such as cobalt, nickel, and chromium leaching into neighboring soils and streams
+
+Unfortunately, the progress for sustainable remediation technologies, in particular heavy metal removal, is slow in comparison to the rise of e-waste and the pace of mining~\cite{rucevska2015}. So far, practical implementation of heavy metal remediation has relied on physicochemical processes, the most ubiquitous industrial method being chemical precipitation via lime, hydroxide (e.g. \ce{NaOH}), or sulfide (e.g. \ce{FeS} or \HS{}) chemicals~\cite{fu2011removal}. Sulfur is the more desirable precipitation reagent as it is more reactive and has a lower rate of leaching than hydroxide precipitates, but the counter is that sulfur storage and handling is dangerous and costly which makes lime and hydroxides the preferred choice despite being less effective~\cite{fu2011removal}.
+Overall, chemical precipitation is costly, requires dedicated infrastructure, involves handling dangerous compounds and reactive gases, and generates secondary waste in the form of sludge~\cite{fu2011removal,kurniawan2006,barakat2011new}.
+Furthermore, sludge is ineffectively eliminated through pyrolysis or physically transported to landfills for burial~\cite{kurniawan2006,kumargupta2012}. Because of the inefficient downstream recycling steps many of the precipitate compounds leach back into ground water and nearby water sources thereby perpetuating this cycle of inefficient cleaning. Thus, physicochemical treatment via chemical precipitation is not an amenable option for developing countries which typically face the biggest challenge for heavy metal removal, and chemical precipitation will most likely need to be replaced with more sustainable and cost-effective processes in the near future~\cite{kumargupta2012}.
+% not be the frontrunner method for heavy metal waste management in the near future
+
+
+Contrast to physicochemical processes, scientist have discovered the benefits of using biological systems to remediate waste as a natural alternative to current methods. Bioremediation has gained traction for wastewater treatment due to its natural means to process waste in addition to its autonomous growth and reactions allowing humans to distance themselves from constant maintenance and direct waste intervention~\cite{gavrilescu2015,singh2015}. In addition, there is hope that with the growing toolkit of molecular biology and bioengineering technologies scientist can further augment biology's capability to manipulate and convert waste.
+Already, scientist have discovered naturally occurring microorganisms which have been observed to tolerate and accumulate toxic metals, for example metal reducing bacteria~\cite{gadd2004microbial,wiatrowski2006novel,silver2005,picard2018,gartman2017}. One particular family of interest are sulfate reducing bacteria (SRB) which use sulfates as their terminal electron acceptor that then create hydrogen sulfide (\HS{}) as a by-product leading to precipitation of nearby metals.
+Connecting the dots, it is easy to see that biology has already developed a mechanism for biotic chemical precipitation using \HS{} producing SRBs. Interesting uses of these organisms have been the design of anaerobic bed or stirred tank reactors for precipitation of metal contaminated effluent. Examples of bioreactors built by Jong et al. and Kieu et al. showed precipitation of 70--99\% of introduced metals (dependent on the metal identity) over 2--8 week periods~\cite{jong2003,kieu2011}. However, the limiting piece to this technology is the biology itself. SRBs are obligate anaerobes, require precise handling of culture conditions, and grow slowly. In addition, many SRBs are unable to process complex carbon sources and require additional anaerobic microflora to persist~\cite{neculita2007} creating a new layer of complexity when managing reactors. To circumvent the stringent culture conditions scientist have begun to extract and transfer their unique behavior into more tractable organisms such as \textit{E. coli} by heterologously expressing enzymes and non-native metal reducing pathways. Examples are expressing mercuric reductases from Thiobacillus ferrooxidans into \textit{E. coli}~\cite{shiratori1989} or using a combination of protein and metabolic engineering to endow \textit{E. coli} with sulfur generating capabilities much like SRBs~\cite{wang2000}. However in either case, attempting to transfer a complex and somewhat unknown mechanism into \textit{E. coli}
+seems ambitious, and possibly riddled with difficulty.
+
+To avoid the technical hurdles of engineering SRBs or expressing foreign pathways in \textit{E. coli}, a more tractable biological platform was used to develop a biotic method for heavy metal precipitation. More so, an organism that can be easily used by both scientist and non-scientists in addition to having an established presence in industrial and consumer settings was prioritized. Therefore, yeast was chosen. The common baker's yeast, \textit{S. cerevisiae}, is widely used both in the scientific and consumer setting, and by using yeast advantages beyond the biotechnology such as infrastructure to scale, cost, packaging and transport, are already in place~\cite{vieira2013,barth-haasgroup.n.d.,prnewswire.n.d.}. The goal of this work is to transform yeast into a bioremediation platform for heavy metal removal and tap into the available resources for translating yeast into a usable system for practical waste remediation and recycling for real-world settings. With yeast, rather than assembling complex metabolic circuits or inserting foreign genes, this work uses its natural metabolic pathways to endogenously generate \HS{} much like SRBs. However, unlike SRBs \HS{} production can be controlled both in rate and quantity by modifying the sulfate assimilation pathway and tuning culture conditions. These added controls enable yeast to generate uniform metal sulfide precipitates with respect to size distribution and cyrstallinity, potentially improving downstream filtration and recycling proceses. Overall these results show that yeast, an already environmentally friendly and sustainably grown organism conventionally used for food and drink, can also be used as an agent for heavy metal detoxification.
+
+%---------------------------------------------------------------------------%
+% Results
+%---------------------------------------------------------------------------%
+\section{Results}
+
+%-----------------------------------------------------------------%
+% SUBSECTION
+%-----------------------------------------------------------------%
+\subsection{Metabolic control of yeast \HS{} production}
+The first goal for engineering yeast as an agent for heavy metal remediation was to find a biologically generated product that could be used to precipitate metals from solution. Fortuitously, the wine-industry was key in identifying such a compound. Good wine makers know that over-fermenting yeast produces an off-tasting and often off-putting egg smell, and researchers attributed this phenomenon with the build-up of \HS{} gas~\cite{swiegers2007}. Wine researchers identified that the yeast sulfate assimilation pathway driven under fermentation conditions drives the production of \HS{} gas (\FIGURE~\ref{\figname{2}{1}}a)~\cite{swiegers2007,linderholm2008}. From there yeast wine-strains were engineered to suppress the production of \HS{} gas for better quality wine. However, by performing the opposite modifications yeasts' natural sulfur production can be instead harnessed for heavy metal precipitation. During this investigation it was shown that single gene knockouts in the sulfate assimilation pathway promotes \HS{} production in a controllable manner. Knockout strains that produced detectable amounts of \HS{} were
+\KO{MET2} (accession number \#P08465),
+\KO{MET6} (\#P05694),
+\KO{MET17} (\#P06106),
+\KO{HOM2 (\#P13663)},
+\KO{HOM3} (\#P10869),
+\KO{SER33} (\#P40510),
+and \KO{CYS4} (\#P32582)
+(\FIGURE~\ref{\figname{2}{1}}a).
+Knockouts \KO{SER33} and \KO{CYS4} became auxotrophic to cysteine while \KO{HOM3}, and \KO{MET2} were slow growers on synthetically defined (SD) media. \KO{HOM2}, \KO{MET17}, and \KO{CYS4} were chosen as experimental strains for sulfur-induced chemical precipitation due to their consistently high levels of sulfur production and normal growth characteristics in complete synthetically defined media (CSM) compared to the other strains. From \KO{HOM2}, \KO{MET17}, and \KO{CYS4} double deletions were performed to obtain \KO{HOM2} and \KO{MET17} (\KO{HM217});
+combination knockouts with \KO{CYS4} produced extremely slow growers.
+
+%====================%
+% FIGURE 1
+%====================%
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\columnwidth]{\figname{2}{1}}
+  \caption[Engineering the yeast sulfate assimilation pathway to generate hydrogen sulfide (\HS{})]
+  {
+    \textbf{Engineering the yeast sulfate assimilation pathway to generate hydrogen sulfide (\HS{})}.
+    (\textbf{a}) Schematic adapted from Linderholm et al.~\cite{linderholm2008} Genes involved in the conversion of \HS{} to amino acids were knocked out. Italicized knockouts were screened for \HS{} production, while bolded red knockouts gave noticeable production of \HS{}.
+    (\textbf{b}) Deletant \KO{CYS4}, \KO{HOM2}, \KO{MET17}, and \KO{HM217} produced sulfur closely following Le Chatelier's principle. Supplying sulfate (reactants) while limiting nutrients such as cysteine and methionine (products) motivated the production of sulfur.
+    (\textbf{c}) \HS{} production (top curves) compared to growth curves in CSM cultures (bottom curves). Fitted parameters $A$ represents the steady-state production of \HS{}, $t_{1/2}$ represents the time at which \HS{} production reached half-max, and $r$ is the maximum rate of \HS{} production.
+    (\textbf{d}) \HS{} production as a function of media composition for \KO{MET17} with fitted parameters $A$, $t_{1/2}$, and $r$. For all data, the mean $\pm$ s.d. of three replicates from different days are shown. Curves were fitted and parametrized against the sigmoid function
+    {\small $\dfrac{A}{1 + \exp{-k(t-t_o)}}$}.
+  }
+  \label{\figname{2}{1}}
+\end{figure}
+
+Despite the metabolic complexities of the sulfate assimilation pathway, yeast \HS{} production was observed to follow Le Chatelier's Principle. Supplying the necessary nutrients such as nitrogen sources and sulfates, while limiting the amount of products, i.e. cysteine and methionine, stimulates the yeast sulfate assimilation pathway to produce \HS{} (\FIGURE~\ref{\figname{2}{1}}b). However, the normal conversion of sulfide to thiol containing biomolecules such as cysteine and methionine is prevented by removing pathway enzymes \KO{CYS4}, \KO{HOM2}, \KO{MET17}, thereby forcing expulsion of the intermediate \HS{}. In CSM cultures, \KO{CYS4}, \KO{HOM2}, \KO{MET17} and \KO{HM217} produced 99 $\pm$ 3, 62 $\pm$ 3, 54 $\pm$ 5, and 133 $\pm$ 3 ppm of sulfur gas in a 50 mL cultures, respectively
+(\FIGURE~\ref{\figname{2}{1}}b; \sFIGURE~\ref{\sfigname{2}{1}}a). Sulfur production was optimized by altering the media composition, primarily by removing cysteine and methionine. For \KO{MET17}, sulfur production was tuned from a negligible amount to over 1000 ppm with maximum production rate of 75 $\pm$ 18 ppm hr\textsuperscript{-1} in 50 mL CSM cultures lacking methionine (\FIGURE~\ref{\figname{2}{1}}c; \sFIGURE~\ref{\sfigname{2}{1}}b,c).
+
+%-----------------------------------------------------------------%
+% SUBSECTION
+%-----------------------------------------------------------------%
+\subsection{Chemical precipitation of heavy metals using sulfur producing yeast}
+To test for chemical precipitation, overnight cultures of \KO{CYS4}, \KO{HOM2}, \KO{MET17} and \KO{HM217} were diluted to mid-log in media containing 100 $\mu$M copper, zinc, cadmium, lead, or mercury and shaken for 12 hours. The amount of metal precipitated correlated to the mutants capacity to produce \HS{}, with \KO{HM217} and \KO{CYS4} precipitating more than \KO{HOM2} and \KO{MET17} (\sFIGURE~\ref{\sfigname{2}{1}}a). Testing \KO{MET17} specifically, the amount of metals removed measured using inductively coupled plasma (ICP) was dependent on the media's nutrient content. Cultures grown in YPD were the least effective, while cultures with CSM lacking methionine or cysteine had an overall precipitation efficiency >50\% for copper, cadmium, lead, and mercury (p < .05), almost doubling the amount of precipitation compared to cultures in CSM supplemented with those amino acids (p < .05).
+The increase in metal precipitation correlates to the increased level of \HS{} production in those media (\FIGURE~\ref{\figname{2}{2}}a; \sFIGURE~\ref{\sfigname{2}{2}}b).
+
+%====================%
+% FIGURE 2
+%====================%
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\columnwidth]{\figname{2}{2}}
+  \caption[Uptake of Cu, Zn, Cd, Pb and Hg with \KO{MET17} sulfur-producing mutant]
+  {
+    \textbf{Uptake of Cu, Zn, Cd, Pb and Hg with \KO{MET17} sulfur-producing mutant}.
+    (\textbf{a}) Bar chart represents percent precipitation of metals under varying culture conditions. --M and --C indicate media without methionine or cysteine, respectively. The same experiment was performed with non-\HS{} producing WT strain to test for non-specific metal removal (gray bars).
+    (\textbf{b}) Visual representation of metal sulfide precipitation in cultures incubated with 100 $\mu$M metals.
+    (\textbf{c}) \KO{MET17} with Cu, Zn, Cd, Pb and Hg all at 100 $\mu$M were cultured together for multiple rounds of precipitation. Images represent the sequential precipitation of metals out of solution, with the darker precipitated color gradually diminishing with increased number of rounds. (-) represents a control yeast culture without any metals added.
+    (\textbf{d}) Data representing images in (c). Top left plot represents the uptake from the first round. Remaining plots represent the gradual reduction of metal in solution after each round of precipitation. The same experiment was performed for a control WT strain (gray lines).
+    (\textbf{e}) Illustration of the hypothesized reaction of metal sulfides on the surface of yeast. Metals could either precipitate in solution or on the yeast surface.
+    (\textbf{f}) Bar chart represents the percent change in cadmium precipitation given expression of hexa-peptide repeats of the amino acids designated on the x-axis. For all data, the mean $\pm$ s.d. of three replicates are shown.
+    Asterisk above bar charts represent significant increase in metal precipitation compared to WT (p < .05).
+  }
+  \label{\figname{2}{2}}
+\end{figure}
+
+Yeast culture density (\OD{}) was tested to determine the optimal culture density at which the most amount of metals precipitated. At the extremes, low and high \OD{} precipitated very little. Cells at low \OD{} produce low amounts of \HS{} per volume while also struggling to grow against toxic amounts of metals. Whereas at high \OD{}s cells were no longer rapidly growing and driving their sulfate assimilation pathway thereby producing little sulfur. \OD{}s at mid-log had higher amounts of precipitation which correlated to the fast growth and sulfur production rates (\sFIGURE~\ref{\sfigname{2}{2}}c). This effect was most significant for Cd and Hg for cultures beyond 0.5 \OD{} (p < .05), possibly due to their higher toxicities.
+
+To test for precipitation specificity, cells were incubated in media containing a mixture of copper, zinc, cadmium, lead, and mercury, each at 100 $\mu$M. The preference for precipitation was copper, lead, cadmium, mercury, and zinc, in that order, which loosely follows their trends in solubility products, and was observed in several other physicochemical precipitation experiments~\cite{fu2011removal,neculita2007,rickard2006} (\FIGURE~\ref{\figname{2}{2}}c,d). Sequential precipitation experiments were conducted to test the minimum number of iterations required to completely remove metals from solution,
+a practice normally implemented in industrial water processing via chemical precipitation~\cite{kurniawan2006,kumargupta2012,bolong2009,johnson2005}. Unprecipitated metals left in solution were mixed with fresh yeast for additional rounds of precipitation. Copper and lead removal below 1\% (63 ppb and 207 ppb, respectively) required 2 rounds, 3 rounds for cadmium and mercury (112 ppb and 201 ppb, respectively), and 4 rounds to remove zinc below 20\% (1.31 ppm) (\FIGURE~\ref{\figname{2}{2}}d). Given these results, yeast-based precipitation of heavy metals closely approached EPA standards for potable waters (i.e. tens to hundreds of ppb)~\cite{usepaa,usepa}.
+
+\HS{} producing yeast are also tolerant to high levels of metal contamination, some as high as 100 $\mu$M levels of cadmium and lead. Cultures of \KO{MET17} and WT diluted to 0.1 \OD{} were grown with 100 $\mu$M of Cu, Zn, Cd, Pb, or Hg. \KO{MET17} showed robust growth curves compared to WT (\sFIGURE~\ref{\sfigname{2}{3}}a). In addition, cells that underwent metal precipitation were regrown without any significant changes in growth rate, and could be used for further precipitation experiments (\sFIGURE~\ref{\sfigname{2}{3}}a).
+\clearpage % page break for next section
+
+%-----------------------------------------------------------------%
+% SUBSECTION
+%-----------------------------------------------------------------%
+\subsection{Yeast display of amino acids modulates metal sulfide precipitation}
+To increase the amount of metal precipitation, the yeast cell surface was modified to display amino acid repeats via yeast display. A lab-derived plasmid containing constitutive expression of the AGA1 and AGA2 yeast display constructs under the GAP promoter (vector called pYAGA) was used. AGA2 was fused with a hexa-amino acid repeat consisting of what was hypothesized as either positive (e.g. Asp, Glu, His, Cys, Ser), or negative  (e.g. Val, Leu) effectors for metal precipitation. To test for expression the hexa-amino acid repeat was followed by a Myc tag which was stained for flow cytometry analysis (tag was not included in strains used for metal precipitation experiments). Yeast display expression levels were greater than 60\% for hexa-repeats of Gly, Ala, Val, Leu, Phe, Tyr, Trp, Pro, Cys, Asp, Glu, His, Lys, Arg (\sFIGURE~\ref{\sfigname{2}{4}}a). Plasmids were then transformed into \KO{MET17} and metal precipitation experiments were repeated in CSM. Amino acids containing Thiol and metal-binding moieties such as cysteine, glutamic acid, and histidine increased the precipitation of cadmium, zinc, and mercury by 5--10\% (p < .05). Precipitation was negatively affected by more hydrophobic residues such as valine and leucine (p < .05) (\FIGURE~\ref{\figname{2}{2}}f; \sFIGURE~\ref{\sfigname{2}{4}}b). Precipitation of copper and lead were not as affected by the presence of these displayed peptides. A hypothesis is that the fast copper/lead sulfide reaction rates favor precipitation in solution rather than the diffusion-limited process of nucleating onto the cell surface.
+
+%-----------------------------------------------------------------%
+% SUBSECTION
+%-----------------------------------------------------------------%
+\subsection{Chemical precipitation of wastewater taken from the Canadian Oil Sands}
+\label{section:chapter2:oil-sands}
+To test the efficacy of this system in real-world wastewater, effluent from the Athabasca Oil Sands in Canada was received and subjected to yeast induced metal precipitation. The Athabasca Oil Sands is a well-known deposit of bitumen and crude oil, and for almost a hundred years this area had been a key resource for oils and fossil fuels which still drives the global economy today~\cite{sparks2003}. Due to this, the area has been heavily mined and contaminated with human-driven excavations, drilling, and mining, leading to erosion, pollution, and ecological damage making the Athabasca Oil Sands an area in need of major remediation~\cite{kelly2010}. A sample of the effluent was obtained (roughly top one-fourth to one-half meter of the oil sands top layer; \FIGURE~\ref{\figname{2}{3}}a) and fractionated with gentle centrifugation to separate the liquid from the solid debris (\FIGURE~\ref{\figname{2}{3}}b). A one to one mixture of the liquid phase was mixed with \KO{MET17} in 2X CSM-M (1X final) at 1 \OD{}. Cultures were shaken overnight for 12 hours, spun down, and supernatant collected and measured for metal content.
+
+%====================%
+% FIGURE 3
+%====================%
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\columnwidth]{\figname{2}{3}}
+  \caption[Using yeast to remediate effluent from the Athabasca Oil Sands in Canada]
+  {
+    \textbf{Using yeast to remediate effluent from the Athabasca Oil Sands in Canada}.
+    (\textbf{a}) Isolated effluent taken from the Athabasca Oil Sands.
+    (\textbf{b}) Effluent was centrifuged to separate the liquid, oil and solid phase. The liquid phase was taken to test for yeast induced metal precipitation.
+    (\textbf{c}) 1:1 mixture of the effluent liquid phase to CSM-M culture with \KO{MET17} were incubated overnight and measured for metal content. Afterwards, the supernatant was transferred to a fresh culture of \KO{MET17} and experiment repeated up to 4 times, with each iteration measured for metal content using ICP. Top right inlet image shows pelleted cell culture with precipitated waste after 1 round.
+    (\textbf{d}) Visual inspection of wastewater opacity before (i) and after (ii) one round of yeast induced metal precipitation. (iii) same sample after 4 rounds of yeast induced chemical precipitation. For all data, the mean $\pm$ s.d. of three replicates are shown.
+  }
+  \label{\figname{2}{3}}
+\end{figure}
+
+ICP analysis showed that the liquid phase from the Athabasca Oil Sands contained appreciable amounts of copper, cadmium, mercury, lead, and zinc, with the more toxic cadmium, mercury, and lead being more abundant per weight (around 1--2 ppm or mg/L) (\sFIGURE~\ref{\sfigname{2}{5}}). One round of yeast induced chemical precipitation showed greater than 85\% removal of copper, mercury, and lead, and between 30--50\% removal of cadmium and zinc (\FIGURE~\ref{\figname{2}{3}}c). These results were consistent with the metal removal experiments with metals spiked at 100 $\mu$M in CSM (\FIGURE~\ref{\figname{2}{2}}a; 10--20 times more concentrated than what was measured in the oil sand's liquid phase).
+After 4 rounds, the amount of copper, cadmium, mercury, lead, and zinc levels closely approached undetectable amounts using ICP (p < .05) (\FIGURE~\ref{\figname{2}{3}}c).
+% Whereas performing the identical experiment with non-producing \HS{} WT strain removed only only 10-20\% due to non-specific binding (\sFIGURE~\ref{\sfigname{2}{6}}).
+Examining the remediated effluent visually, the opacity of effluent dramatically reduced after just one round (\FIGURE~\ref{\sfigname{2}{3}}d; \sFIGURE~\ref{\sfigname{2}{7}}). Considering the stark difference in coloration, and observing that cadmium, lead, and mercury produce minimal water coloration, it was suspected that other materials in the liquid phase such as silicon-based compounds (rock/sand) contribute to the effluent's darken opacity
+(\sFIGURE~\ref{\sfigname{2}{5}}). Therefore, in addition to metal precipitation, other contaminating materials may non-specifically bind to the yeast surface and precipitate as a conglomerate. This shows another use-case for yeast as a platform for bioremediation due to their ability to act as a biosorbent, and several studies have attempted to deploy yeast as a natural biosorbent in contaminated areas~\cite{wang2006}.
+
+%-----------------------------------------------------------------%
+% SUBSECTION
+%-----------------------------------------------------------------%
+\subsection{Controlled metal sulfide particle formation for downstream extraction and recycling}
+\label{section:chapter2:metal-sulfide-particles}
+In addition to converting metals into non-soluble metal sulfides, the yeast cell wall can also act as a substrate for metal sulfide nucleation and aggregation. Given previous results showing that metal precipitation could be effected by knockouts, culture condition, and displayed peptides, it was hypothesized that these parameters could be tuned to influence precipitation rate and hence precipitate morphology and crystal quality. After metal precipitation experiments with \KO{MET17} and Cd, precipitated \ce{CdS} were extracted by treating the cell wall with zymolyase and separating cellular debris from metal sulfide particles through liquid-liquid extraction. Using the same experiments yeast were fixed and sectioned to analyze the localization of metal precipitates. Metal sulfides and cell sections were analyzed with TEM and energy-dispersive x-ray microscopy (EDX) to quantitatively measure particle morphology, localization, and chemical composition.
+
+%=========%
+% FIGURE 4
+%=========%
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\columnwidth]{\figname{2}{4}}
+  \caption[Controlled size distribution of cadmium sulfide particles by engineering yeast strain and culture conditions]
+  {
+    \textbf{Controlled size distribution of cadmium sulfide particles by engineering yeast strain and culture conditions}.
+    Columns are ordered as followed: image of metal precipitate (1), cell sectioning with metal precipitate (2), isolated metal precipitate (3), and counted size distribution of isolated metal precipitate (4).
+    (\textbf{a}) \KO{MET17} grown in CSM-M,
+    (\textbf{b}) \KO{MET17} grown in CSM-C, and
+    (\textbf{c}) \KO{MET17} grown in CSM.
+    Size distribution data were determined by imaging 40 random locations on 3 samples of isolated metal precipitates using TEM. Sizes were measured using ImageJ. Column 2 scale bars represent 1 $\mu$m. Column 3 scale bars represent 1 $\mu$m for row A, and 100 nm for row B and C.
+  }
+  \label{\figname{2}{4}}
+\end{figure}
+
+Extracted precipitates were first characterized for size distribution, morphology, and crystal structure without any displayed peptides. Cultures in CSM lacking both methionine and cysteine with fast \HS{} production rates above 50 ppm hr\textsuperscript{-1} led to precipitates characterized by amorphous structures with average size exceeding 1 $\mu$m and size distribution spanning 2--3 orders of magnitude (p < .05) (\FIGURE~\ref{\figname{2}{4}}a). The precipitates were also shown to damage the cell wall, as TEM analysis of cell sections showed fragmented cell walls surrounded by large metal sulfide aggregates (\FIGURE~\ref{\figname{2}{4}}a). As \HS{} production rates were slowed by supplementing cultures with methionine and cysteine, the average size of precipitates began to decrease while also uniformly nucleating onto the cell wall without causing visible cell damage as examined under TEM and EDX (\FIGURE~\ref{\figname{2}{4}}b; \sFIGURE~\ref{\sfigname{2}{8}}a).
+Cultures in fully supplemented CSM with low sulfur production rates below 10 ppm hr\textsuperscript{-1} produced particles with controlled size distributions between 5--50 nm for CdS (p < .05) (\FIGURE~\ref{\figname{2}{4}}c). In addition, purified particles had 1:1 metal to sulfur stoichiometry (\sFIGURE~\ref{\sfigname{2}{8}}b).
+
+These observations suggested that an increase in \HS{} production rate correlate to an increased metal sulfide particle size distribution, and vice-versa. Therefore, a desired metal sulfide particle size distribution could be reverse engineered by tuning the rate of \HS{} production by selecting the appropriate strain, culture density, and culture growth rate (\FIGURE~\ref{\figname{2}{1}}b,c; \FIGURE~\ref{\figname{2}{4}}c). A hypothesized mechanism for controlled metal sulfide particle size is that slower \HS{} production rates allow time for metals to diffuse and nucleate on to the yeast cell surface. Given that the cell wall consists of negatively charged polysaccharides and proteins, a reasoning is that the electronegative environment allows for somewhat size-controlled nucleation.
+
+Metal nucleation was further explored by displaying nucleating peptides to facilitate metal sulfide growth, a concept that has been successfully employed in other biological organisms such as viruses and bacteria~\cite{picard2018,wang2000,sakimoto2016,sweeney2004}.
+Without any displayed motifs, precipitated cadmium sulfide examined under high resolution TEM (HRTEM) produced large amorphous structures (\FIGURE~\ref{\figname{2}{5}}a). Crystalline structures indicated by lattice fringes were first observed with the hexa-cysteine motif, CCCCCC. More prominent lattice fringes were observed with GGCGGC and GCCGCC displayed peptides, glycine-cysteine motifs generally conserved in metal-binding proteins such as metallothioneins~\cite{desilvataram.2002} (\FIGURE~\ref{\figname{2}{5}}a,b; higher resolution images can be found in \sFIGURE~\ref{\sfigname{2}{9}}).
+Slowing the rate of sulfur production below 10 ppm hr\textsuperscript{-1} while displaying glycine-cysteine motifs generated cadmium sulfide quantum dot-like nanoparticles in the 50 nm range (\FIGURE~\ref{\figname{2}{5}}c,d).
+With more crystalline features these \ce{CdS} particles gave a strong excitation peak at 330 nm and an emission peak at 480 nm (\FIGURE~\ref{\figname{2}{5}}e).
+
+%=========%
+% FIGURE 5
+%=========%
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\columnwidth]{\figname{2}{5}}
+  \caption[Crystal quality and fluorescence of isolated precipitated \ce{CdS} nanoparticles as a function of yeast displayed peptides]
+  {
+    \textbf{Crystal quality and fluorescence of isolated precipitated \ce{CdS} nanoparticles as a function of yeast displayed peptides}.
+    Numbers representing amino-acid sequence are: 1 = GGGGGG, 2 = CCCCCC, 3 = GGCGGC, 4 = GCCGCC.
+    (\textbf{a}) Rows 1--4 show high resolution TEM images of precipitated \ce{CdS} particles displaying various degrees of lattice fringes. Scale bars represent 5 nm.
+    (\textbf{b}) Fourier transform of \ce{CdS} particles showing various degrees of diffraction patterns caused by lattice fringes.
+    (\textbf{c}) Image of isolated \ce{CdS} particles suspended in water of samples 1 through 4 in ambient light.
+    (\textbf{d}) Same image captured under UV excitation.
+    (\textbf{e}) Excitation and emission spectra of samples 1 through 4. Excitation peak converged towards 330 nm and emission peak towards 450 nm with increasing crystallinity.
+  }
+  \label{\figname{2}{5}}
+\end{figure}
+
+The creation of fluorescently active metal sulfide nanoparticle by-products encourages the idea that yeast can be used not only to remediate waste, but also to convert waste into useful materials. Compared to industrial chemical precipitation, precipitates are generally amorphous, large, and chemically ill-defined making burial, or pyrolysis the only accessible means for removal~\cite{kurniawan2006,kumargupta2012,bolong2009}. However, yeast controlled metal sulfide precipitation offers a means to control the precipitate morphology and reduce the likelihood of sludge production. As well, the additional biological handles on strain and culture conditions allow for controlled precipitate size and crystallinity. Metal sulfide nanoparticles that nucleate on the cell wall lend themselves to direct metal re-extraction through cell wall removal, and subsequent metal particle isolation may allow for simpler downstream recycling processes and potential reuse~\cite{kim2003}.
+
+%-----------------------------------------------------------------%
+% SUBSECTION
+%-----------------------------------------------------------------%
+\subsection{Feasibility in industrial settings}
+Yeast culture compositions are chemically defined and standard among scientists, with yeast being able to survive on several carbon sources at varying temperatures and at pH's as low as 3--4. In addition, yeast grow in defined culture environments in both aerobic and anaerobic conditions. These factors have made yeast one of the most understood and appreciated organisms not only to scientists, but for bakers, beer makers, and consumers~\cite{barth-haasgroup.n.d.,prnewswire.n.d.}. A typical laboratory only needs 3 dollars to produce 1 L of yeast with respects to the cost of consumables such as glucose, extracts, and buffers~\cite{harrison2015}. Industrially, the infrastructure to scale and bioreactor optimization done by both the beer and pharmaceutical industries have reduced the cost to 16 cents per liter~\cite{vieira2013,harrison2015,hoek1998}.
+These factors have allowed a global production of more than a million tons of yeast by weight in 2015~\cite{bccresearch}.
+More so, packaging and delivery of yeast through freeze-dried and active-dried packets has allowed the yeast market to touch all areas of the globe, allowing both high-tech industries as well as rural villages the power to brew their own yeast~\cite{prnewswire.n.d.,bccresearch}. If the scale and breadth of the yeast market can be tapped for bioremediation purposes, specifically the precipitation and conversion of heavy metals using sulfur-producing yeast, then the potential impact on heavy metal waste management could be significant and profound.
+
+With respects to chemical precipitation, yeast are now vessels for environmentally responsible storage of \HS{} where yeast can endogenously produce sulfur on demand rather than storing volatile sulfur compounds in pressurized tanks like in traditional chemical precipitation practices~\cite{fu2011removal,kurniawan2006,kumargupta2012}. Likewise, the production of sulfur can be turned on or off depending on the media composition and culture conditions, methods that are much simpler than directly handling or storing volatile chemicals. The scale of bio-precipitation of heavy metals is only limited to the accessibility and quantity of yeast that can be grown. Therefore, the millions of tons of yeast produced per year for food and drinks could be leveraged by treatment facilities as a robust and sustainably produced resource to more accessibly and economically treat waste water
+
+%---------------------------------------------------------------------------%
+% Section
+%---------------------------------------------------------------------------%
+\section{Discussion}
+Future work will investigate more complex displayed biomineralization peptides in order to improve metal sulfide formation and capture. Further engineering biomineralization peptides could have two major applications: selective precipitation of metals and the creation of unique metal sulfide alloys that mimic doped metal sulfide compounds. Highly toxic elements such as cadmium and mercury in potable water should be removed preferentially to less toxic elements such as sodium or calcium. With engineered biomineralization peptides, it may be possible to selectively precipitate highly toxic metals such as mercury over precipitation of calcium even at disproportionate concentrations by using known heavy-metal binding motifs found in nature~\cite{picard2018,sakimoto2016,sweeney2004,rugh1996}. Another application is the ability to create useful metal sulfides in a ratiometric manner. Many metal sulfides used industrially are doped with other divalent metals to enhance their physicochemical properties in semiconductors, solar cells, and magnetic materials~\cite{arai2008,parveen2018,bhattacharya2007}. Therefore, with further engineering it may be possible to use yeast as a substrate to facilitate ratiometric precipitation of multi-metal sulfides, a concept that is especially interesting if the dopant metal is already present in the effluent.
+
+Aside from remediation, the natural and autonomous production of sulfur is an attractive solution for curbing reliance for mined extraction of sulfur gas. Currently, sulfur is produced from petroleum, natural gas, and related fossil fuel activities with China, US and Canada being leading producers~\cite{selim2013,usdepartmentoftheinterior2018}. Sulfate however, the metabolic precursor to hydrogen sulfide in the yeast sulfate assimilation pathway~\cite{swiegers2007,linderholm2008}, is generally more accessible through natural oxidation of ores, shales, and agricultural runoff~\cite{little2000}, making sulfate more readily accessible than sulfur gas. Therefore, feeding yeast a low value resource such as sulfate, and generating a higher value product such as hydrogen sulfide is a tremendous benefit for industry. These engineered yeast provide a natural, low-cost \HS{} source while also simplifying \HS{} storage and transportation.
+Currently \HS{} storage is hazardous and costly, but with a yeast-based production system storing \HS{} is equivalent to storing yeast themselves.
+
+In conclusion, this work uses yeast to generate \HS{} to precipitate heavy metals from contaminated water. Furthermore production of \HS{} can be tuned through gene knockouts and adjusting media conditions, thereby allowing control over the quantity of metal precipitation and precipitate size distribution. Crystallinity of metal sulfides can be controlled through displayed biomineralization peptides, and these particles are easily extracted by digesting the yeast cell wall for downstream recycling. This work ultimately shows that yeast could be a viable platform for heavy metal waste remediation and metal re-extraction, and invites the exploration of other yeast-facilitated bioremediation processes.
+
+%---------------------------------------------------------------------------%
+% Section
+%---------------------------------------------------------------------------%
+\section{Materials and methods}
+
+\subsection*{Yeast strain and culture}
+Yeast strain W303$\alpha$ was obtained from the Amon Lab at MIT. Synthetically defined dropout media (SD) was made by combing 1.7 g/L yeast nitrogen base without amino acid and ammonium sulfate (YNB) (Fischer), 5 g/L ammonium sulfate (Sigma), 1.85 g/L drop-out mix without methionine and cysteine (US Biological), and 20 g/L glucose (Sigma) and the addition of 10 mL/L 100X adenine hemisulfate stock (1 g/L) (Sigma). Complete synthetically defined media (CSM) was made by adding cysteine and methioneine amino acids at a final concentration of 50 mg/L (Sigma). Both SD and CSM were pH'd to 7 with NaOH. Mixtures were stirred and filtered through a .22 $\mu$m filter top (EMD). YPD media was made by adding 10 g/L yeast extract, 20 g/L peptone (Fisher), and 20 g/L glucose (Sigma) and filtered sterilized. Plates were made by adding 20 g/L BactoAgar (Fisher) and autoclaving.
+
+\subsection*{Yeast strain and culture}
+The pRS303 and pRS305 vectors were used to clone the HIS and LEU markers for gene deletions in W303$\alpha$ via homologous recombination. Single gene deletions of SER33, SER1, SER2, HOM2, HOM6, MET2, MET6, MET17, CYS3, and CYS4 were deleted by amplifying the LEU marker with 30 bp of the appropriate up and downstream overlaps to their respective gene target using PCR (\sTABLE~\ref{\inputtable{2}{1}}). Double mutants were created by amplifying the HIS marker with 30 bp of the appropriate overlap to the target gene using PCR and transformed into the single deletant strains. A constitutive yeast display vector constructed in the Belcher lab named pYAGA contains the AGA1 and AGA2 gene, both of which were downstream of a GAP promoter and upstream of a CYC1 terminator. Single stranded sequences coding for hexa-peptide repeats were ordered from IDT and annealed with sticky ends matching the BamHI and PmeI cloning sites of pYAGA (\sTABLE~\ref{\inputtable{2}{2}}). Hexa-peptide sequences were phosphorylated with T4 PNK prior to ligation using T4 ligase (NEB). Circularized plasmids were transformed into chemically competent NEB$\alpha$ following the recommended NEB protocol and selected using ampicillin.
+
+Yeast transformations were performed using Frozen-EZ Yeast Transformation Kit II (Zymo). For deletions, transformed cells were plated onto YPD for 1--2 days and replica plated onto drop out media (either HIS, LEU, or both) to select for positive transformants. Otherwise, plasmid transformations were grown directly onto plates with the appropriate drop-out media. Plasmid or genomic DNA was isolated by using silica bead beating and phenol/chloroform (Sigma) extraction. Sequences were confirmed by amplifying the DNA inserted sequence using PCR and sequencing the fragment using QuintaraBio sequencing services.
+
+\subsection*{Screening and quantifying \HS{} production}
+Cultures were initially screened in 5 mL CSM cultures in 14 mL BD culture tubes with taped lead acetate hydrogen sulfide indicator strips (VWR). Lead acetate strips turned brown to black in the presence of gaseous \HS{}. Cultures were grown at 30\textsuperscript{o}C over 1--2 days and \HS{} was detected by lead acetate strip darkening. Quantitative sulfur detection was monitored using Draeger hydrogen sulfide detection columns (VWR). 50 mL cultures in 250 mL Erlenmeyer flasks were corked with a single-hole rubber stopper in which the hydrogen sulfide detection columns were fitted. Cultures were grown for 1--2 days and were visually inspected at specific time-points to measure sulfur production.
+
+\subsection*{\OD{} Measurements}
+Optical density measurements at discrete time points were performed using 2 mL non-frosted cuvettes (VWR) and a table-top DU800 Beckman Coulter spectrophotometer measuring at 600 nm. Continuous growth curve studies were performed on a shaking 96 well BioTek Synergy 2 plate reader held at 30\textsuperscript{o}C with 100 $\mu$L cultures. Cultures were first diluted from overnights to < 0.1 \OD{} and aliquot into a 96-well round bottom plate (Cellstar) with the appropriate metal and concentration.
+
+\subsection*{Metal precipitation experiments and quantification}
+Liquid stocks of copper (II) chloride, zinc chloride, cadmium nitrate, lead nitrate, and mercury (II) chloride (Sigma) were made at 100 mM in water. Metal precipitation studies were performed by diluting overnight cultures to varying culture densities in 5 mL of fresh culture containing 100 $\mu$M of metal. Cultures were grown overnight, spun down at 900xg for 3 min in a swinging bucket rotor and the supernatant was collected for measurement of metal content. Metal content was measured on an Agilent ICP-AES 5100 following standard operating procedures. Trace concentrations of metal below 10 $\mu$M were measured on an Agilent ICP-MS 7900. If samples were to be diluted, they were diluted in 3\% \ce{HNO3} (Sigma) to fit within the dynamic range of ICP detection. For all experiments, a sample with no cells and metals was measured to account for the background quantities of copper, zinc, cadmium, lead, and mercury in the media. All ICP measurements were subtracted by this blank sample. The ICP measurement of the supernantat was used to subtract the initial amount of metal added (i.e. 100 $\mu$M) to calculate the amount of metal removed.
+These experiments were done for all strains in addition to a WT control to measure non-specific absorption onto the cell.
+
+Multiple uptake experiments was performed by resuspending 1 \OD{} of fresh yeast culture with the equivalent volume of supernatant of a previous metal precipitation experiment. This process was repeated at most up to 4 times, with each iteration sampled for ICP measurement and metal removal calculation described previously.
+
+\subsection*{Metal uptake study of effluent taken from Canada's Athabasca Oil Sands}
+Samples of effluent was taken from the Athabasca Oil Sands in Canada. Liquid was gently centrifuged at 1000xg for 30 minutes to fractionate the liquid, oil, and solid phase. The liquid phase was used as the waste medium to test for yeast-induced metal precipitation. Although not thoroughly investigated in this study, the oil phase contained many organics, aromatics, and oils contributed from mining runoff. The solid phase contains a heterogeneous mixture of large debris, rocks, and precipitates that are easily spun down during centrifugation or through size-exclusion filtration.
+
+To prepare for precipitation experiments, an overnight of \KO{MET17} was grown in CSM-M and spun down. 1 \OD{} per mL of cells was added to a 1 to 1 mixture of 2X CSM-M (prepared by doubling all ingredients) and liquid phase extracted from the effluent. The mixture was incubated overnight for 12 hours, spun down, and visualized for precipitation. The supernatant was taken for ICP measurement for copper, cadmium, mercury, lead, and zinc following the procedures explained above.
+
+The liquid phase metal profile content was studied using ICP. Commercial ICP multi-element standards was used to multiplex measurements in parallel (VWR or Agilent). Multiple dilutions of the liquid phase in 3\% \ce{HNO3} was performed (such as 1 to 1, 1 to 10, etc.) to determine the level of matrix effect, as the liquid phase contained other contaminants not accounted for in the standards and can skew readings. A 1 to 5 dilution gave consistent results and was used to calculate the concentrations of Na, Mg, K, Ca, Sr, Ba, Mn, Fe, Cu, Zn, Si, Cd, Pb, Hg, Cr, As.
+
+\subsection*{Flow cytometry}
+Displayed peptides were first cloned with a C'-terminus V5 tag followed by a stop codon in a constitutive AGA1 and AGA2 vector which was called pYAGA. Cultures were grown to saturating OD and 0.5 \OD{} were taken for staining and flow cytommetry. Cells were washed and pelleted at 900xg with PBS+1\% BSA. Primary antibodies against V5 (Life Technologies) were diluted 1:500 in PBS+1\% BSA and incubated at room temperature for 1 hour. Secondary antibodies with AlexaFluor 488 were diluted 1:2000 in PBS+1\% BSA and incubated at room temperature for 1 hour. Cells were then washed and diluted to 1e6 cells per mL for FACS. FACS was performed on a BD FACS Canto or LSR II following standard operating procedure provided by the Koch Flow Cytometry Core.
+
+\subsection*{Extraction of metal sulfide precipitates from yeast}
+Overnight cultures yeast and precipitated metals were pelleted at 900xg for 3 min. Cultures were washed and resuspended in 1 mL sorbitol citrate. 100T Zymolyase (Zymo) was diluted 1 to 100 and added to the suspension and incubated for >1 hour at 30\textsuperscript{o}C while shaking. Digested cells were pelleted at 900xg for 3 min and supernatant was removed, or kept for later analysis of dislodged metal sulfide particles. Cells were resuspended with 1:1 water and oleic acid (organic layer; Sigma). Mixtures were spun down at 900xg for 3 min to pellet the cellular debris while allowing insoluble metal sulfide particles to remain in the organic layer. The organic layer was removed and fresh oleic acid was introduced to further extract the metal sulfide particles. This process was performed between 1--3 times until coloration was completely transferred into the oleic acid. Most organic solvents were observed to work (phenol:chloroform, hexane, octonal, etc), however oleic acid was more cost effective, easier to handle, and safer to use. Samples could be used immediately for analysis or concentrated by spinning down particles at max speed for 15 min and resuspended in a lower volume in either oleic acid or water.
+
+\subsection*{Fluorometry}
+An Agilent Cary Eclipse Fluorescence Spectrophotometer was used to measure the fluorescence of the isolated metal sulfide particles using disposable PMMA acrylic cuvettes (VWR). Excitation and emission scans were performed following standard operating procedures provided by the Center of Material Science Engineering, MIT.
+
+\subsection*{TEM sample prep}
+Cells were not digested with zymolayse in order to preserve the cell wall for imaging. Cell fixation, dehydration, embedding, and sectioning followed yeast OTO processing provided by the WhiteHead Institute, MIT~\cite{seligman1966}. The yeast cells were grown to an appropriate optical density and fixed with 2\% glutaraldehyde, 3\% paraformaldehyde, 5\% sucrose in 0.1 M sodium cacodylate buffer (EMS) for 1 hour. Pelleted cells were washed and stained for 30 minutes in 1\% \ce{OsO4}, 1\% potassium ferocyanide, and 5 mM \ce{CaCl2} in 0.1 M cacodylate buffer. Osmium staining was followed by washing and staining in 1\% thiocarbohydrazide. Pellets were washed and stained again in the reduced osmium solution. The cells were then stained in 2\% uranyl acetate (EMS) overnight, serially dehydrated with ethanol, and embedded in EMBED-812 (EMS). Sections were cut on a Leica EM UC7 ultra microtome with a Diatome diamond knife at a thickness setting of 50 nm, stained with 2\% uranyl acetate, and lead citrate. The sections were examined using a FEI Tecnai Spirit at 80KV and photographed with an AMT CCD camera.
+
+\subsection*{TEM and EDX analysis}
+TEM samples of purified metal sulfide particles were prepared on 400 mesh nickel Formvar grids (EMS) by dropping 10 $\mu$L of sample onto the grids for 5 min and wicked dry. TEM images were acquired on a FEI Tecnai. Samples were also monitored by energy-dispersive x-ray (EDX) spectroscopy to qualitatively determine the relative amounts of sulfur and metal. When necessary, for example with copper, the signal background was corrected by subtracting the spectrum with a region without any metal sulfide particles to deconvolve overlapping peaks from the copper grid. High resolution TEM (HRTEM) images were acquired on a JOEL2010 to observe crystal spacing. A JOEL2010F was used for more resolved EDX elemental mapping of metal sulfide particles that nucleated on the cell wall.
+
+\subsection*{Mathematical analysis and plotting}
+Raw data was collected and stored as csv or Excel file formats. Data was imported and analyzed with Python using modules such as numpy, pandas, and scipy. Plots were graphed with matplotlib.
+
+\subsection*{Statistical analysis}
+Statistical parameters including the the definition and values of n, SDs, and/or SEs are reported in the figures and corresponding figure legends. When reporting significance, a two-tailed unpaired t-test was performed between observations and p-values reported in the text. The significance threshold was set to p < .05 for all experiments, or as specified in the text.
+
+%---------------------------------------------------------------------------%
+% Section
+%---------------------------------------------------------------------------%
+\clearpage
+\section{Supplemental figures}
+\renewcommand{\figurename}{S.Figure}
+\setcounter{figure}{0}
+
+%======================%
+% Supplemental Figure 1
+%======================%
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\columnwidth]{\sfigname{2}{1}}
+  \caption[Measurement of \HS{} production from sulfur producing yeast cultures]
+  {
+    \textbf{Measurement of \HS{} production from sulfur producing yeast cultures}.
+    Left illustrations represent H2S detection columns with tick marks indicating the level of sulfur in ppm.
+    (\textbf{a}) Sulfur detection using 200 pm columns for mutants \KO{CYS4}, \KO{HOM2}, \KO{MET17}, and \KO{HM217}.
+    (\textbf{b}) Sulfur detection using 60 ppm columns for \KO{MET17} in cultures of YPD, CSM, and CSM with the addition (+) of methionine (M) and cysteine (C).
+    (\textbf{c}) Sulfur detection using 2000 ppm columns for \KO{MET17} in CSM cultures lacking (-) methionine or cysteine, or both.
+  }
+  \label{\sfigname{2}{1}}
+\end{figure}
+\clearpage
+
+%======================%
+% Supplemental Figure 2
+%======================%
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\columnwidth]{\sfigname{2}{2}}
+  \caption[Strain, culture density, and media composition effects on metal precipitation]
+  {
+    \textbf{Strain, culture density, and media composition effects on metal precipitation}.
+    (\textbf{a}) Precipitation of copper, zinc, cadmium, lead, and mercury with mutants \KO{CYS4}, \KO{HOM2}, \KO{MET17}, and \KO{HM217}, and WT as a control, in CSM. Cultures were grown at 30\textsuperscript{o}C in 100 $\mu$M metal as indicated.
+    (\textbf{b}) Testing the effects of removing methionine (M) and/or cysteine (C) from CMS on precipitation efficacy with \KO{MET17} and 100 $\mu$M cadmium. Columns signify removal of M while rows signify removal of C from CSM. 1X stands for 100\% removal (i.e. 0.2X = 20\% and 0.5X = 50\%). Annotated values per grid cell are the percent cadmium removed and standard error.
+    (\textbf{c}) Optimal culture density (marked within grey bounds) was determined by titrating growing cultures of \KO{MET17} at different \OD{} with copper, zinc, cadmium, lead, and mercury. Metal color coding matches those used in the main text. For all data, the mean $\pm$ s.d. of three replicates were taken for each data point.
+  }
+  \label{\sfigname{2}{2}}
+\end{figure}
+\clearpage
+
+%======================%
+% Supplemental Figure 3
+%======================%
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\columnwidth]{\sfigname{2}{3}}
+  \caption[Growth curves of \KO{MET17} and WT in metal containing cultures]
+  {
+    \textbf{Growth curves of \KO{MET17} and WT in metal containing cultures}.
+    (\textbf{a}) Growth curves of \KO{MET17} and WT grown in CSM with 100 $\mu$M metals specified.
+    (\textbf{b}) \KO{MET17} was used to precipitate 100 $\mu$M cadmium overnight. Afterwards, cells were diluted 1 to 100 and grown again (2nd generation) and compared to WT. All data points were measured in a BioTek Synergy 2 plate reader with 100 $\mu$L cultures shaken at 30\textsuperscript{o}C. All curves were normalized to 1 within each experiment.
+  }
+  \label{\sfigname{2}{3}}
+\end{figure}
+\clearpage
+
+%======================%
+% Supplemental Figure 4
+%======================%
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\columnwidth]{\sfigname{2}{4}}
+  \caption[Effects of yeast displayed amino acids on metal precipitation]
+  {
+    \textbf{Effects of yeast displayed amino acids on metal precipitation}.
+    (\textbf{a}) Flow cytometry data showing fluorescence intensity of labelled C'-terminus Myc tag on hexa-amino acid repeats. Expression was compared against an empty displaying pYAGA vector (NA) and non-displaying WT (-) for controls. Positive expression was cutoff at 2000 A.U. for segregating expressing versus non-expressing populations (grey and red, respectively).
+    (\textbf{b}) \KO{MET17} transformed with pYAGA with the hexa-amino acid motif (specified on the x-axis) was used to modulate precipitation of copper, zinc, lead, and mercury. Bars represent the percent change in metal precipitation compared to non-displaying \KO{MET17} in CSM.
+  }
+  \label{\sfigname{2}{4}}
+\end{figure}
+\clearpage
+
+%======================%
+% Supplemental Figure 5
+%======================%
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\columnwidth]{\sfigname{2}{5}}
+  \caption[Metal content profile of the liquid phase effluent taken from Canada's Athabasca Oil sands]
+  {
+    \textbf{Metal content profile of the liquid phase effluent taken from Canada's Athabasca Oil sands}.
+    Group I and II elements, such as Na, Mg, K, and Ca, in addition to silicon were strongly present. Heavier and toxic elements such as cadmium, mercury, lead, and arsenic were appreciably present at 1--3 orders of magnitude greater than EPA standards.
+  }
+  \label{\sfigname{2}{5}}
+\end{figure}
+\clearpage
+
+% %======================%
+% % Supplemental Figure 6
+% %======================%
+% \begin{figure}[H]
+%   \centering
+%   \includegraphics[width=\columnwidth]{\sfigname{2}{6}}
+%   \caption[Iterative rounds of metal removal of Cu, Zn, Cd, Pb and Hg from the Canadian Athabasca Oil Sands]
+%   {
+%     \textbf{Iterative rounds of metal removal of Cu, Zn, Cd, Pb and Hg from the Canadian Athabasca Oil Sands}.
+%     (\textbf{a}) Metal removal was analyzed for WT yeast strain for 4 rounds in sampled effluent.
+%     (\textbf{b}) The same experiment was performed for \KO{MET17} which showed a dramatic reduction in metal removal for Cu, Cd, Pb and Hg (p < .05) after 1 round. Data for rounds 1 and 4 were shown in \FIGURE~\ref{\figname{2}{3}c,d}.
+%   }
+%   \label{\sfigname{2}{6}}
+% \end{figure}
+% \clearpage
+
+%======================%
+% Supplemental Figure 7
+%======================%
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\columnwidth]{\sfigname{2}{7}}
+  \caption[Visual representation of remediated oil sands after multiple rounds with \KO{MET17}]
+  {
+    \textbf{Visual representation of remediated oil sands after multiple rounds with \KO{MET17}}.
+    Numbers at the top of each sample (1X, 2X, \ldots) indicate the number of rounds that were performed for removing contaminants from the liquid phase taken from the oil sands.
+  }
+  \label{\sfigname{2}{7}}
+\end{figure}
+\clearpage
+
+%======================%
+% Supplemental Figure 8
+%======================%
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\columnwidth]{\sfigname{2}{8}}
+  \caption[Elemental mapping of precipitate metal sulfide particles]
+  {
+    \textbf{Elemental mapping of precipitate metal sulfide particles}.
+    (\textbf{a}) Elemental mapping of HRTEM images of cadmium sulfide nanoparticles deposited on the cell wall of \KO{MET17}. Cadmium is false colored as red, sulfur as blue. Scale bar represents 50 nm.
+    (\textbf{b}) Elemental dispersive X-ray (EDX) spectroscopy was performed on purified precipitated copper, cadmium, lead, mercury, and zinc sulfide particles under TEM. Elemental K$\alpha$ peaks are colored and highlighted as areas under the curve for qualitative comparisons. Metal color coding of spectral plots match those used in the main text.
+  }
+  \label{\sfigname{2}{8}}
+\end{figure}
+\clearpage
+
+%======================%
+% Supplemental Figure 9
+%======================%
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\columnwidth]{\sfigname{2}{9}}
+  \caption[Enlarged HRTEM images from \FIGURE~\ref{\figname{2}{5}}a of lattice fringes of \ce{CdS} particles precipitated on yeast displayed \KO{MET17}]
+  {
+    \textbf{Enlarged HRTEM images from \FIGURE~\ref{\figname{2}{5}}a of lattice fringes of \ce{CdS} particles precipitated on yeast displayed \KO{MET17}}.
+    1 = GGGGGG, 2 = CCCCCC,  3 = GGCGGC, 4 = GCCGCC.
+  }
+  \label{\sfigname{2}{9}}
+\end{figure}
+\clearpage
+
+%---------------------------------------------------------------------------%
+% Section
+%---------------------------------------------------------------------------%
+\section{Supplemental tables}
+\renewcommand{\tablename}{S.Table}
+\setcounter{table}{0}
+
+%~~~~~~~~~%
+% Table 1
+%~~~~~~~~~%
+\begin{table}[H]
+\small
+\centering
+	\input{\inputtable{2}{1}}
+	\caption[Primers used to amplify the HIS and LEU auxotrophic casettes from the pRS303 and 305 vector]
+	{
+		\textbf{Primers used to amplify the HIS and LEU auxotrophic casettes from the pRS303 and 305 vector}.
+    Primers that anneal and amplify the HIS and LEU markers on the pRS303 and pRS305 vectors, respectively. These primers were used as the base primer to then append overhangs for homologous recombination in W303$\alpha$ strains to delete specific sulfate assimilation pathway genes. Overhangs and fully assembled primers are in \TABLE~\ref{\inputtable{2}{2}}
+	}
+	\label{\inputtable{2}{1}}
+\end{table}
+\clearpage
+
+%~~~~~~~~~~~~~~~%
+% Table 2 (long)
+%~~~~~~~~~~~~~~~%
+  % cannot resize or box longtable
+{%\small % smaller font
+	\footnotesize
+	\input{\inputtable{2}{2}}
+}
+\clearpage
+
+%~~~~~~~~~%
+% Table 3
+%~~~~~~~~~%
+\begin{table}[H]
+\small
+\centering
+	\input{\inputtable{2}{3}}
+	\caption[Amino acid and DNA sequences used for cloning glycine-cysteine motifs for yeast display]
+	{
+		\textbf{Amino acid and DNA sequences used for cloning glycine-cysteine motifs for yeast display}
+    Columns AA, fwd, and rev stand for the hexa-amino acid sequence, forward (5'--3') oligo, and reverse (3'--5') oligo, respectively. Reverse oligos were followed with a TAG stop codon. Forward and reverse oligos were appended with BamHI and PmeI sticky ends, respectively. Oligos were ordered from IDT and annealed to form duplex DNA strands which were then ligated into pYAGA digested with BamHI and PmeI.
+	}
+	\label{\inputtable{2}{3}}
+\end{table}
+\clearpage
+
+%===============================BIBLIOGRAPHY================================%
+\printbibliography[title=References]
+
+\end{document}

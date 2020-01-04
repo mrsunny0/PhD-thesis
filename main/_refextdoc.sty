@@ -1,0 +1,44 @@
+%---------------------------------------------------------------------------%
+%								                Cross Referencing                  					%
+%---------------------------------------------------------------------------%
+\ProvidesPackage{refextdoc}
+
+%===========================================================================%
+% use zref-xr: https://tex.stackexchange.com/questions/77774/undefined-control-sequence-when-cross-referencing-with-xr-hyper
+\usepackage{nameref,zref-xr}
+\zxrsetup{toltxlabel}
+
+% for main document
+\zexternaldocument*[ext-]{../main/main}
+
+% for chapters
+\zexternaldocument*[ext-]{../chapter_1/chapter_1}
+\zexternaldocument*[ext-]{../chapter_2/chapter_2}
+\zexternaldocument*[ext-]{../chapter_3/chapter_3}
+\zexternaldocument*[ext-]{../chapter_4/chapter_4}
+\zexternaldocument*[ext-]{../chapter_5/chapter_5}
+
+% for appendix
+\zexternaldocument*[ext-]{../appendix/appendix_A}
+\zexternaldocument*[ext-]{../appendix/appendix_B}
+\zexternaldocument*[ext-]{../appendix/appendix_C}
+
+%===========================================================================%
+% hyperref and xr conflict: https://tex.stackexchange.com/questions/122976/format-ref-output-from-enumeration-item-to-not-include-section-name
+% \usepackage{xr}
+% \usepackage{xr-hyper}
+
+% for main document
+% \externaldocument[ext-]{../main/main}
+
+% for chapters
+% \externaldocument[ext-]{../chapter_1/chapter_1}
+% \externaldocument[ext-]{../chapter_2/chapter_2}
+% \externaldocument[ext-]{../chapter_3/chapter_3}
+% \externaldocument[ext-]{../chapter_4/chapter_4}
+% \externaldocument[ext-]{../chapter_5/chapter_5}
+
+% for appendix
+% \externaldocument[ext-]{../appendix/appendix_A}
+% \externaldocument[ext-]{../appendix/appendix_B}
+% \externaldocument[ext-]{../appendix/appendix_C}

@@ -1,0 +1,668 @@
+%***************************************************************************%
+%                                 CHAPTER 3                                 %
+%***************************************************************************%
+\documentclass[../main/main]{subfiles}
+\begin{document}
+\chapter{Designing yeast as plant-like hyperaccumulators for heavy metals}
+\label{chapter3}
+\renewcommand{\figurename}{Figure}
+
+%---------------------------------------------------------------------------%
+% Section
+%---------------------------------------------------------------------------%
+\section*{Abstract}
+Hyperaccumulators are plants that absorb and tolerate elevated amounts of heavy metals by using an assortment of metal trafficking and chelating pathways. These metal trafficking mechanisms make plants useful for bioremediation applications; however, compared to bacteria-based bioremediation systems, plant growing conditions are long and difficult to maintain hindering adoption of plant-based bioremediation solutions. In addition, current genetic engineering tools are challenging to employ in plants and lack the sophistication of bacteria or yeast-based cloning. Herein, this work combines the robust growth and engineerability of bacteria with the unique waste management mechanisms of plants by using a more tractable platform---the common baker's yeast---to create plant-like hyperaccumulators. Through overexpression of metal transporters and engineering metal trafficking pathways, we created yeast strains capable of sequestering metals at concentrations 10--100 times more than established hyperaccumulator thresholds for chromium, arsenic, and cadmium. To achieve these results, a density-based assay was developed to efficiently screen mutants for metal specificity and hyperaccumulating ability based on metal mass accumulation. Using this method the yeast transporter SMF1 was converted to a cadmium mutant, and separately into a strontium transporter for applications in toxic waste and radioactive \ce{Sr^90} remediation. Overall, this work shows a systematic approach for transforming yeast into metal hyperaccumulators that are as effective as their plant counterparts.
+
+%---------------------------------------------------------------------------%
+% Section
+%---------------------------------------------------------------------------%
+\section{Introduction}
+\label{chapter3-intro}
+As the world becomes increasingly industrialized, heavy metal contamination is a growing environmental concern. Mining, manufacturing, and electronic goods disposal are the main sources of heavy metal waste; the United States alone adds 289 million tons of waste per year to the growing 850 and more landfills~\cite{powell2016estimates}. To illustrate the impact of waste generation this work specifically looked at two significant, yet often overlooked, contributors of heavy metal waste which are the textile industry and pollution from nuclear power plants and past fallout. Textile manufacturing employs a variety of heavy metal related processes, in particular dyeing, with many of the 100,00 types of dyes containing metal chelated centers for coloration~\cite{robinson2001}. Particular regions, such as India and Bangladesh where textile manufacturing is a dominant industrial practice, see high levels of cadmium, chromium, and lead in soils reaching 10--100 times higher than WHO established safety limits~\cite{manzoor2006}. Other metals such as cobalt, copper, zinc, and nickel are also pervasive and are incorporated at different levels in the textile process~\cite{robinson2001,manzoor2006}. The result, leachate that contains an indiscriminate mixture of metals which is difficult to separate, therefore leaving burial or transport as the only viable waste management option.
+On the same vein, the problem of nuclear waste and past nuclear fallout, with past catastrophic events of Chernobyl and Fukushima, have refocused attention on radioactive metal contamination, specifically radioactive strontium (\ce{Sr^90}), which is of particular interest for its biological implications in bone integration and cancer~\cite{sahoo2016,shutov1993,mangano2011}. However, given the molecular similarity of calcium and strontium, and the relative abundance of calcium over strontium, removing just \ce{Sr^90} is challenging without being overwhelmed by other species. Both waste scenarios expose a unique challenge, how to selectively capture and discriminate metals from one another. Removal of toxic elements such as cadmium and mercury should be prioritized, even if at lower concentrations than more abundant and less harmful elements such as calcium and magnesium. This is particularly true for radioactive elements such as \ce{Sr^90}, where strontium is typically masked by large amounts of similar divalent metals like calcium. Therefore, it is extremely difficult to remove low abundance heavy metals without being saturated by background species.
+Current industrial approaches such as absorption and ion-exchange are not particularly effective for such precise removal of toxic yet low concentration heavy metals as these processes are first saturated by more abundant background metals~\cite{fu2011removal,kurniawan2006,kumargupta2012}.
+
+Bioremediation strategies have the potential to address the challenges of heavy metal contamination. A promising subset of bioremediation is phytoremediation, the use of plants to sequester pollutants from soils and water~\cite{marques2009remediation,singh2015}. Plants have developed mechanisms to uptake heavy metals without suffering major toxic effects, and their abundant and renewable biomass contribute to significant bioaccumulation of toxins from soils and waters~\cite{marques2009remediation,singh2015}.
+Out of all plants, there are more than 400 species that hyperaccumulate heavy metals; the stricter definition being an accumulation of 100 mg/kg (0.01\% dry wt.) of cadmium or arsenic, 1,000 mg/kg (0.1\% dry wt.) of cobalt, copper, chromium, aluminum, nickel, and lead, and 10,000 mg/kg (1\% dry wt.) of manganese, iron, and zinc~\cite{prasad2003,kramer2010metal,branquinho2007revisiting}.
+Not all hyperaccumulators have equal metal preferences. Even in a single family such as Brassicaceae, out of the 87 species 67 are nickel hyperaccumulators, 15 are zinc, and 5 can do both~\cite{prasad2003}. Insights to the mechanisms of hyperaccumulation have been attributed to hyperactive metal transporters and a variety of detoxification pathways which include glutathione synthesis and metal compartmentalization in vacuoles and other organelles~\cite{clemens2002,hall2002}.
+
+What limits wide-spread adoption of plant-based remediation solutions is the complexity to engineer and maintain strains. Plants are complex organisms, with different species requiring strict growing conditions where hyperaccumulators found in one location may not necessarily thrive in others due to surrounding biotic and abiotic factors. More so, current phytoremediation technology takes weeks to years to see signs of remediation, and in this current global waste crisis may be too long of a time scale~\cite{eapen2006,yang2004,sarma2011}. There have been attempts to create transgenic plants which incorporate genes from hyperaccumulators which grow faster and are more resistant to environmental factors~\cite{eapen2005}. However, because plants are multi-cellular with more complex gene clusters, the current state of genetic tools have yet to realize the sophistication and ease of genetic engineering for their single-celled counterparts such as bacteria and yeast~\cite{eapen2005}. Therefore, design of faster and easier waste management technologies needs to be developed on other platforms that are scalable and cost-effective. Single-cell organisms such as bacteria offer ease and scalability; however, they lack many hyperaccumulating features such as hyperactive metal transporters and useful organelles such as a vacuole. A biological platform at the intersection of these two is the common baker's yeast, \textit{S. cerevisiae}. Current genetic engineering technologies have made it possible to engineering yeast on all levels, from specific proteins to complex metabolic pathways.
+More so, the infrastructure and ability to scale and distribute yeast are already in place thanks to the beer and pharmaceutical industries~\cite{barth-haasgroup.n.d.,bccresearch,prnewswire.n.d.}. The results herein show that taking concepts from plant hyperaccumulators and engineering them into yeast generate similar hyperaccumulating capabilities that are equal or better than their plant-based counterparts. This work demonstrates that yeast are a promising platform for targeted heavy metal remediation.
+
+%---------------------------------------------------------------------------%
+% Section
+%---------------------------------------------------------------------------%
+\section{Results}
+
+%-----------------------------------------------------------------%
+% SUBSECTION
+%-----------------------------------------------------------------%
+\subsection{Use of membrane transporters for enhanced and selective metal uptake}
+Several fundamental metal trafficking components are essential for enhanced metal uptake in hyperaccumulating plants, including cell membrane transporters, organelles storage systems, and chelator molecules~\cite{clemens2002,hall2002} (\FIGURE~\ref{\figname{3}{1}}a). Metal ions enter via highly active membrane transporters, and are compartmentalized into organelles such as the vacuole. To limit cellular toxicity, chelators such as glutathione, metallothionein, and phytochelatins bind and remove metals from sensitive metabolic functions~\cite{hall2002}. To mimic these plant hyperaccumulating features, the first step was to identify and express a hyperactive membrane transporter.
+A set of membrane metal transporters for zinc, copper, iron, and manganese~\cite{kramer2010metal,clemens2002,andre1995,luk2003,anthonyvanho2002} were overexpressed in yeast. For this study, native yeast metal transporters ZRT1 (accession number \#{}P32804),
+ZRT2 (\#{}Q12436),
+CTR1 (\#{}P49573),
+CTR3 (\#{}Q06686),
+FTR1 (\#{}P40088),
+FET4 (\#{}P40988),
+SMF1 (\#{}P38925),
+and SMF2 (\#{}P38778) (ZRT3, CTR2 and SMF3 are vacuole transporters, while FET3 is an oxidoreductase) were cloned and overexpressed using a GAL1 promoter on a 2$\mu$ plasmid. When overexpressed, some of the transporters, along with several more described below, did not show uniform expression but instead had punctate patterns when examined under fluorescence microscopy (\sFIGURE~\ref{\sfigname{3}{1}}a). This may suggest that over-expression led to poor localization, and this factor was considered when selecting a transporter candidate for future engineering.
+
+To measure metal uptake, cells were incubated in 100 $\mu$M metal for 4 hours. Supernatant was collected and measured for remaining metal content using inductive coupled plasma (ICP), and this value was used to calculate the amount of metal removed by the cells. Parallel to each experiment a sample of wild-type (WT) and a sample with no cells were measured to account for non-specific metal binding onto the cell wall or sample tube. Taking these controls into consideration differential and enhanced uptake of zinc, copper, iron, and manganese was observed across the transporters (\FIGURE~\ref{\figname{3}{1}}b). ZRT1,2 and CTR1,3 were highly selective for zinc and copper respectively, increasing metal uptake by 10-fold compared to wild-type (WT) (p < .05). FET4 and SMF1 were less metal-specific and increased metal uptake by 3-5 fold across all four metals (p < .05; except for FET4 uptake of Zn compared to WT).
+
+A similar study was performed for arsenic and chromium. These metals are typically found in oxy-polyatomic states such as arsenate and chromate. To achieve arsenate and chromate hyperaccumulation a different set of transporters are needed, as arsenate and chromate's -2 charge render them incompatible with the divalent metal transporters used previously. Given the molecular and steric similarity between phosphate (\ce{PO4^3-}) and arsenate (\ce{AsO4^2-}), and sulfate (\ce{SO4^2-}) and chromate (\ce{CrO4^2-}), a hypothesis was that the overexpression of sulfate and phosphate permeases will allow passage of arsenate and chromate~\cite{catarecha2007,pereira2008}. Overexpressing the phosphate permeases Pho84 (\#{}P25297), 87 (\#{}P25360), and 89 (\#{}P38361), and Sul1 (\#{}P38359) and Sul2 (\#{}Q12325) showed increased metal uptake of arsenate and chromate, respectively (\FIGURE~\ref{\figname{3}{1}}c; \sFIGURE~\ref{\sfigname{3}{1}}a). Overall the Pho genes increased arsenate uptake by more than 3-5 fold (p < .05), and Sul genes increased chromate uptake by more than 5-fold (p < .05).
+These observations also align with plant hyperaccumulation of arsenate and chromate which show that they trespass into the cell via the phosphate and sulfate assimilation pathways~\cite{zhao2009,shanker2005}.
+
+Another common group of metal contaminants are trivalent metal ions such as aluminum and rare-earth metals (lanthanides and actinides). The most obvious approach is to use a trivalent metal transport for aluminum and rare-earth metal uptake; however, none exist in yeast or generally, at all. But research in a rice specie, \textit{Oryza sativa}, uncovered a Nramp-like transporter known as Nrat1 (\#{}Q6ZG85) which showed selective uptake of aluminum but not divalent metals~\cite{xia2010}. Cloning and heterologously expressing Nrat1 in yeast does indeed promote selective uptake of aluminum with more than a 5-fold increase in aluminum uptake than compared to WT (p < .05) (\FIGURE~\ref{\figname{3}{1}}d), and no significant uptake for common divalent metals such as Cu, Zn, Fe, and Mn (p > .05) (\sFIGURE~\ref{\sfigname{3}{2}}). These results align with previous experimental results~\cite{xia2010}. The use of Nrat1 for rare-earth metal uptake such as neodymium and ytterbium, precious metals used in magnets and electronics, were tested but gave unreliable results as they precipitated in culture before measurements could be performed. However, the preferential accumulation of aluminum using Nrat1 support the hypothesis that other trivalent metals such as lanthanides and actinides can be potentially hyperaccumulated.
+\clearpage % force page break for next figure
+
+%====================%
+% FIGURE 1
+%====================%
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\columnwidth]{\figname{3}{1}}
+  \caption[A variety of metal transporters can be used to selectively internalize heavy metals into yeast]
+  {
+    \textbf{A variety of metal transporters can be used to selectively internalize heavy metals into yeast}.
+    (\textbf{a}) A simplified schematic of metal transport in a eukaryotic cell. Membrane transporters can be divalent metal transporters (i), permeases (ii), metal transporters that are modified or found to have auxillary metal transport function (iii), or antiporters which are used to remove excess metals out of the cell (iv).
+    (\textbf{b}) Bar coloring indicates metal measured, with over-expressed transporter labeled on the x-axis. Values are reported in $\mu$M of metal uptake normalized per yeast culture density ($\mu$M/OD). Yeast metal transporters for zinc (ZRTs), copper (CTRs), iron (FTRs and FETs), and manganese (SMFs) were overexpressed and studied for metal hyperaccumulation. A WT strain was also tested in parallel for each metal to measure non-specific metal uptake.
+    (\textbf{c}) The same study was performed for phosphate and sulfate permeases (PHOs, and SULs) which showed transport of arsenate and chromate, respectively.
+    (\textbf{d}) The Nrat1 transporter, previously shown to uptake trivalent metals in certain strains of rice, was expressed and showed aluminum(III) transport. Asterisk above bar charts represent significance increase in uptake compared to WT (p < .05) for strains mentioned in the text. For all data, the mean $\pm$ s.d. of three replicates are shown.
+  }
+  \label{\figname{3}{1}}
+\end{figure}
+
+Simply by overexpressing metal transporters yeast have reached or exceeded hyperaccumulating thresholds established for plants. To compare results with established values, the amount of metal uptake was converted to milligram of metal per gram of culture dry weight (gDW) (\sFIGURE~\ref{\sfigname{3}{3}}). Given these results, overexpression of CTR1,3 reached 5.43 $\pm$ 0.7 and 3.84 $\pm$ 0.9 mg/ gDW for copper, and overexpression of FTR1 and FET4 reached 1.83 $\pm$ 0.4 and 2.48 $\pm$ 0.3 mg/gDW for iron, respectively (\sTABLE~\ref{\inputtable{3}{1}}). All phosphate (Pho84, 87, 89) and sulfate (Sul1, 2) permeases accumulated beyond the 1 mg/gDW threshold for arsenate and chromate hyperaccumulation. Nrat1 reached 1.33 $\pm$ 0.2 mg/gDW of aluminum which is above the 1 mg/gDW threshold~\cite{branquinho2007revisiting}. Overall, these results show that hyperaccumulation is not a plant-specific trait but a generalizable feature that can be engineered in yeast by selecting and expressing the appropriate metal transporters.
+
+%-----------------------------------------------------------------%
+% SUBSECTION
+%-----------------------------------------------------------------%
+\subsection{Increased expression levels of SMF1 enhance metal uptake}
+SMF1 from the Nramp family was selected for further optimization and engineering because of its broad metal specificity (\FIGURE~\ref{\figname{3}{1}}b) and the existing body of research on the Nramp family and its homologous~\cite{bozzi2016,bozzi2016a,ehrnstorfer2017,courville2006}. Another selection criteria was SMF1's relatively consistent membrane-localized expression as observed under fluorescent microscopy. When compared to FTR1 for example, expression was punctate and non-uniform, suggesting poor localization due to over-expression (\sFIGURE~\ref{\sfigname{3}{1}}a). Therefore the inability to over-express and localize transporters eliminated candidates for further engineering.
+SMF1 was also favored above the other transporters because of its promiscuous activity with several metals such as manganese, iron, nickel, and cobalt~\cite{anthonyvanho2002,courville2006,liu1997}. Thus SMF1 was a more appealing candidate to engineer for selective heavy metal uptake rather than converting a highly specific metal transporter which may be less malleable to change. More so, past work by Bozzi et al. and Ehrnstorfer et al. have elucidated crystal structures of multiple Nramps and have shed light on their structure-to-function relationship with respect to metal uptake~\cite{bozzi2016a,ehrnstorfer2014}. These insights were leveraged to semi-rationally alter the metal preference of SMF1, which is shown in later results.
+
+Enhancing metal uptake using SMF1 require increasing its expression life-cycle by increasing protein yield and stability. SMF1 (denoted as S), like most nutrient transporters, is tightly regulated to control the flux of metals into the cell, while limiting excess uptake to protect against toxicity. SMF1 expression, for example, is controlled by manganese ions and is post-translationally down-regulated by ubiquitination and endocytosis~\cite{nikko2008}. To create a hyperaccumulating yeast these controls need to be removed so that the transporter can be highly expressed without degradation. Therefore, mutations on SMF1's ubiquitination site K33,34 were altered to arginine (mutant denoted as S*) which helped reduce protein degradation~\cite{nikko2008}. In addition, BSD2 ubiquitin ligase (\#{}P38356), which post-transcriptionally tags SMF1 for degradation, was deleted to further enhance SMF1 expression levels (deletion strain denoted as B)~\cite{liu1997,liu1999}. Finally, SMF1* was integrated (denoted as iS*) under a GAL promoter in BSD2 knockout strains. Expression was measured using both fluorescence microscopy (\sFIGURE~\ref{\sfigname{3}{4}}), and quantified using flow cytometry by fluorescently labeling a V5 tag fused to the C'-terminus of the SMF1 variants. Populations of fluorescently labelled SMF1 were analyzed to measure the percent of positively expressing cells, and the mean fluorescent intensity was used to qualitatively correlate the expression level between cells to their metal uptake levels (\FIGURE~\ref{\figname{3}{2}}a). Changes from
+S $\rightarrow$ S* $\rightarrow$ S*B $\rightarrow$ iS*B
+corresponded to increasing uptake of manganese and cadmium which resulted in uptake levels saturating to 85 $\pm$ 6.7 $\mu$M (9.0 $\pm$ 0.7 mg/gDW) for manganese and 22 $\pm$ 6.0 $\mu$M (6.4 $\pm$ 1.3 mg/gDW) for cadmium given the presence of 100 $\mu$M manganese or cadmium in culture (\FIGURE~\ref{\figname{3}{2}}a).
+
+%-----------------------------------------------------------------%
+% SUBSECTION
+%-----------------------------------------------------------------%
+\subsection{Use of vacuole transporters increase metal uptake yield }
+Metal uptake capacity can be further enhanced by expressing vacuole transporters to compartmentalized metals internalized by SMF1. Native yeast vacuole transporters~\cite{luk2003,anthonyvanho2002} tested were CCC1 (\#{}P47818), COT1 (\#{}P32798), ZRC1 (\#{}P20107), and SMF3 (\#{}Q12078) which were individually expressed in S*B strains (\sFIGURE~\ref{\sfigname{3}{1}}b; \sFIGURE~\ref{\sfigname{3}{5}}). All tested vacuole transporters showed elevated metal uptake for copper, zinc, iron, and manganese, with CCC1 and COT1 being the most significant across all metals (p < .05) (\FIGURE~\ref{\figname{3}{2}}b). These results support the role that the vacuole broadly compartmentalizes metals from the cytosol.
+However, without the expression of SMF1, sole expression of vacuole transporters CCC1, COT1, ZRC1, and SMF3 in WT strains had negligible impact on copper, zinc, iron, and manganese uptake (p > .05) (\sFIGURE~\ref{\sfigname{3}{6}}). This result suggests that the largest barrier to metal uptake is from the membrane transporter, in this case SMF1, which is responsible for initial metal internalization. It is only after metal enters a cell that the vacuole transporters are rendered useful.
+
+%====================%
+% FIGURE 2
+%====================%
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\columnwidth]{\figname{3}{2}}
+  \caption[Modifications in the metal trafficking pathway in yeast show enhanced metal uptake and tolerance for cadmium]
+  {
+    \textbf{Modifications in the metal trafficking pathway in yeast show enhanced metal uptake and tolerance for cadmium}.
+    (\textbf{a}) Top subpanel shows the population distribution of SMF1 variants measured with fluorescently labelled V5-tag using flow cytometry. The weighted average of the fluorescent intensity corresponds to the placement of the lower subpanel bar charts which represent the level of metal uptake for that strain. Increasing expression levels of SMF1 correlate to increased metal uptake of cadmium or manganese; however, up to a certain point indicated by the plateau in uptake.
+    (\textbf{b}) Expressing vacuole transporters CCC1, COT1, ZRC1, and SMF3 in addition to SMF1 enhanced metal uptake. Asterisk above bar charts represent significant increase in uptake compared to SMF1 (p < .05).
+    (\textbf{c}) Constitutively expressing wheat phytochelatin synthase, TaPCS1, conferred heavy metal tolerance against cadmium. Asterisk above bar charts represent significant changes in growth rates compared to WT (p < .01). For all data, the mean $\pm$ s.d. of three replicates are shown.
+  }
+  \label{\figname{3}{2}}
+\end{figure}
+\clearpage % special case, page break for next section
+
+%-----------------------------------------------------------------%
+% SUBSECTION
+%-----------------------------------------------------------------%
+\subsection{Enhanced metal tolerance using phytochelatin synthase, TaPCS1}
+\label{subsection:tapcs1}
+The purpose for creating a metal hyperaccumulator becomes counterproductive if the cell dies and releases the internalized metals back into the media. Therefore, mechanisms for metal detoxification and tolerance are needed to increase cell viability, and in theory, give cells more time to endure and uptake metals. One of the main mechanisms found in plants for metal detoxification is the production of phytochelatins, oligomers of glutathione (GSH) with cysteine and carboxyl rich moieties that chelate metals such as copper and cadmium~\cite{kramer2010metal,clemens2002,eapen2005}. Yeast are able to produce glutathione via the GSH pathway, which naturally protects yeast from accumulation of toxic metals. However, there does not exist a phytochelatin synthase for robust metal detoxification like that in plants. Instead, yeast rely on GSH or cysteine-rich and low molecular weight CUP1 metallothionein to chelate metals. However, past work has shown that metal detoxification is effective only at high copy numbers of CUP1~\cite{jeyaprakash1991}. suggesting that protein production versus chemical synthesis of metal chelating compounds is less effective possibly due to a slower rate of protein synthesis and/or abundance. Therefore to create yeast tolerant to heavy metal environments would require a similar phytochelatin synthase mechanism. Past studies in plant hyperaccumulators have shown that a phytochelatin synthase, TaPCS1 (\#{}Q9SWW5), from wheat improved heavy metal tolerance in both plants and yeast~\cite{clemens1999}.
+
+Integrating TaPCS1 under constitutive expression using a GAP promoter showed cadmium tolerance beyond 100 $\mu$M, whereas WT growth rates are significantly hampered below 10 $\mu$M (p < .01) (\FIGURE~\ref{\figname{3}{2}}c), results which support past observations~\cite{clemens1999}. TaPCS1 also improved copper, manganese, zinc, and cobalt tolerance by 2--10 fold than compared to WT (\sFIGURE~\ref{\sfigname{3}{7}}). The purpose of this work was to demonstrate that TaPCS1, in conjunction with membrane and vacuole transporters, can enhance metal uptake and retention due to enhanced metal tolerance. The subsequent results which combine SMF1, CCC1, and TaPCS1 show that these modules can act additivity to incrementally improve metal hyperaccumulation.
+
+%-----------------------------------------------------------------%
+% SUBSECTION
+%-----------------------------------------------------------------%
+\subsection{Creating a manganese and cadmium hyperaccumulator}
+To mimic the characteristics of a plant hyperaccumulator, the final yeast-based system combined expression of the membrane transporter SMF1 (S, or K33,34R mutant S*), vacuole transporter CCC1 (C), metal detoxifying phytochelatin synthase TaPCS1 (T), and deletion of ubiquitin ligase BSD2 (B). All parts were integrated into the genome except for S* which was introduced on a 2$\mu$ plasmid under a GAL1 promotor. As each component was added to the system the amount of cadmium uptake increased incrementally. The effect of adding all components together (S*BCT) enhanced cadmium uptake by almost 16-fold than compared to WT (p < .01) (\FIGURE~\ref{\figname{3}{3}}a). In addition, the rate of uptake increased dramatically with the combination S*BC reaching steady-states within 2--4 hours compared to 10--12 hours for strains lacking an overexpressed vacuole transporter (\FIGURE~\ref{\figname{3}{3}}b). The rate of uptake increased by almost 30-fold for S*BCT compared to WT (p < .01). Adding T to S*B or S*BC does not significantly enhance metal uptake but instead stabilizes metal internalization (\FIGURE~\ref{\figname{3}{3}}a, b). After 12 hours of growth in media containing 100 $\mu$M cadmium, strains without TaPCS1 began to ``leak'' back out cadmium, possibly due to cell death or activation of divalent antiporters.
+In terms of viability, during active metal uptake in 100 $\mu$M cadmium, the expression of C slightly improves cell viability, whereas combined expression of C and T fully rescue yeast survival (p < .01) (\FIGURE~\ref{\figname{3}{3}}c; \sFIGURE~\ref{\sfigname{3}{8}}).
+
+SMF1 and CCC1 have broad metal specificity primarily for row one transitions metals, thereby out-competing the uptake of cadmium if other transition metals such as manganese are present. To analyze the degree of manganese interference against cadmium, S*BCT was titrated at varying concentrations of cadmium with and without a constant background of 100 $\mu$M. Metal uptake values were normalized to percent uptake with respects to the original metal concentration added, and the concentration at which metal uptake was half was termed K\textsubscript{U}. The K\textsubscript{U} for cadmium with and without the presence of 100 $\mu$M went from 127 $\pm$ 12 $\mu$M to 21 $\pm$ 3.7 $\mu$M (p < .01). The K\textsubscript{U} for manganese is almost 8 times higher at  945 $\pm$ 84 $\mu$M (p < .01) (\FIGURE~\ref{\figname{3}{3}}d). Therefore, the main mechanism of transport for SMF1 prefers manganese and the uptake of cadmium is inferred to be due to transport ``leakiness''.
+
+%====================%
+% FIGURE 3
+%====================%
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\columnwidth]{\figname{3}{3}}
+  \caption[Combining membrane transporter SMF1 and vacuole transporter CCC1 with TaPCS1 improved uptake capacity and metal tolerance]
+  {
+    \textbf{Combining membrane transporter SMF1 and vacuole transporter CCC1 with TaPCS1 improved uptake capacity and metal tolerance}.
+    (\textbf{a}) SMF1 (S) and its modifications (S* and $\Delta$BSD2 as B) along with vacuole transporter CCC1 (C) and metal resistance enzyme TaPCS1 (T) incrementally enhanced cadmium uptake. Asterisk above bar charts represent significant increase in cadmium uptake when compared to WT (p < .01).
+    (\textbf{b}) Combinations of S*, B, C, and T showed changes in uptake rate, capacity, and metal retention over 12 hours of metal incubation.
+    (\textbf{c}) In the presence of 100 $\mu$M cadmium, the growth rate is rescued with the addition of CCC1 and furthermore with TaPCS1. Subfigure below represents the doubling time of each strain. Asterisk to the side of bar charts represent significant increase in growth rate compared to WT (p < .01).
+    (\textbf{d}) S*BCT strain was titrated against cadmium, manganese, or cadmium in the constant presence of 100 $\mu$M manganese (x-axis). Metal uptake experiments was performed at varying concentrations from 1 to 100 $\mu$M, metal content analyzed using ICP, and values reported as percent uptake. S*BCT showed a higher preference for manganese than cadmium, with cadmium uptake being dramatically reduced in the background presence of 100 $\mu$M manganese (light blue curve). For all data, the mean $\pm$ s.d. of three replicates are shown.
+  }
+  \label{\figname{3}{3}}
+\end{figure}
+
+%-----------------------------------------------------------------%
+% SUBSECTION
+%-----------------------------------------------------------------%
+\subsection{Designing a pipeline to engineer a metal specific transporter}
+\label{subsection:density-gradient}
+SMF1 was evolved using a newly developed screening pipeline which uses density gradient centrifugation to fractionate mutants based on metal accumulation. Crystal structures and literature on Nramp structure-to-function was used to semi-rationally build libraries to create two variants of SMF1. The first variant was a more specific cadmium transporter, and the other was a strontium transporter for potential application for radioactive \ce{Sr^90} remediation.
+
+The crystal structures of SMF1 homologues \textit{D. radiodurans} (DraNramp) and \textit{S. capitis} (ScaDMT) were used to narrow down transmembrane domains (TM) fundamental for metal recognition and transport~\cite{bozzi2016a,bozzi2016,courville2006,ehrnstorfer2014,xu2004}.
+Specifically, TM regions 1, 4 and 6 in the Nramp family have been identified to confer metal selectivity and movement~\cite{bozzi2016a,ehrnstorfer2014}.
+Without a crystal structure for SMF1, the specific TM regions have to be inferred from known structures or through multi-alignments of conserved regions. Multi-aligning SMF1 protein sequence against a Pfam database of homologous Nramps including DraNramp and ScaDMT revealed region 76-105, 180-200, and 264-287 to represent TM1, 4, and 6, respectively, based on the highest degree of conservation when compared to TM regions in the aligned homologues (\FIGURE~\ref{\figname{3}{4}}a; \sFIGURE~\ref{\sfigname{3}{9}}).
+
+More so, previous work in Nramp mechanistic function showed that mutation M276 in SMF1 (discovered as M230 in DraNramp) confers metal selectivity~\cite{bozzi2016}. Outside crystallographic observations, it was empirically shown that mutating TM4 region G189 (discovered as G153 in DraNramp, or G185 in DMT1)33,43 into an arginine exposes a calcium entryway, which is hypothesized to also transport similar group II elements like strontium (\sFIGURE~\ref{\sfigname{3}{9}}).
+\clearpage % force page break
+
+%====================%
+% FIGURE 4
+%====================%
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\columnwidth]{\figname{3}{4}}
+  \caption[Pipeline to systematically screen and engineer metal transporters for selective metal uptake]
+  {
+    \textbf{Pipeline to systematically screen and engineer metal transporters for selective metal uptake}.
+    (\textbf{a}) Pfam protein database and clustering services such as Clustal$\omega$, TCoffee, and ESpript3 were used to align SMF1 with referenced protein crystal structure 5KTE~\cite{bozzi2016a}. Through literature searches and multi-alignments, transmembrane 1 and 6 (TM1, 6) were found to be the most significant regions for mutagenesis. The alignment comparing 5KTE with SMF1 shows the TM1 and TM6 region, where yellow highlights indicate conserved regions, and red text indicate highly conserved residues (similarity score > 0.7).
+    (\textbf{b}) Mutations cited to enhance or decrease metal transport were selectively mutated using site-directed mutagenesis. Libraries were then generated on top of these mutations through error-prone PCR.
+    (\textbf{c}) An initial screen was performed through rate-zonal density gradient centrifugation.
+    (\textbf{d}) Fractionated layers were plated, picked, and assayed for metal uptake. A competition assay of the desired metal versus the native metal (e.g. manganese) was performed calorimetrically. Wells with the least amount of native metal uptake (highest signal) were selected and
+    (\textbf{f}) quantitatively measured for metal uptake using ICP. Mutations were sequenced and reintroduced in the pipeline to generate better performing mutants.
+  }
+  \label{\figname{3}{4}}
+\end{figure}
+
+Mutating M276C and separately G189R and M276A were performed on SMF1 prior to generating libraries for cadmium and strontium screening, respectively. Given these base mutations, error-prone PCR was done sequentially on TM1 and TM6 to generate libraries (\FIGURE~\ref{\figname{3}{4}}b) which were then transformed into BCT strains. Creating the cadmium and strontium mutant were performed in parallel, where separate libraries were screened for cadmium or strontium uptake. During screening, libraries were subjected to either 100 $\mu$M cadmium or strontium similar to previous metal uptake experiments. Libraries were then screened based on an increase in mass as an indirect measurement for metal uptake. Mutants with higher metal content were fractionated using rate-zonal density gradient centrifugation (\FIGURE~\ref{\figname{3}{4}}c; \sFIGURE~\ref{\sfigname{3}{10}}). Rate-zonal, rather than isopynic density gradient centrifugation was used to fractionate cells based on changes in mass, rather than equilibrium density, as previous studies have shown that yeast maintain a relatively constant density despite external influences44. Cells migrating the furthest were isolated, plated, and picked for colonies for a more focused metal assay. Cells were subjected to a competition assay with cadmium or strontium with 100 $\mu$M manganese in a 96 well format. A colorimetric assay specific to manganese was performed on the supernatant, where wells with the highest intensity (low manganese uptake) corresponded with mutants with low manganese preference (\FIGURE~\ref{\figname{3}{4}}d).
+A select number of mutants were than chosen for quantitative metal uptake measurement using ICP, then sequenced, and later re-introduced into the mutagenesis/screening pipeline (\FIGURE~\ref{\figname{3}{4}}e). 4 rounds of screening were performed to generate a cadmium and strontium mutant.
+
+%-----------------------------------------------------------------%
+% SUBSECTION
+%-----------------------------------------------------------------%
+\subsection{Creation of SMF1 transporters specific to cadmium or strontium}
+The SMF1 mutant with the highest cadmium specificity (denoted as mCd) contained mutations S105C, M276C, and S269T; whereas the SMF1 mutant with the most selectivity for strontium (denoted as mSr) contained mutations G189R, T266S, M276C and G283Q (\FIGURE~\ref{\figname{3}{5}}a). To test the contributions of each mutation, SMF1* was systematically mutated at each of the changed residues to reveal their significance and effect on SMF1 expression and function. Many of the mutations on mCd and mSr were located on TM6 rather than TM1, which supports past observations of the highly sensitive permeation region in the first alpha-helix segment of TM1 (\sFIGURE~\ref{\sfigname{3}{11}}). In addition, rounds of mutations leading to mCd and mSr did not significantly change expression levels (\sFIGURE~\ref{\sfigname{3}{11}}).
+
+Supporting Bozzi's et al. work, M276 plays a critical role in metal selectivity34, changing the methionine to cysteine doubles cadmium uptake while halving manganese uptake (\FIGURE~\ref{\figname{3}{5}}b) (p < .05). Whereas changing the methionine into alanine, and subsequently changing G189 into arginine enhances strontium uptake while dramatically reducing uptake of manganese by almost 8-fold (p < .01) (\FIGURE~\ref{\figname{3}{5}}b). These modifications, and each subsequent change, reduces Mn uptake while increasing uptake of Cd or Sr for mCd and mSr, respectively (\FIGURE~\ref{\figname{3}{5}}b). It should be noted that these mutations could impede Mn uptake allowing increased permissiveness of Cd and Sr transport, rather than strictly increasing sensitivity for Cd or Sr; a subtle yet important distinction. However, in either case, the goal of improving Cd or Sr uptake is shown for mCd and mSr, respectively.
+
+Testing the fully mutated mCd and mSr a titration experiment with cadmium or strontium, respectively, in the background of 100 $\mu$M manganese was performed to determine the new KU's. For mCd the K\textsubscript{U} for manganese dropped by 40-fold to 26.2 $\pm$ 7.6 (p < .01), whereas the K\textsubscript{U} for cadmium went from 100 $\pm$ 3.2 without manganese to 75.8 $\pm$ 10.3 in the presence of manganese, a reduction by less than 25 percent (p < .05) in comparison to the 5-fold decrease with the non-mutated version (p < .01) (\FIGURE~\ref{\figname{3}{3}}d; \FIGURE~\ref{\figname{3}{5}}c). Similarly for mSr, the K\textsubscript{U} for manganese dropped to 17.9 $\pm$ 1.6 (p < .01) whereas the KU for strontium was 26.8 $\pm$ 5.7 and remained relatively constant at 27.1 $\pm$ 11 in the presence of manganese.
+\clearpage % make page break for following figure
+
+%====================%
+% FIGURE 5
+%====================%
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\columnwidth]{\figname{3}{5}}
+  \caption[Cadmium and strontium metal transport mutants were generated after 4 rounds of screening]
+  {
+    \textbf{Cadmium and strontium metal transport mutants were generated after 4 rounds of screening}.
+    (\textbf{a}) Weblogos of SMF1 TM1,6 from Nramp multi-alignment are displayed, with cadmium and strontium mutations highlighted. Cadmium mutants had S105C, T266S, and M276C. Strontium mutants had G189R, S269T, M276A, and G283Q.
+    (\textbf{b}) Total metal uptake of 100 $\mu$M cadmium and manganese were measured to assess manganese interference. Cadmium mutant labeling corresponds to 1=M276C, 2=M276C+S105C, 3=M276C+T266S, and 4=M276C+S105C+T266S. Strontium mutant labeling corresponds to 1=M276A, 2=M276A+G189R, 3=M276A+G189R+S269T, 4=M276A+G189R+G283Q, and 5=M276A+G189R+S269T+G283Q. Strain background for all mutants were BCT. Asterisk above bar charts represent significant changes in both Cd and Mn uptake compared to un-mutated S*BCT (p < .05).
+    (\textbf{c}) Titration curves of fully mutated cadmium and strontium transporters in strain BCT were performed for Cd or Sr, respectively, with or without 100 $\mu$M Mn; x-axis represents the concentration of either Cd, Sr, or Cd, Sr with Mn.
+    (\textbf{d}) Sequential uptake experiments, up to 4 rounds, were performed to measure the amount of cycles required for complete elimination of 100 $\mu$M cadmium or strontium in a mixture of 100 $\mu$M manganese. Images on the right are colorimetric detection of cadmium and manganese (there are no available colorimetric assays for strontium at this concentration) showing selective preference for cadmium (no coloration) against native metal manganese (darkened well). Samples were performed in a 12-well. For all data, the mean $\pm$ s.d. of three replicates are shown.
+  }
+  \label{\figname{3}{5}}
+\end{figure}
+
+The improved preference for cadmium and strontium uptake is more obvious when performing iterative rounds of metal uptake. When comparing uptake of cadmium or strontium in the presence of manganese for mCd and mSr against the un-mutated S*, it took two rounds to fully remove manganese in the un-engineered case, while there still remains >10 percent manganese after 4 rounds for mCd and mSr showing a significant reduction in manganese uptake efficiency (p < .01) (\FIGURE~\ref{\figname{3}{5}}d). However, when measuring cadmium or strontium uptake, mCd completely removes cadmium after 3 rounds while the un-engineered strain requires 4 because of manganese uptake inhibition. For mSr, strontium incrementally decreases after each round without signs of manganese inhibition. After 4 rounds strontium levels reached below 10 percent, while the un-engineered case had >80 percent strontium remaining (p < .01) signifying a significant change in metal preference from manganese to strontium.
+
+%---------------------------------------------------------------------------%
+% Section
+%---------------------------------------------------------------------------%
+\section{Discussion}
+This work demonstrates that yeast can be engineered to hyperaccumulate metals by overexpressing and evolving native metal transporters and engineering mechanisms for metal detoxification. The main design requirements for yeast hyperaccumulation are, (1) overexpression and engineered hyperactive membrane transporter activity, (2) overexpression of vacuole (or other organelle) transporters for metal compartmentalization, and (3) enhanced metal tolerance. Co-expression of a cell membrane transporter (SMF1) and a vacuole metal transporter (CCC1), enhanced metal uptake of manganese and cadmium by more than 10-fold, exceeding the plant hyperaccumulating threshold of 10 mg/gDW and 0.1 mg/gDW, respectively. In addition, simultaneous expression of CCC1 and plant phytochelatin synthase TaPCS1 rescue yeast survival in the presence of 100 $\mu$M cadmium. In order to improve metal selectively against the preferred substrate manganese, and more towards cadmium or strontium, information from crystallographic and empirical observations from Nramp point mutations were utilized to strategically engineer relevant SMF1 transmembrane domains. Semi-rational mutagenesis of SMF1 combined with a novel screening pipeline based on mass changes using rate-zonal centrifugation generated SMF1 variants with either cadmium or strontium preference, and more than 10-fold reduction in manganese selectivity.
+
+Actual application of these yeast strains in real-world settings would require another layer of technological development, such as a container or cartridge to secure yeast in a controllable unit. Fortunately, these technologies exist, such as yeast packaging, freeze-drying, and delivery which are routine technologies found in the consumer market. A potential concept is to grow and store yeast in commercial filter-like cartridges where they can be housed in filtering units with size-exclusion cutoffs to prevent yeast leakage back into the purified waters. An additional layer of safety is to genetically modify these yeast with kill switches, or a metabolic reliance on a controlled nutrient such that removal from these containers will result in cell death~\cite{chan2016}.
+
+There are yet many more handles that offer better control over metal hyperaccumulation. Expression levels of membrane metal transporters, specifically SMF1, can be enhanced by performing additional ubiquitin associated lysine mutations, such as deleting specific proteases such as PEP4~\cite{nikko2008,liu1999},
+or integrating multiple copies into the genome with inducible or constitutive expression. Uptake can be further enhanced by trafficking metals into other organelles such as the mitochondria, ER or Golgi which themselves harbor multiple metal transpoters~\cite{luk2003}.
+The same transporter screening pipeline developed in this work can also be used to engineer organelle metal transporters, such as CCC1, to further increase metal uptake and specificity in conjunction with a surface metal transporter like SMF1. A complementary approach, which is currently being investigated, is whether the deletion of metal antiporters can improve metal retention in organelles and enhance overall metal accumulation. It may be a promising strategy to delete antiporters from organelles, such as the Golgi, ER, mitochondria, etc. to gradually build up metal compartmentalization. This is particularly interesting, and also straightforward, if there is no good metal transporter candidate from these organelles of if they are difficult to rationally engineer. Finally, yeast morphology could be altered to allow higher uptake capacity. Theoretically, the upper limit for metal uptake capacity is restricted to intracellular volume. If needed, organelle size, morphology, copy-number, and size of the entire yeast cell itself, can be controlled with key genes such as VPH1 and VTCs~\cite{desfougeres2016,turner2012}.
+Future work will assess whether increasing the physical volume of yeast or increasing the number of organelles such as the vacuole will lead to higher metal uptake capacity.
+
+The major benefit of using transporters for metal hyperaccumulation and environmental remediation is the control over metal selectivity. Unlike current non-specific physicochemical techniques, biological transporters engineered for metal hyperaccumulation can distinguish less abundant yet more toxic metals over background elements. Biological systems have evolved a repertoire of transporters that can be leveraged for such selective metal uptake. This work demonstrated a focused study of SMF1; however, a similar approach using the same screening pipeline can be employed to other transporters mentioned earlier. Such engineering may be limited by the lack of structure-to-function knowledge and crystal structure availability for some transporters. However, advances in nanobody-aided crystallography, NMR, and cryoTEM may help elucidate transporter crystal structures for better mechanistic understanding~\cite{bozzi2016a,ehrnstorfer2014}.
+
+There are other areas in which yeast hyperaccumulators can have potential real-world application. Given the customizability of yeast and methods proposed here to engineer metal selectivity, there is a possibility to design yeast strains by demand. Certain geographic areas suffer from specific metal contamination because of specific industries, for example areas in Bangladesh and India suffer from arsenic and chromium poisoning due to the textile industry~\cite{robinson2001,manzoor2006}.
+Therefore, yeast can be tailored to selectively capture and remediate arsenic and chromium from their soils. Rather than providing a monolithic process for metal capture, which is the method employed today, more focused metal remediation processes can be achieved with higher efficiency. The second application is to recycle, or mine out heavy metals back from solutions. Waste typically contains a mix of metals, making it extremely difficult to process and especially difficult to extract and re-capture precious metals. With this yeast-based approach it may be possible not only to remediate waste, but also to extract, concentrate, and store removed metals in yeast for mining purposes. Therefore if a certain mixture contains X number of metals of interest, it would be possible to design X number of strains to individually target and mine back those metals. Using yeast as a mechanism for metal removal as well as mining and recycling can close the loop between manufacturing, use, and disposal. Therefore, rather than providing a palliative solution for the waste management crisis, yeast can be used as an integral tool for waste treatment processes and recycling.
+
+%---------------------------------------------------------------------------%
+% Section
+%---------------------------------------------------------------------------%
+\section{Materials and methods}
+
+\subsection*{Yeast strain and culture}
+Yeast strain W303$\alpha$ was obtained from the Amon Lab at MIT. Synthetically defined dropout media (SD) was made by combing 1.7 g/L yeast nitrogen base without amino acid and ammonium sulfate (YNB) (Fischer), 5 g/L ammonium sulfate (Sigma), 0.6 g CSM-HIS-LEU-TRP-URA powder (MPBio), 20 g/L glucose (Sigma), and 10 mL/L of 100X adenine hemisulfate stock (1 g/L) (Sigma). 100X stocks of His (5 g/L), Leu (10 g/L), Trp (10 g/L), and Ura (2 g/L) (Sigma) were made in dd\ce{H2O} and filtered sterilized before supplementing cultures. Alternatively, complete synthetically defined media (CSM) was made with the above ingredients but with 0.79 g/L CSM mix (MPBio). YPD was made with 20 g/L peptone, 20 g/L glucose and 10 g/L yeast extract. CSM/SD-R media was made by replacing 20 g/L glucose with raffinose (VWR). Likewise, CSM/SD-G media was made by replacing 20 g/L glucose with 20 g/L galactose and 20 g/L raffinose. Solutions were stirred and filter sterilized through a .22 $\mu$m filter top (EMD). Agar plates were made by adding 20 g/L BactoAgar (Fisher) and autoclaving before pouring.
+
+\subsection*{Isolating genomic DNA (smash \& grab)}
+Cultures were grown overnight in their appropriate drop-out media. 500 $\mu$L of cells were then transferred and pelleted at 900xg for 3 min. Cells were then resuspended in 250 $\mu$L DNA breakage buffer containing 2\% Triton X-100, 1\% SDS, 0.1 M NaCl, 10 mM Tris-HCl, 0.5 M EDTA (Sigma) in 100 mL dd\ce{H2O}. Approximately 1:1 of acid-washed 420-600 $\mu$m glass beads (Sigma) to cell pellet were added to the tubes. 250 $\mu$L phenol/chloroform/isoamyl alcohol (25:24:1; Sigma) was then layered on top. Tubes were bead beaten for 5 min. and spun down at 14000xg for 5 minutes at 4\textsuperscript{o}C. The aqueous layer was then removed and added to 1 mL of ice-cold 100\% EtOH (VWR) and spun down at 14000xg for 5 minutes at 4\textsuperscript{o}C. EtOH was aspirated leaving behind precipitated DNA which was then dried at room temp for 30 min. Cells were then resuspended in TE buffer (Sigma) for downstream cloning.
+
+\subsection*{Cloning metal transporters}
+Sequences were acquired from the Yeast Genome Database (www.yeastgenome.org) or through NCBI (\url{https://www.ncbi.nlm.nih.gov/gene}). All cloning steps were first simulated with Snapgene. All enzymes including the commercial non-trademarked Gibson assembly master mix, HiFi, were purchased from NEB. All references to Gibson assembly used the HiFi master mix. Between each PCR step, products were cleaned using the Wizard SV Gel and PCR CleanUp Kit (Promega). The pYES2/CT (Invitrogen) was used as the plasmid backbone for gene expression. The pYES2/CT vector was modified by inserting a stop codon after the V5 tag to eliminate expression of the C'-terminus 6xHis tag. All sequences were confirmed by Sanger sequencing using Quintara Bio.
+
+Metal transporters, CTR1, CTR3, FET4, FTR1, SMF1, SMF2, ZRT1, and ZRT2 were amplified from genomic W303$\alpha$ DNA using PCR and ligated into pYES2/CT via restriction cloning. Forward and reverse primers (\sTABLE~\ref{\inputtable{3}{2}}) of the metal transporter genes were flanked with the KpnI and XhoI restriction sites and trailed by \textit{TAAGCA} junk DNA to enable efficient restriction cleavage. All genes were followed by the V5 tag native to the pYES2/CT vector.
+
+Permeases Pho84, Pho87, Pho89, Sul1, Sul2 were amplified from genomic W303$\alpha$ DNA using PCR and Gibson assembled into the pYES2/CT vector. During assembly overhangs contained a HA tag to replace the V5 tag of the pYES2/CT vector (\sTABLE~\ref{\inputtable{3}{3}}).
+
+Nrat1 protein sequence was retrieved from Uniprot (\url{www.uniprot.org}), codon optimized, and synthesized using Genscript. Nrat1 was Gibson assembled into pYES2/CT and immediately followed by the V5 tag (\sTABLE~\ref{\inputtable{3}{4}}).
+
+CCC1, COT1, ZRC1, and SMF3 were assembled into a modified pYES2/CT vector. The pYES2/CT original URA marker was replaced with a LEU marker taken from the pRS305 vector. The CCC1 gene was first cloned using restriction sites SacI and BamHI. The V5 tag was replaced with a Flag tag by introducing the appropriate primer overhangs. The remaining vacuole transporter genes COT1, ZRC1 and SMF3 were created by replacing the CCC1 via Gibson assembly (\sTABLE~\ref{\inputtable{3}{5}}).
+
+\subsection*{Engineering S*BCT}
+A mutated version of SMF1 was performed by mutagenzing the K33,34 region, \textit{AAGAAA}, into arginines, \textit{AGGAGA}, using QuikChange site-directed mutagenesis (Agilent) (\sTABLE~\ref{\inputtable{3}{6}}a). The BSD2 ubiquitin ligase gene was deleted by amplifying the HIS cassette from pRS303 with 40 bp overlap with the genomic BSD2 region using PCR. The PCR product was then used to transform competent yeast strains following the transformation protocol described below (\sTABLE~\ref{\inputtable{3}{6}}b).
+
+TaPCS1 was ordered from Addgene (\#{}49767; deposited by the Julian Schroeder Lab) and inserted into the pD1235 vector (ATUM) via Gibson assembly. The gene along with the TRP marker was amplified with 40 bp overlap over the \textit{trp1-1} region of the W303 strain using PCR and transformed for genomic integration (\sTABLE~\ref{\inputtable{3}{6}}c).
+
+pYES2/CT with CCC1 was modified to allow proper integration into the yeast genome. The vector was reorganized to have the LEU marker downstream of the gene, the swap being made via Gibson assembly. CCC1 along with the LEU cassette was amplified with 40 bp overlap over the \textit{leu2-3} region of the W303 strain using PCR and transformed for genomic integration (\sTABLE~\ref{\inputtable{3}{6}}d).
+
+\subsection*{Identifying SMF1 TM regions and mutagenesis}
+Pfam (\url{https://pfam.xfam.org/}) was used to curate the representative proteomes from the Nramp family and were compared using TCoffee's transmembrane multi-alignment algorithm (\url{http://tcoffee.crg.cat/}). To check the accuracy of this tool the same dataset was aligned using Clustal Omega (\url{https://www.ebi.ac.uk/services/teams/clustal-omega}), which showed similar results. The resultant multi-aligned file was visualized using ESPript (\url{http://espript.ibcp.fr/ESPript/ESPript/}) with reference sequence taken from PDB entry 5KTE to help indicate regions with secondary structure. Red highlighted amino acids indicate highly conserved regions with similarity scores > 0.7. All other amino acids are colored black.  Visualized alignments identified transmembrane regions on SMF1, and mapped residues G153 and M230 found in 5KTE to G189 and M276 on SMF1, respectively. Sequence usage of the Nramp family was also visualized using WebLogo (\url{https://weblogo.berkeley.edu/logo.cgi}) and mapped onto TM1,4 and 6 of SMF1 to qualitatively understand the significance of mutated regions during screening.
+
+Libraries of SMF1 were generated using primers flanking TM1 and 6 which were then used with Agilent's GenemorphII EZClone mutagenesis kit (\sTABLE~\ref{\inputtable{3}{7}}a). Site-directed mutagenesis primers were created using Agilent's primer design webservice (\url{www.agilent.com/genomics/qcpd}) and mutations were introduced using Agilent's Quikchange lightning or multi-site mutagenesis kits (\sTABLE~\ref{\inputtable{3}{7}}b).
+
+\subsection*{Transformations}
+Plasmid constructions were performed in NEB$\alpha$ competent cells (NEB) and transformed following NEB's protocol. Yeast transformations were performed with the Frozen-EZ Yeast Transformation Kit II (Zymo Research). The protocol was modified slightly for integrated constructs. Transformed cells were first plated onto YPAD plates and grown for 1 day. Plates were replica-plated on their respective SD drop-out and grown for an additional 1--2 days. 4--8 colonies were then picked, grown overnight, and smash \& grabbed to isolate their genomic DNA. DNA was then amplified with primers flanking the integrated area of interest using PCR, and PCR product ran on a gel to verify proper integration.
+
+\subsection*{Correlating OD\textsubscript{600} to culture dry weight (gDW)}
+Wild-type W303$\alpha$ were grown and diluted to various culture densities ranging from 0.1--2 \OD{} in 500 mL. Cells were pelleted and washed 3X in dd\ce{H2O}. 50 mL conical tubes were pre-weighed on an analytical balance with microgram resolution. Cells were transferred into these tubes, pelleted, and resuspended in 1 mL of dd\ce{H2O}. Tubes were then dipped and snap-freezed in liquid nitrogen. Tubes were then capped with a porous cloth and fitted into a lyophilisation chamber (VirTis) and lyophilized for 48 hours. Tubes with cells were weighed with weight of the tube subtracted to calculate cell dry weight. Mass of cells per volume (y-axis) was plotted against measured \OD{} (x-axis) giving a ratio between OD and culture dry weight per culture volume.
+
+\subsection*{Metal uptake analysis using inductive coupled plasma (ICP)}
+Liquid stocks of copper (II) chloride, zinc chloride, iron (II) chloride, manganese (II) chloride, cadmium nitrate, and strontium chloride (Sigma) were made at 100 mM in dd\ce{H2O} and filtered through a .22 $\mu$m filter. Colonies streaked on SD agar plates were picked and inoculated in SD-R media with the appropriate supplemented amino acids. Overnights were diluted 1:10 in SD-R and grown for 4 hours. Cells were then pelleted and resuspended in SD-G media for induction overnight.
+
+To prepare cells for metal uptake analysis, cells induced with SD-G were diluted to 1 OD\textsubscript{600} in fresh SD-G and spiked with 100 $\mu$M metal and incubated for 4 hours at 30oC. In conjunction, a control sample containing a wild-type W303$\alpha$ (WT) strain was also spiked with 100 $\mu$M metal and processed similarly to account for non-specific metal uptake in each experiment. Another sample containing no cells was also spiked with 100 $\mu$M metal to test for non-specific metal binding to the test tube and measurement equipment in each experiment. Overall, no significant non-specific binding was observed for the cell-free samples.
+
+After 4 hours of metal incubation \OD{} was measured again to take into account any changes in culture density. Afterwards, cells were pelleted and supernatant collected for metal analysis. Metal concentrations were measured in an inductive coupled plasma (ICP) Agilent ICP-AES 5100 instrument following standard operating procedures provided by the Center of Material Science facility at MIT. Metal standards were made from ICP-grade stock solutions purchased from Fluka and diluted in a 2--3\% \ce{HNO3} matrix. After ICP analysis metal uptake was calculated by subtracting 100 $\mu$M (original metal concentration) by the metal concentration measured in the supernatant. The value was then divided by the \OD{} measurement to give units of $\mu$M/OD in order to equally compare uptake levels between strains and metals. Units were further converted to help compare against literature values which report milligram of metal per gram of culture dry weight  (mg/gDW) by multiplying the molarity of metal uptake by the molecular weight of the metal used, and converting the culture OD into gram dry weight using the ratio derived in the \OD{} to culture dry weight analysis above.
+
+Metal uptake titration experiments were performed following the same method but using different metal concentrations ranging from 1 $\mu$M to 100 $\mu$M. Metal uptake was normalized to percent uptake with respects to the original metal concentration added. The concentration at which 50\% of metal was uptaken was termed K\textsubscript{U}. For interference experiments, titrations against the desired metal (cadmium or strontium) was performed in the presence of constant 100 $\mu$M manganese.
+
+Iterative metal uptake experiments was performed by taking the supernatant of a previous metal uptake experiment, and transferring the supernatant directly into a freshly induced culture normalized to 1 \OD{}. Uptake was performed for 4 hours, and supernatant transferred iteratively to a fresh new culture up to 4 times. At each iteration the supernatant was sampled and measured using ICP to calculate the metal uptake per round.
+
+\subsection*{Staining and microscopy}
+Transporter expression was measured using immunohistochemistry. Cells were induced following the procedure mentioned above and fixed with 3.7\% paraformaldehyde (EMS) at 0.5 \OD{} for 30 minutes at room temperature. Cells were pelleted at 900xg and washed 3X in 1.2 M sorbitol-citrate buffer (Sigma) before resuspending in the same buffer with 1:100 dilution of 100T Zymolyase (Zymo) and incubated at 30\textsuperscript{o}C for 30 minute to 1 hour. Cells were pelleted and washed 3X in PBS+1\% BSA before settling on poly-lysine treated 8 well chamber slides (Lab-Tek). Cells were gently permeabilized with 0.1\% Tween-20 (Sigma) in PBS+1\% BSA on ice for 5 min. Cells were then stained with the appropriate primary antibody against V5, HA, or Flag tag, washed 3X in PBS+1\% BSA, and stained with the appropriate secondary antibody conjugated to AlexaFluor488 or 647 (Thermo). DAPI at 5 $\mu$g/mL in PBS was used to stain nuclei for 3--5 minutes. Cells were washed and aspirated before removing the wells. A 24x50mm coverslip was placed gently on the slide with 60\% glycerol in PBS as the mounting media. Nail polish was used to seal the edges and slides were imaged on an AxioPlan2 within 24 hours.
+
+In all experiments, a non-expressing WT control was stained in parallel to measure non-specific antibody binding and autofluorescence. The same primary and secondary antibodies (V5, HA, Flag tag), and staining conditions were performed similarly with the experimental samples.
+
+\subsection*{Quantifying membrane expression using flow cytometry}
+SMF1 variants (S, S*, SB, S*B, iS*B) were stained with antibodies following the same steps in the staining and microscopy methods. Cells were diluted to 0.1 \OD in PBS+1\% BSA and measured on a BD FACS Canto or LSR II following standard operating procedures provided by the Koch Flow Cytometry Core. Cell counts were plotted against binned fluorescent intensity (x-axis) creating a population distribution histogram of fluorescence (y-axis). The mean fluorescent intensity weighted by cell count was used to quantitatively compare fluorescent intensity (i.e. expression) against metal uptake measured by ICP for those strains.
+
+\subsection*{Cell culture density measurements and viability assays}
+\OD{} measurements were performed using 2 mL non-frosted cuvettes and a table-top DU800 Beckman Coulter spectrophotometer measured at 600 nm. \OD{} values were used to divide metal uptake values measured by ICP to normalize for culture density.
+
+Cell viability was measured at different metal concentrations ranging from 1 $\mu$M to 100 $\mu$M. Cultures were grown overnight and then diluted to < 0.1 \OD{}. Cultures were aliquoted to a total volume of 100 $\mu$L and spiked with varying metal concentrations. Cultures were placed in a 96 well U-bottom plate (Cellstar) and shaken in a BioTek Synergy 2 plate reader held at 30\textsuperscript{o}C for 24-36 hours. Growth rates were calculated by finding the maximum slope in the growth curve.
+
+A live-dead assay was also performed to analyze cell viability by calculating the ratio of live to dead cells after metal uptake experiments. Cells after metal uptake experiments were resuspended in culture media and dyed with a live-dead fluorescent indicator (Thermo). A positive control of freshly grown cells, and a negative control of cells heated to 70\textsuperscript{o}C for 15 minutes, were used to gate the live and dead cell populations, respectively. Counts within those gates were used to calculate ratio of live cells after metal uptake. Cells were analyzed under the FITC and PE channels of an LSR II flow cytometer.
+
+\subsection*{Manganese assay}
+The manganese colorimetric detection Hach kit was modified to fit a 96-well format. 50 $\mu$L of sample was added to 50 $\mu$L of 2X ascorbic acid provided by the kit. Then 5 $\mu$L of the cyanide and PANI reagent were used to detect manganese given a colorimetric change from yellow to red. Wells were measured at 560 nm. Cyanide was disposed of using guidelines approved by MIT EH\&S.
+
+\subsection*{Screening of yeast libraries using rate-zonal density gradient centrifugation and colorimetric assay}
+Percoll (Sigma) buffered with 1.5 M NaCl was used to make density gradients. A Pharmacia LKB Pump P-1 peristaltic pump joined to a gradient maker (GE) was used to make Percoll gradients. Gradients were formed in Greiner 16 x 100 mm round bottom polystyrene tubes (Sigma) which were first hydrophobically coated with Sigmacote (Sigma). A purple dye was used as a control to visually inspect consistency of gradient formation per batch.
+
+Libraries were transformed into yeast and plated. Single colonies were pooled together using a scraper (Corning) into 10 mL of SD-R with the appropriate amino acids. Cells were grown for 12 hours before being diluted into 50 mL of SD-R for 4 hours. Cells were then pelleted and resuspended in SD-G with the appropriate amino acids for induction overnight. Induced culture was then diluted to 1 \OD{} into multiple 10 mL SD-G media with spiked 100 $\mu$M of cadmium or strontium. Cultures were grown for 4 hours before washing and resuspending in 150 mM NaCl. Cells, percoll gradient, and an Eppendorf 5804-R swinging bucket centrifuge were chilled to 16\textsuperscript{o}C before spinning. Settings for acceleration and braking were set to 0. Cells were gently layered onto the gradient and spun in increments of 5 min at 100xg. 3--4 spins were sufficient to see segregation of cells which signified a fractionation of heavier cells due to metal uptake. A centimeter below the least visible band was collected and spun down at 1500xg for 3 min before resuspending in SD with the appropriate amino acids. Cells were rescued for 1.5 hours before plating. Collected cells were plated onto 2-3 plates giving approximately 10-100 colonies each.
+
+After platting roughly 10--50 colonies, depending on the number of colonies formed, were picked in 100 $\mu$L SD-R cultures in a 96-well format and induced following the same protocol as before. Cells were diluted to 1 \OD and spiked with 100 $\mu$M cadmium or strontium with the addition of 100 $\mu$M manganese and shaken for 4 hours. Plates were spun down at 900xg for 3 min and the supernatant was diluted 1:10 in dd\ce{H2O} and assayed using the modified manganese Hach detection kit described above. The top 4--6 Wells with the highest readings (most manganese remaining) were selected and plated again. Selected colonies were then subjected to a more thorough metal uptake ICP experiment and sequenced before re-introducing them into the screening pipeline.
+
+\subsection*{Mathematical analysis and plotting}
+Raw data was collected and stored as csv or excel file formats. Data was imported and analyzed with python using modules such as numpy, pandas, and scipy. Plots were graphed using matplotlib.
+
+\subsection*{Statistical analysis}
+Statistical parameters including the the definition and values of n, SDs, and/or SEs are reported in the figures and corresponding figure legends. When reporting significance, a two-tailed unpaired t-test was performed between observations and p-values reported in the text. The significance threshold was set to p < .05 for all experiments, or as specified in the text.
+
+%---------------------------------------------------------------------------%
+% Section
+%---------------------------------------------------------------------------%
+\clearpage
+\section{Supplemental figures}
+\renewcommand{\figurename}{S.Figure}
+\setcounter{figure}{0}
+
+%======================%
+% Supplemental Figure 1
+%======================%
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\columnwidth]{\sfigname{3}{1}}
+  \caption[Fluorescently stained membrane and vacuole transporters to visualize overexpression]
+  {
+    \textbf{Fluorescently stained membrane and vacuole transporters to visualize overexpression}.
+    (\textbf{a}) Membrane transporters CTR1, CTR3, FET4, FTR1, SMF1, SMF2, ZRT1, ZRT2 and Nrat1 were fused with a C'-terminus V5 tag and stained. Pho84, Pho87, Pho89, and Sul1 and Sul2 were fused with a C'-terminus HA tag and stained.
+    (\textbf{b}) Vacuole transporters CCC1, COT1, SMF3, and ZRC1 were fused with a C'-terminus flag tag and stained.
+    (\textbf{c}) Negative controls of WT were stained with identical antibodies targeting V5, HA, and flag tag in parallel with the transporters already described. No noticeable background fluorescence was observed.
+    All tags were labelled with the appropriate primary and secondary antibodies conjugated with either an Alex488 (green; membrane) or Alex647(far red; vacuole) dye. Scale bars represent 5 $\mu$m for all images.
+  }
+  \label{\sfigname{3}{1}}
+\end{figure}
+\clearpage
+
+%======================%
+% Supplemental Figure 2
+%======================%
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\columnwidth]{\sfigname{3}{2}}
+  \caption[Nrat1 Al uptake compared to other transition metals used in this study]
+  {
+    \textbf{Nrat1 Al uptake compared to other transition metals used in this study}.
+    Metal uptake experiments for Nrat1 was performed with Al, Cu, Zn, Fe, and Mn and compared against non-expressing WT strain. Asterisk above bar chart represent significant uptake when compared to WT (p < .05). For all data, the mean $\pm$ s.d. of three replicates are shown.
+  }
+  \label{\sfigname{3}{2}}
+\end{figure}
+\clearpage
+
+%======================%
+% Supplemental Figure 3
+%======================%
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\columnwidth]{\sfigname{3}{3}}
+  \caption[Correlating culture optical density (\OD{}) to grams of culture dry weight (gDW)]
+  {
+    \textbf{Correlating culture optical density (\OD{}) to grams of culture dry weight (gDW)}.
+    (\textbf{a}) Cells were grown to the appropriate \OD{}, washed, pelleted, and freeze-dried to obtain culture dry weight per culture volume. Masses were weighed on a precision scale with hundredths of milligram resolution. A line of best fit with intercept at 0 was performed to obtain a correlation between \OD{} and gram of dry weight per culture volume.
+    (\textbf{b}) Relationship for WT was 1 \OD{} : 0.491 $\pm$ 0.05 mg of gDW per liter.
+    (\textbf{c}) Relationship for engineered S*BCT was 1 \OD{} : 0.506 $\pm$ 0.1 gDW per liter. The difference in correlation between WT and S*BCT was negligible. For all data, the mean $\pm$ s.d. of three replicates are shown.
+  }
+  \label{\sfigname{3}{3}}
+\end{figure}
+\clearpage
+
+%======================%
+% Supplemental Figure 4
+%======================%
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\columnwidth]{\sfigname{3}{4}}
+  \caption[Expression of SMF1 increased with increasing modifications]
+  {
+    \textbf{Expression of SMF1 increased with increasing modifications}.
+    Labels from left to right: WT, overexpression of SMF1 (S), SMF1 with K33,34R mutation (S*), S with BSD2 deletion (SB), S* with BSD2 deletion (S*B), and S integrated with BSD2 deletion (iS*B). Bars and values indicate percent expression after subtracting background signal from WT controls. Images and expression scores were calculated using ImageJ. Scale bars represent 10 $\pm$m for all images.
+  }
+  \label{\sfigname{3}{4}}
+\end{figure}
+\clearpage
+
+%======================%
+% Supplemental Figure 5
+%======================%
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\columnwidth]{\sfigname{3}{5}}
+  \caption[Fluorescently labelled SMF1 and CCC1 co-expressing strains]
+  {
+    \textbf{Fluorescently labelled SMF1 and CCC1 co-expressing strains}.
+    (\textbf{a}) Fluorescent measurements of non-expressing WT strain as a control.
+    (\textbf{b}) SMF1* was fused with a C'-terminus V5 tag, whereas CCC1 was fused with a C'-terminus flag tag. Tags were stained with the appropriate primary and secondary antibodies conjugated with either an Alex488 (green; SMF1*) or Alex647(far red; CCC1) dye, respectively. Scale bars represent 5 $\mu$m for all images.
+  }
+  \label{\sfigname{3}{5}}
+\end{figure}
+\clearpage
+
+%======================%
+% Supplemental Figure 6
+%======================%
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\columnwidth]{\sfigname{3}{6}}
+  \caption[Metal uptake increased with the addition of a vacuole transporter]
+  {
+    \textbf{Metal uptake increased with the addition of a vacuole transporter}.
+    (\textbf{a}) Heavier colored bars represent WT metal uptake. Lighter colored overlaid bars represent metal uptake with SMF1 expression (S; no modifications).
+    (\textbf{b}) Heavier colored bars represent metal uptake with vacuole transporter expression. Lighter colored overlaid bars represent metal uptake with co-expression of SMF1. For all data, the mean $\pm$ s.d. of three replicates are shown.
+  }
+  \label{\sfigname{3}{6}}
+\end{figure}
+\clearpage
+
+%======================%
+% Supplemental Figure 7
+%======================%
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\columnwidth]{\sfigname{3}{7}}
+  \caption[Metal effects on WT and TaPCS1 growth rates at varying concentrations]
+  {
+    \textbf{Metal effects on WT and TaPCS1 growth rates at varying concentrations}.
+    Cu, Mn, Zn, Ni, and Co were assayed starting from 10 mM. Cd, Hg, Cr, As, and Pb were assayed starting from 100 $\mu$M. The addition of TaPCS1 slightly enhanced tolerance to Cu, Mn, Zn and Co in the millimolar range. Of the more toxic elements, TaPCS1 specifically conferred tolerance to Cd while changing little against Hg, Cr, and As. Growth rate curves for Pb and Fe were misleading as Fe and Pb precipitated in culture during the 24 hour growth experiments. For all data, the mean $\pm$ s.d. of three replicates are shown.
+  }
+  \label{\sfigname{3}{7}}
+\end{figure}
+\clearpage
+
+%======================%
+% Supplemental Figure 8
+%======================%
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\columnwidth]{\sfigname{3}{8}}
+  \caption[Percent survival after metal uptake experiments with 100 $\mu$M cadmium using a FACS live-dead assay]
+  {
+    \textbf{Percent survival after metal uptake experiments with 100 $\mu$M cadmium using a FACS live-dead assay}.
+    Increased transporter expression (\sFIGURE~\ref{\sfigname{3}{4}}) and cadmium uptake (\FIGURE~\ref{\figname{3}{2}}a) loosely correlated to increase cell death during metal uptake experiments (WT $\rightarrow$ S $\rightarrow$ S* $\rightarrow$ S*B). Expression of TaPCS1 (T) and CCC1 (C) enhanced cell viability despite increased cadmium uptake. Asterisk above bar charts represent significance change in survival percentage (p < .05) compared to WT. For all data, the mean $\pm$ s.d. of three replicates are shown.
+  }
+  \label{\sfigname{3}{8}}
+\end{figure}
+\clearpage
+
+%======================%
+% Supplemental Figure 9
+%======================%
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\columnwidth]{\sfigname{3}{9}}
+  \caption[Weblogos and mutagenesis annotations of transmembrane regions for TM1 and 6 (green) and TM4 (blue)]
+  {
+    \textbf{Weblogos and mutagenesis annotations of transmembrane regions for TM1 and 6 (green) and TM4 (blue)}.
+    Mutations introduced based on previous findings~\cite{bozzi2016} were M276C for cadmium mutants, and G189R and M276A for strontium mutants. Mutations discovered using the developed transporter assay were S105C, and T266S, for cadmium mutant mCd and S269T and G283Q for mSr.
+  }
+  \label{\sfigname{3}{9}}
+\end{figure}
+\clearpage
+
+%=======================%
+% Supplemental Figure 10
+%=======================%
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\columnwidth]{\sfigname{3}{10}}
+  \caption[Fractionating cells based on metal uptake using rate-zonal density gradient centrifugation]
+  {
+    \textbf{Fractionating cells based on metal uptake using rate-zonal density gradient centrifugation}.
+    Conditions from left to right were: (i) WT incubated with 100 $\mu$M cadmium; (ii), (iii), and (iv) S*BCT strain incubated with 25, 50, and 100 $\mu$M cadmium, respectively. Bottom bar charts indicate the amount of metal uptake per condition. Left chart shows the population distribution of migrated cells by measuring the tube's opacity as a function of height using ImageJ. Ticks represent distance measured from the meniscus to the tube's bottom in centimeters.
+  }
+  \label{\sfigname{3}{10}}
+\end{figure}
+\clearpage
+
+%=======================%
+% Supplemental Figure 11
+%=======================%
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\columnwidth]{\sfigname{3}{11}}
+  \caption[Approximate mutation locations for mCd and mSr are highlighted on homologue DraNramp (PDB 5KTE)]
+  {
+    \textbf{Approximate mutation locations for mCd and mSr are highlighted on homologue DraNramp (PDB 5KTE)}.
+    Many of the mutations for both mCd and mSr reside on TM6, or at the entry of TM1. This could suggest that the region 77-98 (41-61 for DraNramp) in the first alpha-helix sequence of TM1 is highly sensitive to mutations, as observed in previous works~\cite{bozzi2016a,ehrnstorfer2017,courville2006}. This region, referred to as the permeation region~\cite{bozzi2016a}, has a highly conserved DPGN sequence which may act as an actuator to transport metals through the inner cavity. Whereas, TM6 and 4 may provide the spacing and environment to select for certain metals.
+  }
+  \label{\sfigname{3}{11}}
+\end{figure}
+\clearpage
+
+%=======================%
+% Supplemental Figure 12
+%=======================%
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=\columnwidth]{\sfigname{3}{12}}
+  \caption[Effect of mCd and mSr mutations on SMF1 expression measured with flow cytometry]
+  {
+    \textbf{Effect of mCd and mSr mutations on SMF1 expression measured with flow cytometry}.
+    (\textbf{a}) Progressive mutations (1-4; corresponding to numberings in Figure 5b) leading to mCd caused little change in transporter expression.
+    (\textbf{b}) Likewise, a slight reduction in mSr transporter expression was observed, but not significant.
+    (\textbf{c}) Negative (WT) and positive controls (S*BCT) were also measured to compare expression changes with non-engineered strains.
+  }
+  \label{\sfigname{3}{12}}
+\end{figure}
+\clearpage
+
+%---------------------------------------------------------------------------%
+% Section
+%---------------------------------------------------------------------------%
+\section{Supplemental tables}
+\renewcommand{\tablename}{S.Table}
+\setcounter{table}{0}
+
+%~~~~~~~~~%
+% Table 1
+%~~~~~~~~~%
+\begin{table}[H]
+\small
+\centering
+	\input{\inputtable{3}{1}}
+	\caption[Transporters and strains that are within or have exceeded hyperaccumulating thresholds for their respective metal]
+	{
+		\textbf{Transporters and strains developed in this work that are within or have exceeded hyperaccumulating thresholds~\cite{prasad2003,kramer2010metal} for their respective metal}.
+	}
+	\label{\inputtable{3}{1}}
+\end{table}
+\clearpage
+
+%~~~~~~~~~%
+% Table 2
+%~~~~~~~~~%
+\begin{table}[H]
+\small
+\centering
+	\input{\inputtable{3}{2}}
+	\caption[Primers used to clone divalent metal transporters into the pYES2/CT vector using restriction sites KpnI and XhoI]
+	{
+		\textbf{Primers used to clone divalent metal transporters into the pYES2/CT vector using restriction sites KpnI and XhoI}.
+	}
+	\label{\inputtable{3}{2}}
+\end{table}
+\clearpage
+
+%~~~~~~~~~%
+% Table 3
+%~~~~~~~~~%
+\begin{table}[H]
+\small
+\centering
+	\input{\inputtable{3}{3}}
+	\caption[Primers used to clone permeases into pYES2/CT in addition to substituting the V5 tag with a HA tag given the appropriate primer overhangs]
+	{
+		\textbf{Primers used to clone permeases into pYES2/CT in addition to substituting the V5 tag with a HA tag given the appropriate primer overhangs}.
+	}
+	\label{\inputtable{3}{3}}
+\end{table}
+\clearpage
+
+%~~~~~~~~~%
+% Table 4
+%~~~~~~~~~%
+\begin{table}[H]
+\small
+\centering
+	\input{\inputtable{3}{4}}
+	\caption[Primers used to clone Nrat1 into pYES2/CT. Nrat1 was first codon-optimized from \textit{O. sativa} and synthesized from Genscript before amplifying and assembling into pYES2/CT]
+	{
+		\textbf{Primers used to clone Nrat1 into pYES2/CT. Nrat1 was first codon-optimized from \textit{O. sativa} and synthesized from Genscript before amplifying and assembling into pYES2/CT}.
+	}
+	\label{\inputtable{3}{4}}
+\end{table}
+\clearpage
+
+%~~~~~~~~~%
+% Table 5
+%~~~~~~~~~%
+\begin{table}[H]
+\small
+\centering
+	\input{\inputtable{3}{5}}
+	\caption[Primers used to clone vacuole transporters into a modified pYES2/CT vector with a LEU marker]
+	{
+		\textbf{Primers used to clone vacuole transporters into a modified pYES2/CT vector with a LEU marker}.
+    CCC1 was first cloned via SacI and BamHI restriction enzymes, and later modified to contain a downstream flag tag instead of the V5 tag. COT1, ZRC1, and SMF3 were amplified using PCR and Gibson assembled into the modified pYES2/CT vector replacing CCC1.
+	}
+	\label{\inputtable{3}{5}}
+\end{table}
+\clearpage
+
+%~~~~~~~~~%
+% Table 6
+%~~~~~~~~~%
+\begin{table}[H]
+\small
+\centering
+  %
+  \begin{subtable}{\columnwidth}
+    \caption{}
+    \centering
+    \input{\inputtable{3}{6}a}
+  \end{subtable}
+  %
+  \begin{subtable}{\columnwidth}
+    \caption{}
+    \centering
+    \input{\inputtable{3}{6}b}
+  \end{subtable}
+  %
+  \begin{subtable}{\columnwidth}
+    \caption{}
+    \centering
+    \input{\inputtable{3}{6}c}
+  \end{subtable}
+\end{table}
+\clearpage
+
+\begin{table}[H]
+\ContinuedFloat
+  \begin{subtable}{\columnwidth}
+    \caption{}
+    \centering
+    \input{\inputtable{3}{6}d}
+  \end{subtable}
+  \caption[Primers used to construct the S*BCT strain]
+	{
+		\textbf{Primers used to construct the S*BCT strain}.
+    (\textbf{a}) Mutagenesis primers altering the K33,34 region (\textit{AAGAAA}) into arginines (\textit{AGGAGA}).
+    (\textbf{b}) Primers used to amplify the HIS3 cassette from pRS303 with appropriate overhangs flanking the genomic BSD2 gene for deletion.
+    (\textbf{c}) Primers used to construct constitutively expressing TaPCS1 in pD1235, which was then amplified using PCR and homologously recombined into the yeast genome by substituting the TRP auxotrophic marker.
+    (\textbf{d}) Primers used to assemble GAL1 inducible CCC1 with a downstream LEU marker into a pUC18 backbone. Construct was then amplified with overhangs flanking the LEU auxotrophic marker and homologously recombined for genomic integration.
+	}
+	\label{\inputtable{3}{6}}
+\end{table}
+\clearpage
+
+%~~~~~~~~~%
+% Table 7
+%~~~~~~~~~%
+\begin{table}[H]
+\small
+  \begin{subtable}{\columnwidth}
+    \caption{}
+    \centering
+    \input{\inputtable{3}{7}a}
+  \end{subtable}
+  %
+  \begin{subtable}{\columnwidth}
+    \caption{}
+    \centering
+    \input{\inputtable{3}{7}b}
+  \end{subtable}
+  \caption[Primers used for library generation and site-directed mutagenesis of SMF1*]
+  {
+    \textbf{Primers used for library generation and site-directed mutagenesis of SMF1*}.
+    (\textbf{a}) Primers used to error-prone PCR regions TM1 and 6 of SMF1 to construct libraries using Agilent's GeneMorph(II) protocol.
+    (\textbf{b}) Site-directed mutagenesis primers used to selectively mutate residues identified to have effects on SMF1 metal preference and uptake.
+  }
+  \label{\inputtable{3}{7}}
+\end{table}
+\clearpage
+
+%===============================BIBLIOGRAPHY================================%
+\printbibliography[title=References]
+
+\end{document}

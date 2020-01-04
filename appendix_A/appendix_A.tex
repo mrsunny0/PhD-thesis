@@ -1,0 +1,333 @@
+%***************************************************************************%
+%                                 APPENDIX C                                %
+%***************************************************************************%
+\documentclass[../main/main]{subfiles}
+\begin{document}
+\chapter{Relevant yeast values and calculations}
+\label{appendixA}
+
+%===========================================================================%
+% Limits of yeast display
+%===========================================================================%
+\section{Upper limit of yeast display capture}
+\label{section:yeast-display-capture}
+The amount of molecules (or moles) a single yeast displaying strain can bind to can be calculated based on the number of displayed binding moieties ($N_E$), the number of binding sites per moiety ($N_B$), and the bound perfect occupancy. Assuming perfect binding (all binding sites are occupied regardless of ligand concentration), and using \OD{} to indirectly calculate the number of cells per culture ($N_{\text{cells}}$), the equation for the upper limit of yeast display capture can be calculated by,
+
+%::::::::::::::::::::::%
+% yeast display capture
+%::::::::::::::::::::::%
+\vspace{-\baselineskip}
+\begin{align}
+	N_{\text{binders}} &= N_E \times N_B
+		\tagaddtext{[\si{\#\per\liter}]} \\
+	%
+	\bar N_{\text{cells}} &= \text{OD}_{600} \times \lambda_{\text{OD}}
+		\tagaddtext{[\si{cells}]} \\
+	%
+	\bar N_{\text{bound}} &= \bar N_{\text{cells}} \times N_{\text{binders}}
+		\tagaddtext{[\si{\#/L}]} \\
+	%
+	\Aboxed{\qquad
+	\bar{\text{M}}_{\text{bound}} &= \bar{N}_{\text{bound}} / N_A
+		\tagaddtext{[\si{M}]}
+	\qquad}
+\end{align}
+
+where variables annotated with $\bar X$ represent bulk values for the total yeast culture, whereas all other variables are relative to a single yeast cell. Relevant variables are:
+
+\begin{center}
+	\begin{tabularx}{.75\textwidth}{r c X}
+		$N_E$ & = & 1e3--1e6, number of displayed moieties per yeast \\
+		$N_B$ & = & 1--..., number of binding sites per domain \\
+		$N_{\text{binders}}$ & = & number of metals bound per cell \\
+		$\text{OD}_{600}$ & = & 0 -- ..., optical density measured at 600 nm \\
+		$\bar N_{\text{cells}}$ & = & number of cells per culture density \\
+		$\lambda_{\text{OD}}$ & $\approx$ & 1e7 cells per mL, ratio of optical density to \OD{} \\
+		$N_A$ & = & 6.022e23, Avagadro's number, molecules per mole \\
+		$\bar{\text{M}}_\text{bound}$ & = & total metal capture per \OD{}
+	\end{tabularx}
+	\addtocounter{table}{-1}	% bug, tabularx increments caption counteracted
+\end{center}
+\vspace{-\baselineskip}
+
+Using frequently achievable values in experimental settings, such as an expression level of 100,000 metal binding domains per cell~\cite{kieke1999}, 1 binding site per domain, and a typical \OD{} of 1, yields an astonishingly low $\approx$ 2 nanomolar (10e-9) of bound metals. If these parameters were pushed to an extreme, using an expression level of 1 million, 10 binding sites per domain, and an \OD{} of 10 (either by growing to saturation or packing yeast) would yield $\approx$ 2 micromolar (10e-6) of bound metals, or 3 orders of magnitude more (\TABLE~\ref{\inputtable{A}{1}}).
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+% table yeast display calculations
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+\begin{table}[H]
+	\centering
+	\input{yeast_display_calc}
+	\caption[Number of metals bound given yeast display parameters]
+	{
+		\textbf{Number of metals bound given yeast display parameters}.
+		Molarity of metal removed using yeast display ranges from nanomolar (10E-9) to micromolar (10E-6). These values are 3--6 orders of magnitude smaller than typical ion-exchange capacities if comparing yeast display as a biological analogy~\cite{barakat2011new}.
+	}
+	\label{\inputtable{A}{1}}
+\end{table}
+
+Therefore, in order to obtain environmentally relevant values, the number of metals bound would have to increase by another 3--6 orders of magnitude (in the high $\mu$M to mM range).
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+% table comparison other uptake values
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+\begin{table}[H]
+	\centering
+	\input{yeast_display_references}
+	\caption[Back-calculating cell surface display removal capacities citing previously published metal removal results]
+	{
+		\textbf{Back-calculating cell surface display removal capacities citing previously published metal removal results}.
+		YT = yeast display. BT = bacterial display.
+		Using metal removal values reported in previous literature, the amount of displayed groups are beyond what is typically seen in cellular display technology (tens to hundred thousands) by 1--3 orders of magnitude (calculations ranging from millions to billions). Therefore, past reports of cellular display mediated metal removal could have been overestimated possibly due to background binding or cellular uptake.
+	}
+	\label{\inputtable{A}{2}}
+\end{table}
+
+% continued from break
+\noindent To do so would require massive optimization in protein expression, designing proteins with multiple binding sites, and improving yeast culture densities. Given these circumstances, yeast display is unfortunately not a viable method for significant metal capture, and publications that have shown promising results may be observing other binding phenomenon such as non-specific cell surface adsorption or absorption into the cell (\TABLE~\ref{\inputtable{A}{2}}).
+
+%===========================================================================%
+% Uptake capacity
+%===========================================================================%
+\section{Upper limit of yeast metal absorption}
+\label{section:metal-uptake}
+Rather than using cell display technologies, cell volume is a much greater container for substances than its surface area given the surface-to-volume ratio. This exercise is to estimate the bulk uptake capacity of yeast as a whole, not considering the biological impact of cell death, cytosolic metal binding, or metal trafficking into other cytoplasmic organelles. To estimate the theoretical bulk capacity maximum limit of yeast uptake is to understand the geometry of yeast (diameter, $d$, hence volume, $V$), number of cells (i.e. cell culture density, \OD), and nominal uptake values (\CHAPTER~\ref{ext-chapter3}). To determine the upper limit requires a top-down approach. The strategy is to fix a metal uptake concentration to then calculate the internal metal concentration per yeast and assessing the feasibility given typical metal concentrations found in a cell. The metal uptake concentration is then changed, and this process is iterated as necessary until a physically plausible metal uptake concentration range is established.
+
+Assuming a metal uptake concentration of $\bar{\text{M}}_{\text{uptake}}$, the amount of metal atoms per yeast can be calculated by
+
+%::::::::::::::::::::::%
+% metal uptake capacity
+%::::::::::::::::::::::%
+\begin{align}
+	\bar N_{\text{atoms}} &= \bar{\text{M}}_{\text{uptake}} \times V \times N_A
+		\tagaddtext{[\si{\#\per\liter}]} \\
+	%
+	\bar N_{\text{cells}} &= \text{OD}_{600} \times \lambda_{\text{OD}}
+		\tagaddtext{[\si{cells}]} \\
+	\Aboxed{\qquad
+	N_{\text{U}} &= \dfrac{\bar N_{\text{atoms}}}{\bar N_{\text{cells}}} \label{equ:uptake}
+		\tagaddtext{[\si{\#/\text{cell}}]}
+	\qquad}
+\end{align}
+
+where:
+\begin{center}
+	\begin{tabularx}{.75\textwidth}{r c X}
+		$\bar{\text{M}}_{\text{uptake}}$ & = & 0--10 mM, range of uptaken metal \newline{}concentrations \\
+		$\bar N_{\text{atoms}}$ & = & number of metal atoms uptaken in culture \\
+		$\bar N_{\text{cells}}$ & = & number of yeast cells \\
+		$N_{\text{U}}$ & = & number of atoms uptaken per cell
+	\end{tabularx}
+	\addtocounter{table}{-1}
+\end{center}
+\vspace{-\baselineskip}
+
+The number of atoms uptaken can be converted to moles (mol$_{\text{U}}$) or molarity (M$_{\text{U}}$) as follows:
+
+%::::::::::::::::::::::::::::::::::::::::::::::%
+% converting uptake atoms to moles and Molarity
+%::::::::::::::::::::::::::::::::::::::::::::::%
+\begin{empheq}[box=\fbox]{align}
+\qquad
+	\text{mol}_{\text{U}} &= N_{\text{U}} / N_A \label{equ:moles_uptaken}
+		\tagaddtext{[\si{\mol}]} \\
+	%
+	\text{M}_{\text{U}} &= \text{mol}_{\text{U}} / V	\label{equ:molarity_uptaken}
+		\tagaddtext{[\si{M}]}
+\qquad
+\end{empheq}
+
+where:
+\begin{center}
+	\begin{tabularx}{.75\textwidth}{r c X}
+		$d$ & $\approx$ & 1--10 $\mu$m, diameter of yeast \\
+		$V$ & $\approx$ & 0.52--524 $f$\! L (1E-15 L) \\
+	\end{tabularx}
+	\addtocounter{table}{-1}
+\end{center}
+
+For a given amount of metal uptake of the bulk culture ($\bar{\text{M}}_{\text{uptake}}$), an equivalent concentration of metal uptake per cell can be calculated (M\textsubscript{U}; \EQUATION~\ref{equ:molarity_uptaken}). Work by Bryan et al. provides accurate yeast morphology parameters such as average cell volume, density, and dry and wet mass weight that can be used to calculate uptake values per cell~\cite{bryan2010measurement}.
+\TABLE~\ref{table:appendix:yeast-uptake} provides a list intracellular metal concentrations considering the amount of metal uptaken, culture density, and average cell volume.
+
+Given these calculations an uptake of 1 $\mu$M would amount to 3 mM of intracellular metal content. For comparison, nominal metal concentrations in yeast for \ce{K^+} is approximately 300 mM, for \ce{Na^+} is 30 mM, and for \ce{Mg^{2+}} is 50 mM~\cite{philips2015}. Therefore, hyperaccumulating yeast consume almost an order of magnitude less of metals as it has essential salts such as potassium and sodium. However, these levels of intracellular metal content is presumably toxic. Past studies have shown that media containing metals such as cadmium and mercury at dosages in the low micromolar range are lethal~\cite{wang2012} (\CHAPTER~\ref{ext-subsection:tapcs1}). Therefore, there must be other physiological changes in the cell that occur during hyperaccumulation, and these calculations do not consider other cellular changes such as changes in volume, mass, or density.
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+% uptake and internalized amount
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+\begin{table}[H]
+\singlespacing
+\setlength\extrarowheight{1pt}
+	\centering
+		\input{yeast_uptake_amount}
+	\caption[Calculated intracellular metal concentrations after metal uptake experiments]
+	{
+		\textbf{Calculated intracellular metal concentrations after metal uptake experiments}. Depending on the culture density, cell volume, and metal added to the media, intracellular metal concentrations can range from 1--300 mM given typical uptake values reported in \CHAPTER~\ref{ext-chapter3}.
+	}
+	\label{table:appendix:yeast-uptake}
+\end{table}
+
+%===========================================================================%
+% SECTION
+%===========================================================================%
+\section{Uptake induced density changes}
+The purpose of this exercise is to determine the feasibility of using density gradient centrifugation performed in \CHAPTER~\ref{ext-subsection:density-gradient} for screening new hyperaccumulator mutants. A secondary goal is to further elaborate on the calculations presented in \SECTION~\ref{section:metal-uptake} by considering other factors such as weight and volume changes during metal uptake.
+
+To calculate the degree of density change a top-down approach, much like what was performed in \SECTION~\ref{section:metal-uptake}, could be done to iteratively narrow in on a range of physiological plausible values for cell density changes due to metal uptake. Calculations performed consider both a fixed cell volume, and cell volume changes as a function of maintaining isotonicity for the increase in dissolved solutes (i.e. internalized metal).
+
+%-----------------------------------------------------------------%
+% SUBSECTION
+%-----------------------------------------------------------------%
+\subsection*{Constant volume}
+\label{subsection:constant-volume-density}
+For a fixed volume ($V$), cell density would increase by the additional mass accumulated from the uptaken metals. The change in mass ($\Delta m$) is determined by the amount of internalized metal (molarity, $M$, or atoms, $N_{\text{atoms}}$), and its molecular weight (MW).
+
+\vspace{\baselineskip}
+\noindent If cell volume ($V$) remained constant,
+
+%::::::::::::::::%
+% density changes
+%::::::::::::::::%
+\begin{align}
+	\Delta m &= \text{mol}_{\text{U}} \times \text{MW}
+		\tagaddtext{[\si{\gram}]} \\
+	\rho' &= \dfrac{m_o + \Delta m}{V}
+		\tagaddtext{[\si{\gram\per\milli\liter}]} \\
+	%
+	\Aboxed{\qquad
+	\rho' &= \rho_o + \dfrac{\Delta m}{V}
+		\tagaddtext{[\si{\gram\per\milli\liter}]}
+	\qquad}
+\end{align}
+
+where variable suffix's $_o$ and $'$ denote original and new values, respectively, and:
+\begin{center}
+	\begin{tabularx}{.75\textwidth}{r c X}
+		$\Delta m$ & = & mass accumulated from uptaken metals \\
+		mol$_\text{U}$ & = & moles of uptaken metal (\EQUATION~\ref{equ:moles_uptaken}) \\
+		MW & = & metal molecular weight \\
+		$m_o$ & = & original cell mass \\
+		$V$ & = & yeast volume \\
+		$\rho_o$ & = & original yeast density  \\
+		$\rho'$ & = & new yeast density
+	\end{tabularx}
+	\addtocounter{table}{-1}
+\end{center}
+
+To calculate density changes, a hypothetical experimental condition of 1 \OD{}, with average yeast diameter of 4 $\mu$m and density of 1.102 g/L was used~\cite{bryan2010measurement}. Overall, the contributions to density change is minimal, as experimental uptake measurements of tens of $\mu$M barely amount to a percent change, even for the heavier elements such as cadmium, mercury, and lead. At 100 $\mu$M uptake, density changes are roughly between 1--6\%. These small changes may be possible to distinguish with isopynic density gradient centrifugation, with past studies showing fractionation of cell populations with just 5\% density differences~\cite{baldwin1984,kjeldsen1999subcellular}. However, experiments performed for screening yeast hyperaccumulator mutants using isopynic density gradient centrifugation did not yield consistent results, as the bands were difficult to distinguish after metal uptake experiments.
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+% table comparison other uptake values
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+\begin{table}[H]
+	\centering
+	\input{yeast_uptake_density-I}
+	\caption[Density change as a function of metal uptake given constant cell volume]
+	{
+		\textbf{Density change as a function of metal uptake given constant cell volume}.
+		It is possible to induce density changes of 1--6\% given metal uptake above 10 $\mu$M with heavier elements such as cadmium, mercury, and lead.
+	}
+\end{table}
+
+%-----------------------------------------------------------------%
+% SUBSECTION
+%-----------------------------------------------------------------%
+\subsection*{Volume as a function of isotonicity}
+Holding volume constant in \SECTION~\ref{subsection:constant-volume-density} made calulations more straightfoward, but may not be an appropriate assumption. Rather, volume changes should also be considered, especially if the amount of intracellular dissolved solutes increases due to metal uptake. To maintain osmotic equilibrium, the increase in dissolved content would encourage diffusion of water into the cell in order to maintain isotonicity (\EQUATION~\ref{equation:omsotic-pressure}). Osmotic equilibirum is achieved by maintaining the osmotic pressure inside and outside of the cell by passively or actively transporting ions or water into or out of the cell.
+
+%::::::::::::::::::::%
+% osmotic equilibrium
+%::::::::::::::::::::%
+\begin{equation}
+	\Pi_i = iC_iRT \tagaddtext{[atm]}
+	\label{equation:omsotic-pressure}
+\end{equation}
+
+where:
+\begin{center}
+	\begin{tabularx}{.75\textwidth}{r c X}
+		$i$ & = & van't Hoff factor (assumed to be $\approx 1$) \\
+		$C_i$ & = & concentration of dissolved species in a cell \\
+		$R$ & = & 0.08206 \si{liter\,atm\per\mol\per\kelvin}, universal gas constant \\
+		$T$ & = & 303 \si{\kelvin}, temperature at 30$^o$C
+	\end{tabularx}
+	\addtocounter{table}{-1}
+\end{center}
+\vspace{-\baselineskip}
+
+A change in volume can be calculated by equating the original osmotic pressure to the osmotic pressure of cells after metal uptake and solving for the new volume $V'$ (\EQUATION~\ref{equation:solving-new-V}).
+
+\begin{align}
+	\Pi_o &= \Pi' \\
+	%
+	iC_oRT & = iC'RT \\
+	%
+	\dfrac{\text{mol}_o}{V_o} & = \dfrac{\text{mol}_o + \text{mol}_\text{U}}{V'} \\
+	%
+	\intertext{\indent rearranging,}
+	%
+	\Aboxed{\qquad
+	V' &= V_o \times \left(\dfrac{\text{mol}_\text{U}}{\text{mol}_o} \right)
+	\qquad}
+	\label{equation:solving-new-V}
+\end{align}
+
+where,
+\begin{center}
+	\begin{tabularx}{.75\textwidth}{r c X}
+		$\Pi$ & = &  cellular osmotic pressure \\
+		$C$ & = &  cellular concentration of dissolved species \\
+		$V$ & = &  cell volume \\
+		$\text{mol}_o$ & = & moles of dissolved species in the cell  \\
+		mol$_{\text{U}}$ & = & moles of metal uptake (\EQUATION~\ref{equ:moles_uptaken})
+	\end{tabularx}
+	\addtocounter{table}{-1}
+\end{center}
+\vspace{-\baselineskip}
+
+The volume change is proportional to the amount of metal uptaken (mol$_{\text{U}}$) relative to the original solute concentration of the cell (mol$_o$). Therefore, the increase in density due to a mass increase of uptaken metals is counteracted by the volume increase in order to maintain cellular isotonicity. The new equation to calculate density change taking into account these two effects is derived in \EQUATION~\ref{equation:new-density-change}.
+
+%::::::::::::::::::::::::::%
+% density change conclusion
+%::::::::::::::::::::::::::%
+\begin{align}
+	\Delta V &= V' - V_o
+		\tagaddtext{[\si{\liter}]} \\
+	\Delta V &= \left( 1 + \dfrac{\text{mol}_u}{\text{mol}_o} \right)
+		\tagaddtext{[\si{\liter}]} \\
+	\Delta m_w &= \rho_{\text{water}} \times \Delta V
+		\tagaddtext{[\si{\gram}]}
+\end{align}
+
+Therefore,
+
+\begin{equation}
+	\boxed{\qquad
+	\rho' = \dfrac{m_o + \Delta m_w + \Delta m_{\text{U}}}{V'}
+		\tagaddtext{[\si{\gram\per\liter}]}
+	\qquad}
+	\label{equation:new-density-change}
+\end{equation}
+
+Even though the effect of metal uptake on density change is much less significant, the overall increase in mass accumulation, primarily due to the contribution of water intake, is much more significant.
+
+The increase in mass and volume due to water is a better indicator of metal uptake and can be distinguished using rate-zonal density gradient centrifugation, rather than isopynic density gradient centrifugation. As seen in the hyperaccumulator work in \CHAPTER~\ref{ext-subsection:density-gradient}, using rate-zonal density gradient centrifugation yeilded better results in fractionating cells with higher metal uptake content than using isopynic density gradient centrifugation.
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+% density and weight changes
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+\begin{table}[H]
+\singlespacing
+\setlength\extrarowheight{1pt}
+	\centering
+	\input{yeast_uptake_density-II}
+	\caption[Mass, volume, and density changes as a function of cellular metal uptake]
+	{
+		\textbf{Mass, volume, and density changes as a function of cellular metal uptake}.
+		Metals used for these calculations were Mn, Sr, and Cd, metals which were engineered for in \CHAPTER~\ref{ext-chapter3}. The contribution of mass change due to metal uptake is less significant than the mass and volume gained from the intake of water.
+	}
+\end{table}
+
+%===============================BIBLIOGRAPHY================================%
+\printbibliography[title=References]
+
+\end{document}

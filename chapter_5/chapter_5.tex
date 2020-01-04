@@ -1,0 +1,232 @@
+%***************************************************************************%
+%                                 CHAPTER 5                                 %
+%***************************************************************************%
+\documentclass[../main/main]{subfiles}
+\begin{document}
+\chapter{Considerations and future work}
+\label{chapter5}
+\renewcommand{\figurename}{Figure}
+
+%-----------------------------------------------------------------%
+% Section
+%-----------------------------------------------------------------%
+\section{Use of other biological processes for heavy metal removal}
+
+\subsection*{Electrochemical treatment}
+Another actively performed phyisochemical strategy is electrochemical treatment. Similar to chemical preciptiation, the intention is to convert dissolved metals into another form such as a solid. The mechanism of action is through oxidation or reduction of metals by applying current/voltage in solution to plate-out metal ions onto a cathode (reducing) or anode (oxidizing) surface. Once deposited, the plated metal can be later stripped, collected, and cathode/anode renewed for future rounds of use~\cite{wang2007mechanism}.
+
+Difficulties occur when reducing high redox potential species such as mercury and arsenic. Moreover, conditions need to be optimized to select the correct solvent and cathode/anode composition for specific metal deposition~\cite{fu2011removal}. Lastly, electrochemical treatment is a unique process among the physicochemical processes in which external energy needs to be injected into the system.
+
+\subsection*{Enzymatic reduction or oxidation of metals as an analogy to electrochemical treatment}
+The biological analogy to electrochemical treatment would be to use enzymatic reductases or oxidases to alter a metal's valent state, or convert metals to their ground state M\textsuperscript{0} as a solid. Reductases and oxidases are enzymes that catalyze reducing or oxidizing reactions by facilitating the transfer of electrons from substrate to product\footnote{
+	For the majority of metals which are in the cationic state, reductases (transfer of electrons to the metal) are generally more desirable (except for dealing with polyatomic metal anions such as \ce{CrO4^{2-}} and \ce{AsO4^{3-}}).
+}. To facilitate the transfer of electrons many reductases and oxidases contain a porphyrin, a molecular co-factor which contains a flat ring of four heterocyclic groups with a central metal atom; examples being heme (\ce{Fe^{2+}}) and chlorophyll (\ce{Mg^{2+}}). Common electron transfer enzymes are cytochromes which contain a heme co-factor that participates in the electron transport chain during respiration. During respiration the terminal electron acceptor is oxygen, which provides the energy to then allow the catalytic formation of ATP.
+
+There are other microorganisms that use metals as their terminal electron acceptor rather than oxygen. In a way, these microorganisms breathe metal. This phenomenon is typically found in a family of bacteria and archaea known as dissimilatory metal-reducing bacteria (DMRBs). DMRBs utilize electrochemical gradients generated from metal reduction to create chemical energy for cellular growth~\cite{lovley1993dissimilatory}. What drives dissimilatory metal reduction are the numerous copies of c-type cytochromes on the periplasmic and cell membranes that facilitate electron transfer to surrounding metals~\cite{lovley1993dissimilatory,weber2006microorganisms}.
+Cytochrome families \textit{mtr}, \textit{omc}, \textit{ppcA} have been implicated in
+\ce{Fe^{3+}} $\rightarrow$ \ce{Fe^{2+}}, and even
+\ce{Hg^{2+}} $\rightarrow$ \ce{Hg^{0}}
+\ce{Cr^{6+}} $\rightarrow$ \ce{Cr^{3+}}
+\ce{As^{5+}} $\rightarrow$ \ce{Fe^{3+}}~\cite{liu2002reduction,wiatrowski2006novel,stolz1999bacterial}
+The electron donor is usually an organic molecule such as NAD(P)H, formate, lactate, or pyruvate which is replenished by dehydrogenases or other metabolic processes~\cite{du2007state} (\FIGURE~\ref{\figname{5}{3}}a).
+
+%======================%
+% bio-electrochemical
+%======================%
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{\figname{5}{3}}
+	\caption[Overview of metal reducing mechanisms found in nature]
+	{
+		\textbf{Overview of metal reducing mechanisms found in nature}.
+		(\textbf{a}) Cytochromes facilitate the transfer of electrons derived from biological processes that convert extracellular metals and metal oxides to those of lower oxidation states.
+		(\textbf{b}) Other mechanisms of metal reduction use exported sacrificial electron shuttles and chelators to reduce environmental metals.
+  }
+  \label{\figname{5}{3}}
+\end{figure}
+
+Other mechanisms such as assimilatory metal-reduction use sacrificial electron shuttles like sulfide containing molecules or chelating agents like siderophores to react or entrap metal species~\cite{rajkumar2010potential,hao1996sulfate} (\FIGURE~\ref{\figname{5}{3}}b). These reacted compounds can either be stored in the cell for later metabolic processing or removed by precipitating captured metals out of solution~\cite{gadd2004microbial}. Overall, both methods of dis- and assimilatory metal reduction provide energy-efficient and natural pathways to convert metals from highly reactive valencies to a less reactive or usable form without the use of an external power source commonly needed in electrochemical treatment.
+
+However, a major difficulty with using DMRBs is their exotism. Many DMRBs live in environments that cannot be easily recapitulated in a laboratory setting, and some culture conditions are still unknown to scientists. In addition, many DMRBs are obligate anaerobes, making ambient oxygen concentrations lethal to cell growth. However, one microorganism that has been a popular model organism for dissimilatory metal reduction is \textit{Shewanella oneidensis}. \textit{S. oneidensis} is able to grow in both aerobic and anaerobic conditions, and can be cultured in LB broth commonly used for \textit{E. coli} cultures. In anaerobic environments, \textit{S. oneidensis} have been shown to reduce metals such as iron, lead, chromates, arsenates, and even radioactive elements such as uranium~\cite{lies2005,holmes2002enrichment,lloyd2001}.
+More so, several studies have used \textit{S. oneidensis} for microbial fuel cells, a method that leverages the microbes' electron-shuttling mechanism to naturally provide electrical power between an anode and cathode material much like a battery~\cite{allen1993microbial,schaetzle2008,du2007state}.
+However, like using \textit{E. coli},
+using \textit{S. oneidensis} has its limitatations when taking into account environmental waste conditions, scalability, and engineerability (\FIGURE~\ref{ext-figure:chapter1:venn-diagram}). Given the positive experimental results using yeast with the other physicochemically-inspired strategies (\CHAPTER{}s~\ref{ext-chapter2}--\ref{ext-chapter4}), a follow up study would be to ask whether electrochemical treatment of waste can be transfered to yeast using enzymes and pathawys found in DMRBs.
+
+%---------------------------------------------------------------------------%
+% Section
+%---------------------------------------------------------------------------%
+\section{Modular and synergistic combination of yeast-based strategies}
+Three separate physicochemical strategies were discussed in \CHAPTER~\ref{ext-chapter1}, and their mechanism of action were compared to processes found in nature. Mechanistically examining these physicochemical strategies, the goal was to endow yeast with biologically equivalent capabilities for heavy metal waste removal by creating mirrored biological analogies. They were:
+chemical precipitation $\rightarrow$ biomineralization,
+absorption $\rightarrow$ membrane transporters,
+ion-exchange $\rightarrow$ and metal-protein aggregation
+(\TABLE~\ref{ext-table:chapter1:compare-physico-bio}; \FIGURE~\ref{ext-figure:chapter1:physico-versus-bio}).
+\CHAPTER{}s~\ref{ext-chapter2}--\ref{ext-chapter4}
+indiviudally discuss experimental work and results to design yeast with biomineralization, internalized metal trafficking, and metal-protein binding capabilities.
+
+In conventional physicochemical systems, these strategies are truly independent, requiring separate chemical synthesis processes, reactors, and infrastructure to house them. However, for a biologically-based approach these strategies are not mutually exclusion. Each strategy could be swapped, mixed, and combined with one another (in addition to future strategies still to be developed) by simply providing the correct genetic instructions. Rather than having individual strains perform biomineralization or metal transport, a single strain can be modified to perform them in tandem. With the advent of synthetic biology, the power of logic---the logic typically referred to in microprocessors and computing---can be incorporated into the genetic instructions to broaden the sophistication of such combined processes where one process operates in certain scenarios, while the other is modulated, and vice-versa. Abstractly, yeast are the factories in which they compile and build from the instructions given to them by the engineer. As \textit{this} engineer, we have the freedom to modularly and synergistically design strategies that improve upon one another, rather than in conventional waste treatment strategies which is forced to silo each process to an individual bucket.
+
+% hack vertical spacing
+\vspace{-0.5\baselineskip}
+
+%======================%
+% multi-yeast schematic
+%======================%
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{\figname{5}{1}}
+	\caption[Example of synergistic combinations of metal remediation strategies in yeast]
+	{
+		\textbf{Example of synergistic combinations of metal remediation strategies in yeast}.
+		(\textbf{a}) Metals could be preciptated onto the cell surface, or transported into the cell.
+		(\textbf{b}) Alternatively, metals could be extracellularly modified to enable sequestration in solution, facilitated precipitation onto the cell surface, or improve recognition for internalization.
+		(\textbf{c}) In the cell, several of the pathways that were performed extracellularly could be similarly performed intracellularly. Some examples would be to chelate internalized metals, chelate and transport metals into compartment organelles such as the vacuole, or chemically convert metals into useful structures or materials.
+  }
+  \label{\figname{5}{1}}
+\end{figure}
+
+%-----------------------------------------------------------------%
+% SUBSECTION
+%-----------------------------------------------------------------%
+\subsection{Genetic circuits and logic}
+\label{subsection:chapter5:circuits}
+So far the strategies proposed in this work have a single mode of operation which is perpetually on. However, there are several advantages if yeast can be controlled in an analog fashion that is responsive to the given environment or from a controlled external stimuli. Such ``input''--``output'' behavior is possible through the construction of genetic circuits. To achieve sensing and actuating behavior, i.e. logic, a combination of promoters, repressors, and other genetic components could be identified and appropriately engineereed to control the flow of protein expression or metabolic pathways.
+
+An example of using a genetic circuit is to turn on or off the bioremediation activity. This may be important if yeast are to be stored or grown to scale in the absence of toxic material. In this case the cellular machinery should instead focus on growing efficiently. However, the desired genes should be activated in the presence of metal. Metal-induced activation could be possible by taking advantage of the metal-sensitive CUP1 promoter~\cite{jeyaprakash1991}, or metal-responsive transcription factors
+ZAP1 (\#{}P47043),
+AFT1 (\#{}P22149),
+and Mac1 (\#{}P47043)
+which are sensitive to copper, zinc, and iron concentrations~\cite{waldron2009}.
+The degree of protein expression could also be determined by the level of metal contaminants. If the level of contamination is low, then expression should be equally regulated such that energy is appropriately distributed between metal removal and cell growth. More complex sensing and actuation would involve transitioning between different states of action for multi-functional yeast. For example, having yeast express membrane and vacuole transporters and then transition to \HS{} production to precipitate the internalized metals (\FIGURE~\ref{\figname{5}{1}}c).
+
+Turning yeast off is just as important. When yeast have reached their metal removal capacities (e.g. yeast that are fully mineralized, metal internalized, or metal bound) they should be capable of removing themselves autonomously from the media in order to allow fresher more recently grown yeast to replace them. A possible removal mechanism is to encourage flocculation. The expression of the FLO1 gene (\#{}P32768) promotes yeast-specific adhesion that causes yeast to aggregate and sediment~\cite{verstrepen2006,ellis2009diversity}. When yeast have sensed that they have removed the maximum amount of metal, a genetic toggle could turn on the expression of the FLO1 gene to aggregate older cells, sedimenting them from solution and allowing recently grown yeast to reoccupy the media. A simple genetic circuit would be to place a timer, in which irregardless of metal capture, cells flocculate after a set amount of time when exposed to metal. A more sophisticated design would be to sense the amount of internalized or reacted metals in or on the cell, at which above a certain threshold would activate flocculation through the use of metal responsive promoters or transcription factors.
+
+%-----------------------------------------------------------------%
+% SUBSECTION
+%-----------------------------------------------------------------%
+\subsection{Yeast containment strategies}
+\label{subsection:chapter5:containment}
+A follow up question is how to retrieve yeast that have been distributed onto a waste site. One method would be to size-exclude yeast from the remediated water, as the average diameter of yeast (1--10 $\mu$m) lends itself to simple filtration. This technique is often employed in the beer and consumer industry where yeast, along with other particulates, are strained from the liquid fraction~\cite{harrison2015}. However, containment can be more precise and controlled. Strategies include physical containment into cartridges, or biological containment in solid biological matrixes such as biofilms or hydrogels. A follow-up discussion would be how to control yeast that have escaped their containment and reduce the likelihood of contamination of ``rogue'' yeast into the environment.
+
+\subsubsection*{Physical containment}
+One of the most common methods to segregate biological contaminants is to exclude cells based on size using filters with defined pore-sizes. This may serve as a first pass to remove yeast from solution; however, this method may become time-consuming and less effective over time as the flow rate would gradually decrease as more yeast accumulate on the filter. In addition, many filters are often thrown out after use, as attempting to clean filters could potentially damage them. Another possibility is to promote sedimentation. As mentioned in \CHAPTER~\ref{ext-chapter4} and \SECTION~\ref{subsection:chapter5:circuits}, yeast that have reached their maximum removal capacities should sediment or flocculate out of solution~\cite{verstrepen2006}. From here, it is somewhat straightfoward to segregate the top-layer of the remediated liquid from the bottom sediments. As an additional layer of safety, the top-layer could be flowed through a size-exclusion filter to remove any lingering yeast, in this case the quantity of yeast should be minimal and not negatively impact the filter integrity or flow rate.
+
+Another strategy would be to collect yeast by having them chemically or electrostatically bind onto an externally introduced material such as a blanket or mesh. Yeast can be surface functionalized with ligands, antibodies, or magnetic particles that when in contact with the appropriate binding partner are then attached or attrached to the blanket/mesh material and bound.
+This approach is very similiar to anchoring proteins with agarose or magnetic beads to increase sedimentation rates for ion-exchange like removal (\CHAPTER~\ref{ext-subsection:chapter4:increasing-sedimentation}).
+
+Conversely, rather than adding yeast to a waste site, waste can be instead added to yeast. Yeast can be stored in cartridges or columns which have an inlet and outlet. In these catridges yeast could be packed and secured using size-excluding membranes at the in/outlets, or have yeast solidly cross-linked using cross-linking peptides via yeast display or using the FLO1 gene~\cite{verstrepen2006}. Waste could be flowed through the inlet, and remediated water collected from the outlet. Much like current industrial practices, waste water is taken from their original location and transferred to a treatment plant in which water is handled at different processing stations. In this example, yeast housed in a container could be one of these processing stations with a modular inlet and outlet connecting adjacent stations. Alternatively, for small-scale applications, cartridges of yeast can be used to filter water from local sources such as a faucet or stream. Water could be incubated in these catridges for a period of time, and then gravity flowed to elute cleaned water from the outlet.
+
+\subsubsection*{Biofilms and hydrogels}
+There are also several fully biological methods to contain yeast into solid and containable formats. One such method is to embed yeast into biofilms through biochemical or microbiological methods. Biofilms contain consortium of microorganisms that stick together on a surface through adhesion of secreted extracellular polymeric substances. The physical properties of biofilms have led many scientist to use biofilms to filter water much like synthetic membrane filtration systems~\cite{simpson2008,shannon2010science}. Alone, yeast do not have biofilm-forming capabilities. However, a symbiotic culture of bacteria and yeast (SCOBY), the physical biofilm referred to as a pellicle, can form a thick membrane often used in creating kombucha drink~\cite{jayabalan2014review}. Recently, some scientist have attempted to use pellicles to act as natural filters for clean water applications
+(\FIGURE~\ref{ext-figure:chapter1:example-biomineralization-bio}e)\footnote{
+	work currently investigated in collaboration with Zijay Tang, Tim Lu Lab at MIT.
+}. Formation of pellicles offer a physical handle on the bacteria/yeast biofilm; incorporating the engineered yeast would then add the heavy metal removal machinary of precipitation, absorption, metal chelation, or combinations thereof.
+
+In addition to naturally created biofilms, another approach is to artificially construct a biological environment using hydrogels to contain yeast. Hydrogels are a network of polymeric chains that are highly absorbent and are frequently used in tissue engineering applications~\cite{lee2001hydrogels}. Mammalian cells are often used, primarily for their bio-compatibility when creating tissue scaffolds or for creating 2--3 dimensional organoids; however, yeast can also be easily impregnanted into hydrogels using similar biochemical processes. Much like the previous biofilm example, hydrogels can also be used to flow and filter waste water. In addition, because hydrogels have porous membranes and relatively high water content, hydrogels can also be used as sponges in which a semi-dry or lyophilized sample can be re-hydrated with waste water. Contaminants are absorbed into the hydrogel matrix while cleaned water can be squeezed or flowed back out.
+
+\subsection*{Kill switches}
+A common concern for many biologically engineered systems is the possibility of creating uncontrollable or ``rogue'' strains that enter the environment. The containment strategies proposed previously are meant to secure yeast and prevent escape; however, the smallest possibility of yeast escaping into the environment should be acknowledged and the appropriate engineering controls should designed for preemptive measures. One common strategy is to produce deficient yeast, in other words, yeast that are unable to grow in natural environments because they lack essential genes to function. This is routinely performed in laboratory settings in which lab strains lack auxotrophic markers associated with amino acid synthesis such as tryptophan (\textit{trp1}), leucine (\textit{leu2}), histidine (\textit{his3}), and other biological compounds such as adenine (\textit{ade1}) and uracile (\textit{ura3})\footnote{
+	list of common auxotrophic markers: \url{https://wiki.yeastgenome.org/index.php/Commonly_used_auxotrophic_markers}
+}. Removal of these nutrients halt growth, and in prolong cases cause cell death due to nutrient starvation. During laboratory production, yeast are grown in cultures containing these nutrients, but when used in environmental settings these nutrients should be omitted.
+
+A second method is to employ kill switches, a genetic circuit when turned on induces cellular apoptosis~\cite{chan2016}. Yeast naturally contain apoptotic mechanisms~\cite{skulachev2002programmed}, and this mechanism can be engineered to turn on or off under specific circumstances. An example is culturing yeast in a medium which contains an inexpensive nutrient that halts the apoptoic mechanism (e.g. an inhibitor or repressor). When yeast escape into the environment where this nutrient is no longer available, the apoptotic mechanism would now be activated and prompt cell death. This strategy could be added in addition to the other strategies discussed previously to create a secondary or tertiary layer of security. These layers would be physical containment, chemical and nutrient control over yeast growth, to finally kill-swtiches which irreversibly terminate the cell upon escape.
+
+%---------------------------------------------------------------------------%
+% Section
+%---------------------------------------------------------------------------%
+\section{Brief economics and scalability of yeast}
+\label{section:chapter5:economics}
+
+%-----------------------------------------------------------------%
+% SUBSECTION
+%-----------------------------------------------------------------%
+\subsection{Consumer use and practical applications}
+For thousands of years yeast have been a staple consumer good for its use in food, beverages, and drugs. It was not until the 1850s that yeast were ``domestiated'' and scientifically studied for controlled beer, food, and chemical production~\cite{greig2009}. Thereon, yeast have been sold as a commodity from freeze-dried packets to cultures shared between consumers, hobbyist, and industries. The scientific work here leverages this mature market so that findings from the bench can be easily transferred and adopted in industry. An example is growing, packaging, and distributing yeast for clean water applications. Yeast can be grown in dedicated facilities, freeze-dried, and either stored or distributed with shelf-lives of up to months to years until when needed~\cite{lodato1999viability} (\FIGURE~\ref{\figname{5}{2}}).
+
+%================%
+% packaging yeast
+%================%
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{\figname{5}{2}}
+	\caption[Overview of the yeast consumer good industry]
+	{
+		\textbf{Overview of the yeast consumer good industry}.
+		(\textbf{a}) Yeast can be grown in cultures or fermentors routinely used in the consumer and pharmaceutical industry.
+		(\textbf{b}) Once grown, yeast can be freeze-dried into packets and reconstituted when needed.
+		(\textbf{c}) Alternatively, yeast can be compressed into blocks for larger scale distribution.
+		(\textbf{d}) When not in need, or for disaster scenarios, large quantities of yeast can be stored for emergency situations.
+  }
+  \label{\figname{5}{2}}
+\end{figure}
+
+There are two main methods of distribution and use for bioremediating yeast. The first is direct to consumers, where individuals are responsible for purchasing, growing, and using these yeast for their own water cleaning purposes. In these scenarios a variety of engineering controls should be set up to allow ease of use and safety. One of the first requirements is the ability to grow and contain yeast. For this, a separate unit could be provided such as a small user-friendly culture flask (or tub, vat, container, etc.) and a packet of nutrients to enable proper yeast growth (see \SECTION~\ref{subsection:chapter5:containment} for containment strategies). Instructions normally used for baking or brewing recipes could also be provided to help guide users to optimally grow their yeast. When grown, several other add-ons can be provided such as a cartridge in which yeast can be packed into and used as a filtration unit for routine water needs (e.g. from a facuet, well, or nearby water stream). Alternatively, yeast could be packed into a separate package and stored for later use, or stored as a starter culture for subsequent yeast cultures. As for disposal, local removal could mean destroying the yeast by heating, bleaching, or adding a chemical to induce apoptosis (i.e. kill switch; \SECTION~\ref{subsection:chapter5:containment}). Possibly a safer removal strategy would be to collect used yeast and have it processed by a local site which contains the infrastructure to separate yeast from the collected metal. Much like we have biological, trash, and plastic processing sites today. This site can then recycle both the metal and yeast, and potentially repackage and recycle the yeast for later consumer use.
+
+The second distribution method would be direct to businesses such as factories or waste treatment centers. Instead, the full yeast-mediated waste treatment process would be handled on site in parallel to all other cleaning processes in the facility. Yeast can be grown on site or provided by a partnering supplier such as a brewing company where they often do not reuse spent yeast. Therefore, the yeast can be stored in a similar brewing container in which waste water enters from an inlet, and the outlet elutes the treated water. Operations will include how to remove yeast after reaching maximum metal removing capacities, cycling used yeast with fresher stock, and optimizing flow rate and incubation times. In addition, used yeast should then be treated to separate collected metal for downstream recycling. Non-destructive methods would be to fractionate precipitated or bound metals from the supernatant (\CHAPTER~\ref{ext-section:chapter2:metal-sulfide-particles}), leaving yeast intact and reusable. A destructive method, typically for absorbed metals, would be the lyse yeast and separate the biological debri from the metals. Even with destroyed yeast, the biological residual can be processed and used as yeast extract which can feed later cultures; a common process used in both industrial and laboratory settings~\cite{greig2009}.
+
+%-----------------------------------------------------------------%
+% SUBSECTION
+%-----------------------------------------------------------------%
+\subsection{Techno-economic analysis and scaling}
+\label{subsection:chapter5:economics}
+The yeast market is extremely mature and has grown with the growing consumer market. The global yeast market was valued at 4.2 billion dollars in 2017 with a compound annual growth rate (CAGR) of 9.2\%, making it a 9--10 billion dollar market by 2026~\cite{prnewswire.n.d.}. From 2012--2017 the worldwide beer production has consistently produced almost 200 billion liters of yeast, roughly equivalent to 1 million tons of yeast per year~\cite{thierrygodard2018,barth-haasgroup.2019}. These values do not include the amount of yeast produced by the craft beer market, which was roughly another 5 billion liters~\cite{demetergroup.n.d.2014}, or the amount of yeast used in the consumer or pharmaceutical market.
+
+The yeast industry has scaled its infrastructure to produce, package, and distribute yeast to meet global demands, making the price to culture and maintain yeast extremely cost-effective. Considering the chemical and physical cost to contain, grow, and feed yeast, in takes \$4 to grow 1 kg of yeast, and equivalently \$3 to supply the appropriate chemical nutrients (e.g. glucose, extracts, buffers, water, etc.)~\cite{harrison2015}. On a per liter basis, this is equivalent to 16 cents per liter of yeast (\APPENDIX~\ref{ext-section:appendixB:cost-of-yeast})~\cite{harrison2015}.
+This cost increases to approximately \$7.94--\$12.62 per liter of yeast for home brewers or for laboratory settings that do not have the economics of scale to reduce cost (\TABLE~\ref{ext-cost_1kg_yeast}).
+
+Overall, producing yeast has been an economically viable market, that if tapped into, can dramatically impact the global waste water crisis. For today's physicochemical processes it roughly takes an investment of \$20--\$500 for chemical precipitation, \$50--\$150 for adsorption, and \$50--\$200 for ion-exchange to treat 1 million liters of water~\cite{kumargupta2012}. Performing the same analysis for yeast, estimating a metal removal capacity of 1\% of metal mass per mass of yeast (typical removal capacities achieved by hyperaccumulating strains were in \CHAPTER~\ref{ext-chapter3}), it would take an equivalent investment of \$160 for cadmium, \$64 for mercury, and \$480 for lead to remove 1 ppm, or 100--500 times more than EPA levels for toxic levels (\TABLE~\ref{table:chapter5:costpermillion}).
+
+These cost were estimated by assuming 1\% of metal absorbed per mass of yeast. However, the other methods such as chemical precipitation and ion-exchange have higher per weight ratios of metal capture of up to 2--5\% (\CHAPTER~\ref{chapter2}, ~\ref{ext-chapter4}; \APPENDIX~\ref{ext-hyper-threshold-table}, \ref{protein-hyper-threshold}) which could further reduce cost. A note, however, less toxic metals which are allowable at higher concentrations by the EPA such as iron, copper and zinc will require more investment, meaning more yeast, which may be prohibitively expensive or difficult to scale. Therefore, major applications of yeast should target more toxic yet less abundant metals such as cadmium, mercury, and lead. In addition, these targets are more favorable as yeast can be finely tuned to target specific and more toxic metals than compared to physicochemical methods. Physicochemical methods lack such fine tuning and should instead be used for monolithic metal removal, or as a concluding treatment after yeast processing to remove any lingering contaminants.
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+% cost for processing 1 million liters
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
+\begin{table}[H]
+\small
+\centering
+	\begin{subtable}{\columnwidth}
+		\small
+		\centering
+		\caption{}
+		\input{chapter5-table-physico-cost}
+	\end{subtable}
+	%
+	\begin{subtable}{\columnwidth}
+		\small
+		\centering
+		\caption{}
+		\input{chapter5-table-costpermillion}
+	\end{subtable}
+	%
+	\caption[Estimate cost to process 1 million liters of waste using yeast, compared to current physicochemical platforms]
+	{
+		\textbf{Estimate cost to process 1 million liters of waste using yeast, compared to current physicochemical platforms}
+		(\textbf{a}) Cost of physiochemically processing 1 million liters of waste waters in the United States~\cite{kumargupta2012}.
+		(\textbf{b}) Theoretical cost of scaling and using engineered yeast to process 1 million liters of waste waters.
+	}
+	\label{table:chapter5:costpermillion}
+\end{table}
+\footnotetext{
+  Cobalt toxicity limit was not defined by the EPA, so threshold was inferred from its toxicity relative to the other metals.
+}
+
+Rather than scaling yeast production from scratch, what if yeast could be syphoned from the already robust yeast-producing consumer market. In a completely hypothetical scenario, if the entire yeast produced from the beer industry were to be used for metal removal, then approximately 1 million tons of metal could be removed (\APPENDIX~\ref{ext-section:appendixB:impact-of-yeast}). Assuming this 1 million tons came from water contamianted with 1 ppm of metal (roughly the metal content in the Athbasca Oil Sands; \CHAPTER~\ref{ext-section:chapter2:oil-sands}), then approximately 9.75 trillion liters of water could be remediated. To put this in a relative context, this is equivalent to processing 3.9 million olympic size swimming pools\footnote{
+	olympic size swimming pools typically contain 2.5 million liters: \url{https://www.livestrong.com/article/350103-measurements-for-an-olympic-size-swimming-pool/}
+}. In the United States, there are only 309,000 swimming pools, meaning that this quantity of water could be processed ten-times over in a given year\footnote{
+	census on pool and spa numbers: \url{https://www.thespruce.com/facts-about-pools-spas-swimming-safety-2737127}
+}. On a micro-analysis, this means that given 1 liter of yeast almost 50X more volume of waste can be processed at 1 ppm metal contamination (\APPENDIX~\ref{ext-section:appendixB:impact-of-yeast}).
+
+%---------------------------------------------------------------------------%
+% Section
+%---------------------------------------------------------------------------%
+\section{Conclusion}
+The overaching theme of this work was to take a well known biological platform---yeast---and transform it to a bioremediation agent for heavy metal removal. Principles from physicochemical technologies (\CHAPTER~\ref{ext-chapter1}) as well as processes found in plants and bacteria were engineered in yeast to endow novel waste removal functionality. Three principal methods: chemical precipitation, absorption, and ion-exchange were recapitulated in yeast using current genetic and protein engineering techniques. Direct analogies to these physicochemical processes were chemical precipitation using \HS{} generated from the yeast sulfate assimilation pathway (\CHAPTER~\ref{ext-chapter2}), absorption via native and non-native engineered membrane transporters (\CHAPTER~\ref{ext-chapter3}), and ion-exchange using supremolecular metal chelating proteins (\CHAPTER~\ref{ext-chapter4})
+(\TABLE~\ref{ext-table:chapter1:compare-physico-bio}; \FIGURE~\ref{ext-figure:chapter1:physico-versus-bio}).
+The discoveries made in this work are not limited to just these three examples. A variety of other methods, combinations of methods, and higher level programming through genetic circuits and sensing mechanisms can further augment yeast's capabilities to remove heavy metals. Simply put, this work showed that the power of biological engineering with the power to bake and brew yeast can together be harnessed for waste water remediation.
+
+Technology aside, yeast was chosen because of its global presence as a staple consumer good, and the industrial market has proven itself as a sustainable product that can be scaled, packaged, and distributed to all parts of the world. These practical considerations were ultimately the deciding factor as to why yeast was chosen as the model organism for waste water cleanup; as the discoveries made in this lab are intended to be translated to real-world applications by leveraging the yeast market. However, the future waste trends and upcoming technological advancement will decide whether or not this work can be integrated into current waste treatment practices. Whether or not society succeeds or fails to bring a stop to the uncontrolled production of waste, the underlying intention of this work was to provoke a new idea and to excite readers that many more possibilities and solutions exist in waste treatment technologies if only we, the public and scientific community, open it up for discussion.
+
+%===============================BIBLIOGRAPHY================================%
+\printbibliography[title=References]
+
+\end{document}

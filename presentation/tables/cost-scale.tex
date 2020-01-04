@@ -1,0 +1,48 @@
+\documentclass[10pt]{article} % scriptsize = 7pt
+
+\usepackage{booktabs}
+\usepackage{amsmath,amssymb}
+\usepackage{mathptmx}
+\usepackage{fontspec}
+\setmainfont{Times New Roman} 
+% latex and font size: https://en.wikibooks.org/wiki/LaTeX/Fonts#Sizing_text
+
+\usepackage{makecell}
+
+\usepackage{array}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+\newcolumntype{L}[1]{>{\arraybackslash}p{#1}}
+\newcolumntype{Q}[1]{>{\arraybackslash}m{#1}}
+
+\begin{document}
+% for the horizontal padding: https://tex.stackexchange.com/questions/31672/column-and-row-padding-in-tables/31704
+\setlength{\tabcolsep}{0.33em} 
+\flushleft
+
+\begin{tabular}{rP{3cm}P{3cm}}
+  \toprule
+    \makecell{item} &
+    \makecell{laboratory cost} &
+    \makecell{industrial cost} \\
+  \midrule
+    glucose
+      & \$ 0.20
+      & \$ 0.50 \\
+    yeast extract
+      & \$ 2.12
+      & \$ 0.50 \\
+    buffers/nutrients
+      & \$ 9.30
+      & \$ 2.00 \\
+    water
+      & \$ 1.00
+      & \$ 0.01 \\
+    \textbf{total}
+      & \textbf{\$ > 12.62}
+      & \textbf{\$ > 3.01} \\
+  \bottomrule
+\end{tabular}
+
+\end{document}
+

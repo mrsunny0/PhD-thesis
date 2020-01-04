@@ -1,0 +1,66 @@
+\documentclass[10pt]{article} % scriptsize = 7pt
+
+\usepackage{booktabs}
+\usepackage{amsmath,amssymb}
+\usepackage{mathptmx}
+\usepackage{fontspec}
+\setmainfont{Times New Roman} 
+% latex and font size: https://en.wikibooks.org/wiki/LaTeX/Fonts#Sizing_text
+
+\usepackage{makecell}
+
+\usepackage{array}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+\newcolumntype{L}[1]{>{\arraybackslash}p{#1}}
+\newcolumntype{Q}[1]{>{\arraybackslash}m{#1}}
+
+\begin{document}
+% for the horizontal padding: https://tex.stackexchange.com/questions/31672/column-and-row-padding-in-tables/31704
+\setlength{\tabcolsep}{0.33em} 
+\flushleft
+
+	\begin{tabular}{L{1cm} P{3.5cm} M{1.5cm}}
+		\toprule
+		    & tons per 1000 people
+				& $R^2$    \\
+	  \midrule
+			HIC & 69.4 & 0.94  \\
+			UMC & 16.6 & 0.91  \\
+			LMC & 16.1 & 0.97  \\
+			LIC & 12.8 & 0.68  \\
+		\bottomrule
+	\end{tabular}
+
+
+\vspace{2\baselineskip}
+
+\begin{tabular}{L{1cm} P{3.5cm} M{1.5cm}}
+	\toprule
+	    & tons per million \$
+			& $R^2$    \\
+	\midrule
+		HIC & 14.2 & 0.96  \\
+		UMC & 23.7 & 0.96  \\
+		LMC & 67.8 & 0.99  \\
+		LIC & 206 & 0.59	 \\
+	\bottomrule
+\end{tabular}
+
+\vspace{2\baselineskip}
+
+\begin{tabular}{rcccc}
+	\toprule
+		& Pearson & p-value \\
+	\midrule
+	Budget (EPA)   & -0.705   & 6.6E-08 \\
+	policies     & 0.991   & 4.9E-39    \\
+	GDP          & 0.927   & 5.9E-20    \\
+	moore        & 0.468   & 1.2E-03    \\
+	population   & 0.957   & 1.1E-24    \\
+	urbanization & 0.941   & 6.7E-22    \\
+	\bottomrule
+\end{tabular}
+
+\end{document}
+

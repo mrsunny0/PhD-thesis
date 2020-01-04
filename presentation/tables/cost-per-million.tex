@@ -1,0 +1,59 @@
+\documentclass[10pt]{article} % scriptsize = 7pt
+
+\usepackage{booktabs}
+\usepackage{amsmath,amssymb}
+\usepackage{mathptmx}
+\usepackage{fontspec}
+\setmainfont{Times New Roman} 
+% latex and font size: https://en.wikibooks.org/wiki/LaTeX/Fonts#Sizing_text
+
+\usepackage{makecell}
+
+\usepackage{array}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+\newcolumntype{L}[1]{>{\arraybackslash}p{#1}}
+\newcolumntype{Q}[1]{>{\arraybackslash}m{#1}}
+
+\begin{document}
+% for the horizontal padding: https://tex.stackexchange.com/questions/31672/column-and-row-padding-in-tables/31704
+\setlength{\tabcolsep}{0.33em} 
+\flushleft
+
+	\begin{tabular}{ll}
+		\toprule
+		\makecell{method}
+		& cost (US\$) \\
+		\midrule		
+		chemical precipitation & \$ 20--500 \\
+		ab(d)sorption & \$ 50--150 \\
+		ion-exchange & \$ 50--200 \\
+		\bottomrule	
+	\end{tabular}
+
+	\vspace{2\baselineskip}
+
+	\begin{tabular}{L{1cm}L{1.8cm}L{2.2cm}L{2cm}L{1.8cm}l}
+	\toprule
+		metal
+		& EPA limit (ppm)
+		& metal mass (g)
+		& yeast mass (g)
+		& culture volume (L)
+		& cost (US\$) \\
+	\midrule
+		Cr & 0.1 & 100 & 10000 & 20000 & \$ 3,200 \\
+		Mn & 0.05 & 50 & 5000 & 10000 & \$ 1,600 \\
+		Fe & 0.3 & 300 & 30000 & 60000 & \$ 9,600 \\
+		Co* & 0.1 & 100 & 10000 & 20000 & \$ 3,200 \\
+		Ni & 0.1 & 100 & 10000 & 20000 & \$ 3,200 \\
+		Cu & 1.3 & 1300 & 130000 & 260000 & \$ 41,600 \\
+		Zn & 5 & 5000 & 500000 & 1000000 & \$ 160,000 \\
+		As & 0.01 & 10 & 1000 & 2000 & \$ 320 \\
+		Cd & 0.005 & 5 & 500 & 1000 & \$ 160 \\
+		Hg & 0.002 & 2 & 200 & 400 & \$ 64 \\
+		Pb & 0.015 & 15 & 1500 & 3000 & \$ 480 \\
+  	\bottomrule
+	\end{tabular}
+\end{document}
+

@@ -1,0 +1,126 @@
+\documentclass[10pt]{article} % scriptsize = 7pt
+
+\usepackage{booktabs}
+\usepackage{amsmath,amssymb}
+\usepackage{mathptmx}
+\usepackage{fontspec}
+\setmainfont{Times New Roman} 
+\usepackage{setspace}
+% latex and font size: https://en.wikibooks.org/wiki/LaTeX/Fonts#Sizing_text
+
+\usepackage{makecell}
+
+\usepackage{array}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+\newcolumntype{L}[1]{>{\arraybackslash}p{#1}}
+\newcolumntype{Q}[1]{>{\arraybackslash}m{#1}}
+
+\usepackage{colortbl}
+
+\begin{document}
+% for the horizontal padding: https://tex.stackexchange.com/questions/31672/column-and-row-padding-in-tables/31704
+\setlength{\tabcolsep}{0.5em} 
+\singlespacing
+\def\arraystretch{1.5} % temporary row padding
+\flushleft
+
+\begin{tabular}{L{1.5cm}P{1.1cm}P{1.1cm}P{1.1cm}P{1.1cm}P{1.1cm}P{1.1cm}P{1.1cm}P{1.1cm}P{1.1cm}}
+  \toprule
+    & Cr & Mn & Fe & Cu & Zn & As & Cd & Hg & Pb \\
+  \midrule
+    % MW & 51.996 & 54.938 & 55.845 & 58.933 & 63.38 & 63.38 & 112.411 & 200.592 & 207.2 \\
+    MW & 51.9 & 54.9 & 55.8 & 58.9 & 63.38 & 74.9 & 112.41 & 200.5 & 207.2 \\
+    low & 0 & 10 & 10 & 50 & 10 & 0 & 60 & 40 & 60 \\
+    high & 25 & 500 & 30 & 100 & 50 & 25 & 100 & 60 & 80 \\
+    \makecell[l]{hyper\\threshold} 
+    	& 0.10\% & 1.00\% & 0.10\% & 0.10\% & 1.00\% & 0.01\% & 0.01\% & 0.10\% & 1.00\% \\
+    	\hline
+    \makecell[l]{percent\\capture\\(low)}
+      & 0.00\%
+      & 0.11\%
+      & \cellcolor{green} 0.11\%
+      & \cellcolor{green} 0.59\%
+      & 0.13\%
+      & 0.00\%
+      & \cellcolor{green} 1.35\%
+      & \cellcolor{green} 1.60\%
+      & \cellcolor{green} 2.49\% \\
+    \makecell[l]{percent\\capture\\(high)}
+      & \cellcolor{green} 0.26\%
+      & \cellcolor{green} 5.49\%
+      & \cellcolor{green} 0.56\%
+      & \cellcolor{green} 1.18\%
+      & 0.63\%
+      & \cellcolor{green} 0.32\%
+      & \cellcolor{green} 2.25\%
+      & \cellcolor{green} 2.41\%
+      & \cellcolor{green} 3.32\% \\
+    \hline
+    mutants
+      & \makecell[l]{Sul1,\\Sul2}
+      & \makecell[l]{S*BC,\\S*BCT}
+      & \makecell[l]{FTR1,\\FTR4,\\S+C1}
+      & \makecell[l]{CTR1,\\CTR3,\\S+C1}
+      & n/a
+      & \makecell[l]{Pho84,\\Pho87,\\Pho89}
+      & \makecell[l]{S*BCT,\\mCd,\\$\Delta$M17}
+      & \makecell[l]{$\Delta$M17,\\$\Delta$H2,\\$\Delta$C4,\\$\Delta$HM}\vspace{-\baselineskip}
+      & \makecell[l]{$\Delta$M17,\\$\Delta$H2,\\$\Delta$C4,\\$\Delta$HM}\vspace{-\baselineskip} \\
+  \bottomrule
+\end{tabular}
+
+%
+\vspace{3\baselineskip}
+%
+
+\begin{tabular}{cccccccccc}
+  \toprule
+    & Mn & Co & Ni & Cu & Zn & Cd & Hg & Pb & Ca  \\
+    MW & 54.94 & 58.93 & 58.69 & 63.546 & 65.38 & 112.411 & 200.592 & 207.2 & 40.078 \\
+  \midrule
+  pyrG
+    & 92.7 & 45 & 204.7 & 462.7 & 413.1 & 259.7 & 669.7 & 387 & - \\
+  (62.5 kDa)
+    & 0.08\%
+    & \cellcolor{green} 0.04\%
+    & \cellcolor{green} 0.19\%
+    & \cellcolor{green} 0.47\%
+    & 0.43\%
+    & \cellcolor{green} 0.47\%
+    & \cellcolor{green} 2.15\%
+    & \cellcolor{green} 1.28\% & - \\
+  \\
+  glnA
+    & 341.3 & 130 & 186.3 & 228.3 & 699.7 & 372.7 & 166 & 433.3 & - \\
+  (54 kDa)
+    & 0.35\%
+    & \cellcolor{green} 0.14\%
+    & \cellcolor{green} 0.20\%
+    & \cellcolor{green} 0.27\%
+    & 0.85\%
+    & \cellcolor{green} 0.78\%
+    & \cellcolor{green} 0.62\%
+    & \cellcolor{green} 1.66\% & - \\
+  \\
+  +CaM
+    & - & - & - & - & - & - & - & - & 226.3 \\
+  (70.3 kDa)
+    & - & - & - & - & - & - & - & - & 0.13\% \\
+  \\
+  +MT1A
+    & 172.3 & 108 & 137.3 & 634.3 & 813.7 & 541.7 & 313.3 & 482 & - \\
+  (58.9 kDa)
+    & 0.16\%
+    & \cellcolor{green} 0.11\%
+    & \cellcolor{green} 0.14\%
+    & \cellcolor{green} 0.68\%
+    & 0.90\%
+    & \cellcolor{green} 1.03\%
+    & \cellcolor{green} 1.07\%
+    & \cellcolor{green} 1.70\% & - \\
+  \bottomrule
+\end{tabular}
+
+\end{document}
+

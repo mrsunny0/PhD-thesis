@@ -1,0 +1,244 @@
+%***************************************************************************%
+%                                 APPENDIX A                                %
+%***************************************************************************%
+\documentclass[../main/main]{subfiles}
+\begin{document}
+\chapter{Back of the envelope calculations}
+\label{appendixB}
+
+%===========================================================================%
+% Section
+%===========================================================================%
+\section{Percent metal removed per yeast dry weight}
+\label{section:B:dryweight}
+The units reported in this work were $\mu$M of metal removed with respects to the quantity of cells used, i.e. \OD. The units were $\mu$M/\OD. However, the phytoremediation community routinely reports mass of metal removed per plant dry weight. In other words g/gDW.
+
+In \CHAPTER~\ref{ext-chapter3}, the relationship between yeast \OD{} and dry weight was derived (\sFIGURE~\ref{ext-\sfigname{3}{3}}). The ratio was approximately $\sim$0.5 gDW L\textsuperscript{-1} \OD\textsuperscript{-1}. The reported units of $\mu$M/\OD{} were converted to g/gDW by multiplying the numerator's molarity by the metal's molecular weight, and multiplying the denominator \OD{} by the conversion ratio of 0.5 gDW L\textsuperscript{-1} \OD\textsuperscript{-1}. The units of volume shared between the numerator and denominator cancel out.
+
+%::::::::::::::::%
+% unit conversion
+%::::::::::::::::%
+\begin{align}
+  &=
+  \dfrac{\mu\text{M}\:\left[ \text{1E-6 mol L\textsuperscript{-1}} \right]}{\text{OD}_{600}}
+  \times
+  \dfrac{\text{MW}\:\left[ \text{g mol\textsuperscript{-1}}\right]}{\lambda}
+  \\[1em]
+  %
+  \intertext{\indent where $\lambda$ = gDW L\textsuperscript{-1} \OD\textsuperscript{-1}}
+  %
+  &=
+  \text{1E-6}
+  \times
+  \dfrac{\text{g} \cdot \text{mol} \cdot \text{mol\textsuperscript{-1}} \cdot \text{L\textsuperscript{-1}}}
+  {\text{gDW} \cdot\text{OD}_{600} \cdot{\text{OD}_{600}}^{-1} \cdot \text{L\textsuperscript{-1}}}
+\end{align}
+
+canceling units
+
+\begin{align}
+  = \dfrac{\text{g}}{\text{gDW}}
+\end{align}
+
+A one-to-one comparison of hyperaccumulating thresholds and metal removal quantities per yeast dry weight are tabulated in \TABLE~\ref{hyper-threshold-table}. These values were derived from data in \CHAPTER{}s~\ref{ext-chapter2}--\ref{ext-chapter3}.
+Specifically \FIGURE~\ref{ext-\figname{2}{1}}, \FIGURE~\ref{ext-\sfigname{2}{2}} for yeast induced \HS{} metal precipitation, and
+\FIGURE~\ref{ext-\figname{3}{1}}, \ref{ext-\figname{3}{2}}, \ref{ext-\figname{3}{3}}, \ref{ext-\figname{3}{4}} for hyperaccumulating uptake.
+
+%~~~~~~~~~~~~~~~%
+% Table - hyper
+%~~~~~~~~~~~~~~~%
+\begin{table}[H]
+  \centering
+  \small
+  \singlespacing
+  \def\arraystretch{1.5} % temporary row padding
+  \input{hyper-threshold-table}
+  \caption[Percent weight of metal captured compared to hyperaccumulating thresholds]
+  {
+    \textbf{Percent weight of metal captured compared to hyperaccumulating thresholds}.
+  }
+  \label{hyper-threshold-table}
+\end{table}
+
+The amount of metal removed represented by units g/gDW may be deceiving as the molecular weight of the metal plays a significant role in determining hyperaccumulation. For example, an equal molar uptake of Zn and Hg would result in an almost 3-fold increase in g/gDW reported uptake for Hg, as Hg is three times heavier than Zn. More so, hyperaccumulation thresholds are based on the metal's toxicity levels. So hyperaccumulation for Mn and Zn are much more difficult to achieve than for Hg and Pb, even if on a molecular standpoint the same quantity of atoms were to be removed.
+
+The same removal per weight analysis was performed for the heavy metal protein chelation strategy used in \CHAPTER~\ref{ext-chapter4}. The units reported were $\mu$M of metal captured per $\mu$M protein (typically 100 $\mu$M). To convert to g/gDW with respect to protein mass the numerator's molarity was multiplied by the metal's molecular weight, and the denominator's molarity was multiplied by the protein's molecular weight. The units of volume shared between the numerator and denominator cancel out. Specifically \FIGURE~\ref{ext-\figname{4}{3}}, and \ref{ext-\figname{4}{3}} for proteins pyrG+6xHis, glnA+6xHis, and glnA+CaM and glnA+MT1A were converted from $\mu$M of metals removed to 100 $\mu$M protein used to g/gDW.
+
+%::::::::::::::::%
+% unit conversion
+%::::::::::::::::%
+\begin{align}
+  &=
+  \dfrac{\mu\text{M}\:\left[ \text{1E-6 mol L\textsuperscript{-1}} \right]}
+    {\text{mM}\:\left[ \text{1E-3 mol L\textsuperscript{-1}} \right]}
+  \times
+  \dfrac{\text{MW\textsubscript{metal}}\:\left[ \text{g\textsubscript{metal} mol\textsuperscript{-1}}\right]}
+    {\text{MW\textsubscript{protein}}\left[ \text{g\textsubscript{protein} mol\textsuperscript{-1}}\right]}
+  \\[1em]
+  &=
+  \text{1E-3}
+  \times
+  \dfrac{\text{g\textsubscript{metal}} \cdot \text{mol} \cdot \text{mol\textsuperscript{-1}} \cdot \text{L\textsuperscript{-1}}}
+    {\text{g\textsubscript{protein}} \cdot \text{mol} \cdot \text{mol\textsuperscript{-1}} \cdot \text{L\textsuperscript{-1}}}
+\end{align}
+
+canceling units
+
+\begin{align}
+  = \dfrac{\text{g\textsubscript{metal}}}
+      {\text{g\textsubscript{protein}}}
+\end{align}
+
+On average, the removal quantities for proteins were roughly less than 2\% of total protein dry weight, almost a percent less than yeast g/gDW values (\TABLE~\ref{hyper-threshold-table}). Although it may seem that proteins should have a higher metal capture per mass, on a per weight standpoint proteins such as pyrG and glnA are almost 3-orders of magnitude heavier than the metal's captured (metals being tens of daltons; proteins like pyrG in the kilo-daltons).
+
+%~~~~~~~~~~~~~~~~%
+% Table - protein
+%~~~~~~~~~~~~~~~~%
+\begin{table}[H]
+  \centering
+  \small
+  \input{protein-hyper-threshold}
+  \caption[Percent weight of metal captured for engineered proteins pyrG, glnA and their derivatives]
+  {
+    \textbf{Percent weight of metal captured for engineered proteins pyrG, glnA and their derivatives}.
+  }
+  \label{protein-hyper-threshold}
+\end{table}
+
+Yeast may have a higher per weight capture ratio because the mechanisms of \HS{} metal precipitation and metal trafficking are not limited to ligand-binding stiochiometry. In other words, \HS{} precipitation solely relies on the production of \HS{} and these quantities could exceed 1000 ppm, or equivalently more than 30 mM in the culture headspace (\FIGURE~\ref{\sfigname{2}{1}}). Metal internalization and trafficking is also not a stiochiometric process. Transporters are effectively catalytic, moving metals from the extracellular to intracellular space as a function of transporter expression (\FIGURE~\ref{\figname{3}{2}}).
+Therefore, metal removal is only limited by the available space and changes in cell volume (\APPENDIX~\ref{ext-section:metal-uptake}). However, because cellular display strategies rely on stiochiometric binding of metals to displayed metal binders, the per weight metal capture can be extremely low in comparison (\APPENDIX~\ref{ext-section:yeast-display-capture}).
+\clearpage % force page break
+
+%===========================================================================%
+% Section
+%===========================================================================%
+\section{Cost of yeast production}
+\label{section:appendixB:cost-of-yeast}
+An analytical breakdown for cost and scaling biological production was studied by Harrison et al.~\cite{harrison2015}. The main components comprising yeast culture are glucose, yeast extract, buffers, nutrients, and water. The estimated cost of each component to grow 1 kg of yeast is shown in \TABLE~\ref{cost_1kg_yeast}. Cumulatively, the cost is a little more than \$3 per kg of yeast dry weight.
+
+To make a cost comparison at the laboratory scale, nutrients such as amino acids (CSM)\footnote{
+  purchased from Sunrise Scientific: \url{https://sunrisescience.com/shop/growth-media/amino-acid-supplement-mixtures/csm-formulations/csm-powder-100-grams/}
+}, and yeast buffers (YNB)\footnote{
+  purchased from Fisher Scientific: \url{https://www.fishersci.com/shop/products/bd-difco-dehydrated-culture-media-yeast-nitrogen-base-without-amino-acids-6/p-4901538}
+} were purchased at 100 g quantities, and common stocks such as glucose\footnote{
+  purchased from Millipore-Sigma: \url{https://www.sigmaaldrich.com/catalog/product/sigma/g8270?lang=en&region=US}
+} and water were purchased as the maximum bulk orders, then the cost to grow 1 kg of yeast would take approximately \$12.62 (\TABLE~\ref{cost_1kg_yeast}).
+
+%~~~~~~~~~~~~~~%
+% Table - cost
+%~~~~~~~~~~~~~~%
+\begin{table}[H]
+  \centering
+  \small
+  \input{cost_1kg_yeast}
+  \caption[Cost to grow 1 kilogram of yeast]{
+    \textbf{Cost to grow 1 kilogram of yeast}.
+    Comparison of the cost to scale yeast in a laboratory setting, where resoures are sourced from different vendors at bulk scale and low price points.
+  }
+  \label{cost_1kg_yeast}
+\end{table}
+
+In Harrison et al.'s bioseperation analysis, typical yeast cultures at saturation can be as dense as 100 \OD. Assuming a yeast culture to dry weight ratio of 0.5 gDW L\textsuperscript{-1} \OD\textsuperscript{-1} (nn assumption also used in \SECTION~\ref{section:B:dryweight}), it would take approximately 20 liters to achieve 1 kg of yeast dry weight (\EQUATION~\ref{equ:cost-per-liter}).
+
+%::::::::::::::::::::::::%
+% cost of yeast per liter
+%::::::::::::::::::::::::%
+\begin{align}
+  &=
+  \dfrac
+    {1\:[\text{kg}]\: (1000\:[\text{g}])}
+    {0.5\:[\text{gDW L\textsuperscript{-1} OD\textsubscript{600}\textsuperscript{-1}}]
+      \cdot
+      100\:[\text{OD\textsubscript{600}}]}
+\end{align}
+
+eliminating units
+
+\begin{align}
+  &=
+  \dfrac
+    {1000\:[\text{g}]}
+    {50\:[\text{g L\textsuperscript{-1}}]}
+    \label{equ:cost-per-liter}
+  \\[1em]
+  &= 20
+    \tagaddtext{[\si{\liter}]}
+    \nonumber
+\end{align}
+
+\noindent If it costs approximately a little more than \$3 to generate 1 kg of yeast, and 1 kg of yeast requires approximately 20 liters, then the cost per liter would approximtely take 16 cents (if rounding up).
+
+%===========================================================================%
+% Section
+%===========================================================================%
+\section{Potential scale and impact of yeast towards global wastewater remediation}
+\label{section:appendixB:impact-of-yeast}
+To begin, a few assumptions based on the data represented in this work, and nominal values typically found in industry, are made to perform the calculations below. These assumptions are that yeast cultures are grown to saturating densities of approximately 10 \OD{}, and that each cell has a 1\% metal removal capacity per dry weight (\SECTION~\ref{section:B:dryweight}). At 1 ppm of metal contamination (typical metal contamination levels found in the Athabasca Oil Sands; \FIGURE~\ref{ext-\figname{2}{3}}), a single liter of yeast would be able to fully remediate 50 L of contaminated waters. A 1 to 50 ratio on a per volume basis (\EQUATION~\ref{equ:yeast-water-ratio}).
+
+%::::::::::::::::::::::::%
+% ratio of yeast to water
+%::::::::::::::::::::::::%
+\begin{align}
+  \text{V}_{\text{yeast}}\: [\text{L}]
+  \cdot 0.5\:[\text{gDW L\textsuperscript{-1} OD\textsubscript{600}\textsuperscript{-1}}]
+  \cdot 10\: [\text{OD\textsubscript{600}}]
+  \cdot 1\%\: \left[\dfrac{\text{g}}{\text{gDW}}\right]
+  & =
+  1\:[\text{ppm}] \cdot \text{V}_{\text{water}}
+\end{align}
+
+Rearranging to solve for volume
+
+\begin{align}
+  \dfrac{\text{V}_{\text{water}}}{\text{V}_{\text{yeast}}}
+    &= \dfrac{0.5 \cdot 10 \cdot .01}{1 \times 10^{-3}}
+    % \tagaddtext{[(g L\textsuperscript{-1})/(g L\textsuperscript{-1})]}
+    \label{equ:yeast-water-ratio}
+  \\[1em]
+    &= 50 \nonumber
+\end{align}
+
+The global production of yeast from the beer industry was 1.95 billion hectoliters (195 billion liters) in 2017~\cite{barth-haasgroup.2019}. If yeast cultures were approximately 10 \OD{} during industrial fermentation, this translates to 975 billion grams, or 1.07 million tons of yeast produced per year. Assuming a nominal per weight metal removal of 1\% (\TABLE~\ref{hyper-threshold-table}, \ref{protein-hyper-threshold}), this translates to approximately 107 thousand tons of metals removed. If these metals come from a contaminated water source of 1 ppm contaminants
+then this would equate to 9.75 trillion liters of remediable water (\EQUATION~\ref{equ:volume-water-remediated}).
+
+%::::::::::::::::::::::::::::::::::%
+% how much volume can be remediated
+%::::::::::::::::::::::::::::::::::%
+\begin{align}
+  975 \times 10^{9}\:[\text{gDW}] \cdot 1\%\: \left[\dfrac{\text{g}}{\text{gDW}}\right]
+    &= 1\:[\text{ppm}] \cdot \text{volume}\:[\text{L}]
+\end{align}
+
+solving for volume
+
+\begin{align}
+  \text{volume}
+    &= \dfrac{975 \times 10^{9}\:[\text{g}] \cdot 1\%}
+      {1\:\text{ppm}}
+      \label{equ:volume-water-remediated}
+  \\[1em]
+    &= 9.75 \times 10^{12}
+      \tagaddtext{[\si{\liter}]}
+      \nonumber
+\end{align}
+
+More than 9 trillion liters of water could be processed given the quantities of yeast produced by the global beer industry. This equates to processing almost 3.9 million Olympic size swimming pools\footnote{
+  average Olympic pool volume is 2.5 million liters: \url{https://www.livestrong.com/article/350103-measurements-for-an-olympic-size-swimming-pool/}
+}.
+In the United States, there are roughly 309,000 swimming pools, with another 10 million smaller residential pools\footnote{
+  census data on US pool sizes and number: \url{https://www.thespruce.com/facts-about-pools-spas-swimming-safety-2737127}
+}.
+With the mass of yeast produced per year, it would be possible to clean almost all swimming pools in the United States. These calculations provide a theoretical underestimate. The above calculations do not include the yeast production from the craft industry which produced roughly 5.09 billion liters in 2018~\cite{demetergroup.n.d.2014}, the consumer market such as yeast packets and bread making, and the pharmaceutical industry.
+
+%===========================================================================%
+% Section
+%===========================================================================%
+\section{Considerations and limitations}
+The calcultaions above are mainly to prove a point, that using the current yeast market may be a viable way to scale yeast-based technologies for bioremediation purposes. \SECTION{}s~\ref{section:appendixB:cost-of-yeast} and ~\ref{section:appendixB:impact-of-yeast} only give crude estimates to the economical and scaling implications of processing waste water using yeast production quantities typical found in industry. One major assumption was the cost of yeast per liter. These calculations only consider the chemical cost; however labor cost, infrastructure maintenance, and pre- and post-processing such as quality control and testing should also be factored in. Other assumptions needed, but go beyond the scope of this work, is the logistical cost of transferring the technology in the brewing and baking industry to an operable waste-processing facility. New ideas on how to convert or modify already in-place infrastructure to accommodate wastewater flow should be considered.
+
+There are also scientific assumptions that need to be further validated. The volume to dry weight ratio of yeast cultures should be thoroughly validated, especially for specific yeast strains or at different stages of yeast growth (lag, mid-log, saturation, diauxic shift). The next is the nominal culture density that yeast could grow at scale. In these calculations, a culture density of 10 \OD{} was used. Typical saturating \OD{}s in the lab can range between 2--10. The upper \OD{} level of 10 was used in these calculations because it was assumed that brewing and baking fermentors routinely push cultures to their saturating limits. On the same vein, the remediation performance, whether \HS{} production, metal transport, or protein production need to be tested at these extreme culture densities and conditions. Performance may decline as cells become more stressed at higher culture densities given the lower nutrient and higher biological waste-product content. If so, further metabolic engineering may need to be done to counter the loss of function, or a different culturing strategy may be required. A final consideration is the background chemical content that yeast are normally grown in. As in, the high salt and mineral content. These chemicals, although necessary for cell growth, also need to be removed after waste water processing. This is where a merge of biological and physicochemical processes may be synergistic. Physicochemical processes may be useful for removing residual content in the yeast culture after the yeast have removed the bulk of the heavier elements. This may be economically advantageous since yeast can be more specific and cost-effective at remediating less abundant but more toxic elements such as Cd, Hg, and Pb (\CHAPTER~\ref{ext-section:chapter5:economics}).
+
+%===============================BIBLIOGRAPHY================================%
+\printbibliography[title=References]
+
+\end{document}

@@ -1,0 +1,165 @@
+%---------------------------------------------------------------------------%
+%                                 PREAMBLE                                  %
+%---------------------------------------------------------------------------%
+% declare document class, 12pt, lettersize and article
+% could also be report, however section headers turn into chapters
+% \documentclass[12pt, lettersize]{article}
+\documentclass[12pt,twoside]{../main/mitthesis}
+
+% import preamble.sty for packages
+% import refextdoc.sty for subfile crossreferencing
+% note the relative import. Because subfiles (e.g. abstract, introduction, etc.)
+% are located in separate files, for all files to be obtainable by main and subfiles,
+% need to tranverse up to the root directory (../) then back to the appropriate files in /main
+\usepackage{../main/_refextdoc}
+\usepackage{../main/_preamble}
+\usepackage{../main/_customization}
+
+% relative imports of images
+% note that graphics path should be encased in {}, ends with / to define directory,
+% and finally separated by , without any lead or lag spaces.
+% therefore graphicsspath should look like \graphiscpath{{abc/},{xyz/},{123/}}
+% spaces in directory names are not recommended, however the the \usepackage[space]{grffile}
+% will attempt to work with directories with spaces
+\graphicspath{%
+				% preface
+				{../preface/_figures/},
+				% chapters
+				{../chapter_1/_figures/},
+				{../chapter_2/_figures/},
+				{../chapter_3/_figures/},
+				{../chapter_4/_figures/},
+				{../chapter_5/_figures/},
+				% appendix
+				{../appendix_A/_figures/},
+				{../appendix_B/_figures/},
+				{../appendix_C/_figures/},
+			}
+
+% relative imports for \input
+% typically used for tables which are input'd per chapter/appendix
+% names of input files can be wriBtten as is without the relative path prefix
+\makeatletter
+	\def\input@path{%
+					% preface
+					{../preface/_tables/},
+					% chapters
+					{../chapter_1/_tables/},
+					{../chapter_2/_tables/},
+					{../chapter_3/_tables/},
+					{../chapter_4/_tables/},
+					{../chapter_5/_tables/},
+					% appendixes
+					{../appendix_A/_tables/},
+					{../appendix_B/_tables/},
+					{../appendix_C/_tables/},
+				}
+\makeatother
+
+% set bibliography
+\usepackage[citestyle=numeric,
+	backend=biber,
+	style=numeric-comp, % cite instances such as 1-5
+	sorting=none,
+	refsection=chapter,
+	doi=false,	% supress digital object identifier
+	isbn=false,	% supress international standard book number
+	url=false	% suppress url and date of access
+	]{biblatex}
+
+% add bibliography paths
+\addbibresource{../preface/_bib/references.bib}
+\addbibresource{../chapter_1/_bib/references.bib}
+\addbibresource{../chapter_2/_bib/references.bib}
+\addbibresource{../chapter_3/_bib/references.bib}
+\addbibresource{../chapter_4/_bib/references.bib}
+\addbibresource{../chapter_5/_bib/references.bib}
+\addbibresource{../appendix_A/_bib/references.bib}
+\addbibresource{../appendix_B/_bib/references.bib}
+\addbibresource{../appendix_C/_bib/references.bib}
+
+%---------------------------------------------------------------------------%
+%                                BEGIN DOCUMENT                             %
+%---------------------------------------------------------------------------%
+\begin{document}
+
+%------------------%
+% FRONT MATTER
+%------------------%
+% Title page
+\input{1_titlepage}
+\cleardoublepage
+
+% Abstract
+\input{2_abstract}
+\cleardoublepage
+
+% Acknowledgements
+\input{3_acknowledgements}
+\cleardoublepage
+
+% Signatures
+\pagestyle{empty}
+\input{4_signatures}
+\cleardoublepage
+
+%------------------%
+% TABLE OF CONTENTS
+%------------------%
+\tableofcontents
+\clearpage
+\listoffigures
+\clearpage
+\listoftables
+
+%---------------------------------------------------------------------------%
+%                                  PREFACE                                  %
+%---------------------------------------------------------------------------%
+% Preface
+\subfile{../preface/preface}
+
+%---------------------------------------------------------------------------%
+%                                  CHAPTERS                                 %
+%---------------------------------------------------------------------------%
+% Chapter 1 - Introduction
+\subfile{../chapter_1/chapter_1}
+
+% Chapter 2 - Chemical Precipitation
+\subfile{../chapter_2/chapter_2}
+
+% Chapter 3 - Absorption
+\subfile{../chapter_3/chapter_3}
+
+% Chapter 4 - Sponges
+\subfile{../chapter_4/chapter_4}
+
+% Chapter 5 - Conclusion
+\subfile{../chapter_5/chapter_5}
+
+%---------------------------------------------------------------------------%
+%                                  APPENDIX                                 %
+%---------------------------------------------------------------------------%
+\newpage
+\appendix
+
+% A - theoretical calculations
+\subfile{../appendix_A/appendix_A}
+%
+% B - back of the envelop calculations
+\subfile{../appendix_B/appendix_B}
+%
+% C - machine learning
+\subfile{../appendix_C/appendix_C}
+
+%---------------------------------------------------------------------------%
+%                                 BIBLIOGRAPHY                              %
+%---------------------------------------------------------------------------%
+% \begin{singlespace}
+% \bibliography{../bib/bib_chapter1}
+% \bibliographystyle{plain}
+% \end{singlespace}
+
+%---------------------------------------------------------------------------%
+%                                 END DOCUMENT                              %
+%---------------------------------------------------------------------------%
+\end{document}
